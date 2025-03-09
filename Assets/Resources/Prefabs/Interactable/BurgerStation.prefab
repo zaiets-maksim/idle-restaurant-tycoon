@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5705999101896849223}
+  - component: {fileID: -1394649804519221053}
   m_Layer: 0
   m_Name: BurgerStation
   m_TagString: Untagged
@@ -48,6 +49,19 @@ Transform:
   - {fileID: 1427573482837603032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1394649804519221053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445692753702087074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154b7a4a99c33be4daa2f062d0eebf35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _typeId: 1
 --- !u!1001 &299354210906735541
 PrefabInstance:
   m_ObjectHideFlags: 0

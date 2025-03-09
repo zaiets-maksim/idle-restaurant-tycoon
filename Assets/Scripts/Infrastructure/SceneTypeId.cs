@@ -1,4 +1,4 @@
-namespace StudentHistory.Scripts
+namespace Infrastructure
 {
 	public enum SceneTypeId
 	{
