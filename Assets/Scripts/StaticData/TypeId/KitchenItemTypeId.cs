@@ -7,6 +7,7 @@ namespace StaticData
         DishStation,
         Dishwashing,
         ServingTable,
-        SilverwareTable
+        SilverwareTable,
+        Fridge
     }
 }
