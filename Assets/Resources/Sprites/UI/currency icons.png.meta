@@ -1,0 +1,907 @@
+fileFormatVersion: 2
+guid: c925d1794ee782243becf1b28bb61d93
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: currency icons_0
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1074
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67afb6cb11166eb4ca02551dc0ade356
+      internalID: 1860298831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_1
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1068
+        width: 216
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7607158cf5a9153419cc97feb026462f
+      internalID: -1322053686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_2
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1074
+        width: 204
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85c39ec40853ca4c818b6fd658be620
+      internalID: 389219698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_3
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1074
+        width: 192
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf2e8f30434ee04d830e03e19a33558
+      internalID: 939384285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1080
+        width: 198
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75823dda02ef39242b9ead2806b54395
+      internalID: 568800185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_8
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1086
+        width: 252
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ad11f2ac418d14a98bdc4801145ce3
+      internalID: 1125350328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_22
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 816
+        width: 216
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9807089ad16adfc42a27548a34e41884
+      internalID: -1168854623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_25
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 816
+        width: 180
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede02dfea3896ff45b1720666d067540
+      internalID: -1688271373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_28
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 822
+        width: 222
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd1d7ba1768bf2419d5b8d80315d70c
+      internalID: 1074697628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_30
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 834
+        width: 264
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3a44d1998a15c409b1c739083facb6
+      internalID: -298747830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_31
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 828
+        width: 228
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4908f1a9106064e9d60acf8186cc84
+      internalID: -1130623793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_33
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 834
+        width: 210
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed5f06230fecaf4db0ec03ca2d3b913
+      internalID: -823310022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_45
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 582
+        width: 198
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3939ada9fa0ba2c43b087b5bac2d5dae
+      internalID: 1119178245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_49
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 576
+        width: 168
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4a72ae97b3b6443b1c7238fb89cb50
+      internalID: 1465347101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_52
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 594
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dae42081c28562438361e73e163ebbf
+      internalID: 977543320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_54
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 600
+        width: 210
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537dc04e72ea71a4ca2c858cf32fe073
+      internalID: 463716661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_56
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 602
+        width: 216
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4bda40eb9c97740b8342c6d817ba93
+      internalID: 1077950660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_57
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 624
+        width: 210
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da4809a6220c3a4fa946e9a1716be59
+      internalID: 1975217324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_88
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 360
+        width: 210
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a36a445c9c2c9348b5f1b220c1bb5dc
+      internalID: -48070044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_89
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 372
+        width: 234
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b701213fe2e78469e848eed4d8b1b2
+      internalID: 796841074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_90
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 378
+        width: 211
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf6a5ccc0a70114caf6c388b1488616
+      internalID: 86808247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_91
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 366
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600b419246e13994aa2521b45fc7aeae
+      internalID: 1922389021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_93
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 396
+        width: 176
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d9df1eb43e7134da720488631e225b
+      internalID: 2035790582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_94
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 372
+        width: 216
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3bf716e1fd25894f8c002899cbbc52c
+      internalID: -1549972840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_116
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 138
+        width: 204
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36301e808d2c8045b99e7246e5ce055
+      internalID: -431585771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_122
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 144
+        width: 216
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0519c2f18d4be8e4fbb2276aaf164bb1
+      internalID: 432213969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_125
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 150
+        width: 222
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28468a56f9453747a836a86c6030d13
+      internalID: 1229650024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_126
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 138
+        width: 216
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bd5cda34ff93c4a81d2a960cdefbb9
+      internalID: -879822815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_127
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 132
+        width: 216
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec506ce7ab02b4419ef9ff93da1f56a
+      internalID: -695099449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: currency icons_128
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 132
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc4d03841770984fbd40bfefcaa8c3e
+      internalID: -2140174067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 89bb01d3dc358ab458f4f4050327eca3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      currency icons_0: 1860298831
+      currency icons_1: -1322053686
+      currency icons_10: 271853788
+      currency icons_100: -1561163362
+      currency icons_101: -173147050
+      currency icons_102: 353490620
+      currency icons_103: 803620668
+      currency icons_104: -1848154830
+      currency icons_105: -301202780
+      currency icons_106: -1614484098
+      currency icons_107: -139040644
+      currency icons_108: -398804183
+      currency icons_109: 1919051188
+      currency icons_11: 1248577296
+      currency icons_110: -1981503649
+      currency icons_111: 1144018143
+      currency icons_112: 268714850
+      currency icons_113: 220306553
+      currency icons_114: 283634741
+      currency icons_115: 1977802368
+      currency icons_116: -431585771
+      currency icons_117: -1324518586
+      currency icons_118: -650970222
+      currency icons_119: -1088694663
+      currency icons_12: 2062484909
+      currency icons_120: 1357490563
+      currency icons_121: -1251240711
+      currency icons_122: 432213969
+      currency icons_123: -1100253801
+      currency icons_124: -1712603795
+      currency icons_125: 1229650024
+      currency icons_126: -879822815
+      currency icons_127: -695099449
+      currency icons_128: -2140174067
+      currency icons_129: -1373542729
+      currency icons_13: 171325297
+      currency icons_130: -1616486073
+      currency icons_131: -171733675
+      currency icons_132: -1540914417
+      currency icons_133: 1590501100
+      currency icons_134: 899201678
+      currency icons_135: 1531292589
+      currency icons_136: 1842017204
+      currency icons_137: 931566109
+      currency icons_138: -861227544
+      currency icons_139: -1113452039
+      currency icons_14: -647120920
+      currency icons_140: -1852679929
+      currency icons_141: -384278317
+      currency icons_142: 1447857381
+      currency icons_143: 966292905
+      currency icons_144: -148022239
+      currency icons_145: -1187798827
+      currency icons_146: -2044379021
+      currency icons_147: 694457963
+      currency icons_148: 1159196631
+      currency icons_149: -890572381
+      currency icons_15: 85797241
+      currency icons_16: 1262244131
+      currency icons_17: 1673187939
+      currency icons_18: -63468247
+      currency icons_19: -1033251088
+      currency icons_2: 389219698
+      currency icons_20: 1155129653
+      currency icons_21: -1613375812
+      currency icons_22: -1168854623
+      currency icons_23: 265334461
+      currency icons_24: -1658224119
+      currency icons_25: -1688271373
+      currency icons_26: -1390398339
+      currency icons_27: 152092319
+      currency icons_28: 1074697628
+      currency icons_29: -1935241187
+      currency icons_3: 939384285
+      currency icons_30: -298747830
+      currency icons_31: -1130623793
+      currency icons_32: -1897883674
+      currency icons_33: -823310022
+      currency icons_34: 1244886861
+      currency icons_35: -1236636243
+      currency icons_36: -850246257
+      currency icons_37: 2099328021
+      currency icons_38: 1287343454
+      currency icons_39: -963915326
+      currency icons_4: -1023254818
+      currency icons_40: 712012442
+      currency icons_41: 1265478537
+      currency icons_42: 1478514370
+      currency icons_43: 134697731
+      currency icons_44: 546618453
+      currency icons_45: 1119178245
+      currency icons_46: -1351068258
+      currency icons_47: -1807946662
+      currency icons_48: -2145863245
+      currency icons_49: 1465347101
+      currency icons_5: -915288696
+      currency icons_50: -131493510
+      currency icons_51: 575718719
+      currency icons_52: 977543320
+      currency icons_53: 1763939401
+      currency icons_54: 463716661
+      currency icons_55: 438057874
+      currency icons_56: 1077950660
+      currency icons_57: 1975217324
+      currency icons_58: 1661683307
+      currency icons_59: 1224933437
+      currency icons_6: 568800185
+      currency icons_60: -169089667
+      currency icons_61: 2136671366
+      currency icons_62: 293113241
+      currency icons_63: 504060217
+      currency icons_64: -1067880681
+      currency icons_65: 1111404387
+      currency icons_66: 2011437083
+      currency icons_67: -1457995151
+      currency icons_68: 642940833
+      currency icons_69: 173936006
+      currency icons_7: 241381355
+      currency icons_70: -1026830253
+      currency icons_71: -1999487743
+      currency icons_72: -1089710686
+      currency icons_73: 652324022
+      currency icons_74: -704843948
+      currency icons_75: 1811682767
+      currency icons_76: -238815508
+      currency icons_77: 1593813142
+      currency icons_78: 1041791460
+      currency icons_79: 1663255052
+      currency icons_8: 1125350328
+      currency icons_80: -772683417
+      currency icons_81: -1598033623
+      currency icons_82: -664429276
+      currency icons_83: 1596934115
+      currency icons_84: 1921021991
+      currency icons_85: 1124487912
+      currency icons_86: 492455337
+      currency icons_87: -467863531
+      currency icons_88: -48070044
+      currency icons_89: 796841074
+      currency icons_9: -1344167673
+      currency icons_90: 86808247
+      currency icons_91: 1922389021
+      currency icons_92: 1767357758
+      currency icons_93: 2035790582
+      currency icons_94: -1549972840
+      currency icons_95: -968487723
+      currency icons_96: 913588674
+      currency icons_97: 539893631
+      currency icons_98: 1360700766
+      currency icons_99: -1508957773
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

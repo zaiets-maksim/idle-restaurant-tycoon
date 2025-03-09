@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: fbcc1a91362a30040aab4c400b2c41a8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - progresspixel-bold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4710c400584bbc2449e97e4460bcea6d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

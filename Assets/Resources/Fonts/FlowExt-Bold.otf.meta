@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c28ecfb3fec7fa04eaa811652a2dfa36
+timeCreated: 1611251501
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Flow Ext
+  fontNames:
+  - Flow Ext
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
