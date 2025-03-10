@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 5051880447356985701}
   - component: {fileID: 4031802067517521643}
   - component: {fileID: 7964577919628736151}
+  - component: {fileID: 1105789252056122158}
   m_Layer: 0
   m_Name: ServingTable
   m_TagString: Untagged
@@ -301,6 +302,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _typeId: 4
   _interactionPoint: {fileID: 4545192886405669325}
+--- !u!65 &1105789252056122158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908327468317833916}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6006327356829311232
 GameObject:
   m_ObjectHideFlags: 0

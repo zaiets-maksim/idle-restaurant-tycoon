@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7458676549731752021}
   - component: {fileID: 8516372300958850961}
+  - component: {fileID: 483766910132159089}
   m_Layer: 0
   m_Name: Dishwashing
   m_TagString: Untagged
@@ -125,6 +126,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _typeId: 3
   _interactionPoint: {fileID: 9194367234932582498}
+--- !u!65 &483766910132159089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956952587713869095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 6}
+  m_Center: {x: 0, y: 0.5, z: -1.5}
 --- !u!1001 &175770485051196451
 PrefabInstance:
   m_ObjectHideFlags: 0

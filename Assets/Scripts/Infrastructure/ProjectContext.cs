@@ -9,6 +9,7 @@ using Services.PurchasedItemRegistry;
 using Services.SaveLoad;
 using Services.SceneLoader;
 using Services.StaticDataService;
+using Services.SurfaceUpdaterService;
 using Services.WindowService;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -30,7 +31,8 @@ namespace Infrastructure
         private IItemBuyingService _itemBuyingService;
         private IKitchenItemFactory _kitchenItemFactory;
         private IPurchasedItemRegistry _purchasedItemRegistry;
-
+        private ISurfaceUpdaterService _surfaceUpdaterService;
+        
 
         public IStaticDataService StaticData => _staticData;
         public ISceneLoader SceneLoader => _sceneLoader;
@@ -43,6 +45,8 @@ namespace Infrastructure
         public IItemBuyingService ItemBuyingService => _itemBuyingService;
         public IKitchenItemFactory KitchenItemFactory => _kitchenItemFactory;
         public IPurchasedItemRegistry PurchasedItemRegistry => _purchasedItemRegistry;
+        public ISurfaceUpdaterService SurfaceUpdaterService => _surfaceUpdaterService;
+
         
         
         public void Awake()
@@ -88,6 +92,7 @@ namespace Infrastructure
             _kitchenItemFactory = new KitchenItemFactory(_staticData);
             _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
             _purchasedItemRegistry = new PurchasedItemRegistry();
+            _surfaceUpdaterService = new SurfaceUpdaterService();
         }
 
 

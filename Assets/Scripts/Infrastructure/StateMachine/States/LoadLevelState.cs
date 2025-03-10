@@ -5,6 +5,7 @@ using Services.DataStorageService;
 using Services.Factories.UIFactory;
 using Services.PurchasedItemRegistry;
 using Services.SceneLoader;
+using Services.SurfaceUpdaterService;
 
 public class LoadLevelState : GameStateEntity
 {
@@ -14,7 +15,8 @@ public class LoadLevelState : GameStateEntity
     private readonly IKitchenItemFactory _kitchenItemFactory;
     private readonly IPersistenceProgressService _progress;
     private readonly IPurchasedItemRegistry _purchasedItemRegistry;
-    
+    private readonly ISurfaceUpdaterService _surfaceUpdaterService;
+
     private KitchenItem _kitchenItem;
 
     public LoadLevelState(ProjectContext projectContext)
@@ -24,6 +26,7 @@ public class LoadLevelState : GameStateEntity
         _kitchenItemFactory = projectContext?.KitchenItemFactory;
         _progress = projectContext?.Progress;
         _purchasedItemRegistry = projectContext?.PurchasedItemRegistry;
+        _surfaceUpdaterService = projectContext?.SurfaceUpdaterService;
     }
 
     public override void Enter()
@@ -39,11 +42,14 @@ public class LoadLevelState : GameStateEntity
 
     private void InitGameWorld()
     {
+        _surfaceUpdaterService.Init();
+        
         _purchasedKitchenItems = _progress.PlayerData.ProgressData.PurchasedKitchenItems;
         foreach (var item in _purchasedKitchenItems)
         {
             _kitchenItem = _kitchenItemFactory.Create(item.TypeId, item.Position, item.Rotation, item.Parent);
             _purchasedItemRegistry.AddKitchenItem(_kitchenItem);
+            _surfaceUpdaterService.Update();
         }
     }
 

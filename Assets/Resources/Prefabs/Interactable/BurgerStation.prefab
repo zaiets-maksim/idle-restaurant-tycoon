@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5705999101896849223}
   - component: {fileID: -1394649804519221053}
+  - component: {fileID: 4401744766374419253}
   m_Layer: 0
   m_Name: BurgerStation
   m_TagString: Untagged
@@ -95,6 +96,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _typeId: 1
   _interactionPoint: {fileID: 1789751283886077507}
+--- !u!65 &4401744766374419253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445692753702087074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1, z: 2}
+  m_Center: {x: 1.5, y: 0.5, z: -1}
 --- !u!1001 &299354210906735541
 PrefabInstance:
   m_ObjectHideFlags: 0
