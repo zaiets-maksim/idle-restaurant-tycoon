@@ -5,6 +5,7 @@ using Infrastructure.StateMachine.States;
 using Services.DataStorageService;
 using Services.Factories.UIFactory;
 using Services.ItemBuyingService;
+using Services.PurchasedItemRegistry;
 using Services.SaveLoad;
 using Services.SceneLoader;
 using Services.StaticDataService;
@@ -28,7 +29,9 @@ namespace Infrastructure
         private IStateMachine _stateMachine;
         private IItemBuyingService _itemBuyingService;
         private IKitchenItemFactory _kitchenItemFactory;
-        
+        private IPurchasedItemRegistry _purchasedItemRegistry;
+
+
         public IStaticDataService StaticData => _staticData;
         public ISceneLoader SceneLoader => _sceneLoader;
         public ISaveLoadService SaveLoad => _saveLoad;
@@ -39,6 +42,7 @@ namespace Infrastructure
         public IStateMachine StateMachine => _stateMachine;
         public IItemBuyingService ItemBuyingService => _itemBuyingService;
         public IKitchenItemFactory KitchenItemFactory => _kitchenItemFactory;
+        public IPurchasedItemRegistry PurchasedItemRegistry => _purchasedItemRegistry;
         
         
         public void Awake()
@@ -82,7 +86,8 @@ namespace Infrastructure
             _uiFactory = new UIFactory(_staticData);
             _windowService = new WindowService(_uiFactory);
             _kitchenItemFactory = new KitchenItemFactory(_staticData);
-            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory);
+            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
+            _purchasedItemRegistry = new PurchasedItemRegistry();
         }
 
 

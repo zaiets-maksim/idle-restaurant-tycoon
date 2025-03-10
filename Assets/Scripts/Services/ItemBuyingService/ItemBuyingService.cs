@@ -1,5 +1,6 @@
 using System.Linq;
 using Services.DataStorageService;
+using Services.PurchasedItemRegistry;
 using Services.SaveLoad;
 using Services.StaticDataService;
 using StaticData;
@@ -12,10 +13,12 @@ namespace Services.ItemBuyingService
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadService _saveLoad;
         private readonly IKitchenItemFactory _kitchenItemFactory;
+        private readonly IPurchasedItemRegistry _purchasedItemRegistry;
 
         public ItemBuyingService(IPersistenceProgressService progress, IStaticDataService staticData,
-            ISaveLoadService saveLoad, IKitchenItemFactory kitchenItemFactory)
+            ISaveLoadService saveLoad, IKitchenItemFactory kitchenItemFactory, IPurchasedItemRegistry purchasedItemRegistry)
         {
+            _purchasedItemRegistry = purchasedItemRegistry;
             _kitchenItemFactory = kitchenItemFactory;
             _saveLoad = saveLoad;
             _staticData = staticData;
@@ -36,7 +39,8 @@ namespace Services.ItemBuyingService
                 return;
 
             // if (you have money)
-            _kitchenItemFactory.Create(typeId, nextItem.Position, nextItem.Rotation, null);
+            var kitchenItem = _kitchenItemFactory.Create(typeId, nextItem.Position, nextItem.Rotation, null);
+            _purchasedItemRegistry.AddKitchenItem(kitchenItem);
             _progress.PlayerData.ProgressData.BuyKitchenItem(nextItem);
             _saveLoad.SaveProgress();
         }

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Infrastructure;
+using Interactable;
 using Services.DataStorageService;
 using Services.Factories.UIFactory;
+using Services.PurchasedItemRegistry;
 using Services.SceneLoader;
 
 public class LoadLevelState : GameStateEntity
@@ -11,6 +13,9 @@ public class LoadLevelState : GameStateEntity
     private List<KitchenItemInfo> _purchasedKitchenItems = new();
     private readonly IKitchenItemFactory _kitchenItemFactory;
     private readonly IPersistenceProgressService _progress;
+    private readonly IPurchasedItemRegistry _purchasedItemRegistry;
+    
+    private KitchenItem _kitchenItem;
 
     public LoadLevelState(ProjectContext projectContext)
     {
@@ -18,6 +23,7 @@ public class LoadLevelState : GameStateEntity
         _uiFactory = projectContext?.UIFactory;
         _kitchenItemFactory = projectContext?.KitchenItemFactory;
         _progress = projectContext?.Progress;
+        _purchasedItemRegistry = projectContext?.PurchasedItemRegistry;
     }
 
     public override void Enter()
@@ -34,8 +40,11 @@ public class LoadLevelState : GameStateEntity
     private void InitGameWorld()
     {
         _purchasedKitchenItems = _progress.PlayerData.ProgressData.PurchasedKitchenItems;
-        foreach (var item in _purchasedKitchenItems) 
-            _kitchenItemFactory.Create(item.TypeId, item.Position, item.Rotation, item.Parent);
+        foreach (var item in _purchasedKitchenItems)
+        {
+            _kitchenItem = _kitchenItemFactory.Create(item.TypeId, item.Position, item.Rotation, item.Parent);
+            _purchasedItemRegistry.AddKitchenItem(_kitchenItem);
+        }
     }
 
     public override void Tick()
