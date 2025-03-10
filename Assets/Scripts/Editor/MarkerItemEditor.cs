@@ -1,3 +1,4 @@
+using Interactable;
 using SpawnMarkers;
 using StaticData;
 using UnityEditor;
@@ -34,6 +35,16 @@ namespace Editor
             Gizmos.DrawCube(Vector3.zero, kitchenItem.Size);
 
             Handles.Label(kitchenItem.transform.position + kitchenItem.TextOffset, kitchenItem.TypeId.ToString(), _textStyle);
+        }
+        
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
+        private static void DrawKitchenItemInteractionPoints(KitchenItem kitchenItem, GizmoType gizmoType)
+        {
+            if (kitchenItem.TypeId == KitchenItemTypeId.Unknown)
+                return;
+           
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(kitchenItem.InteractionPoint.position, 0.3f);
         }
     }
 }
