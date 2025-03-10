@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: LevelStaticData
   m_EditorClassIdentifier: 
   KitchenItemsData:
+  - TypeId: 6
+    Position: {x: 0.375, y: 0, z: -1}
+    Rotation: {x: -0, y: 180, z: -0}
+    PurchaseOrder: 1
+    Parent: {fileID: 0}
+  - TypeId: 6
+    Position: {x: 3, y: 0, z: -1}
+    Rotation: {x: -0, y: 180, z: -0}
+    PurchaseOrder: 1
+    Parent: {fileID: 0}
   - TypeId: 4
     Position: {x: -3.8, y: 0, z: -13}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
