@@ -1798,7 +1798,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1845,8 +1845,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -15
-  far clip plane: 28
+  near clip plane: -27
+  far clip plane: 54
   field of view: 60
   orthographic: 1
   orthographic size: 8
@@ -1880,7 +1880,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 28, z: 3}
---- !u!114 &963194229
+--- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1889,21 +1889,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0cb686fb0579d458ad6b9480597597, type: 3}
+  m_Script: {fileID: 11500000, guid: fef84ed0dd9809244bb0749c6ce2fadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
-  moveSpeed: 15
-  mouseMoveSensitivity: 15
-  inertiaFactor: 0.98
+  moveSpeed: 0.1
+  dragSpeed: 0.01
   minZoom: 5
-  maxZoom: 10
+  maxZoom: 15
   zoomSpeed: 0.5
   mouseScrollSensitivity: 1
-  minX: -7
-  maxX: 20
-  minZ: -21
-  maxZ: 20
+  minX: -100
+  maxX: 100
+  minZ: -100
+  maxZ: 100
+  _sensitivity: 0.5
 --- !u!1001 &969802714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3040,17 +3040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &1688836205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
@@ -5184,17 +5173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837449888053
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5215,17 +5193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837603076569
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5246,17 +5213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837859224620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5277,17 +5233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837935196775
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5308,17 +5253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837945542615
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5339,17 +5273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838008883046
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5370,17 +5293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838019619019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5401,17 +5313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838210877687
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5432,17 +5333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838263297420
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5463,17 +5353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838357253384
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5494,17 +5373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838486661690
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5525,17 +5393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838534309873
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5556,17 +5413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3a8bff4a72b04d8e6755c01c66aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crate: {fileID: 0}
-  _mesh: {fileID: 1490014688594724021, guid: b29e0aea15b14e84bb6a79cd5a3d0c85, type: 3}
-  Size: {x: 0, y: 0, z: 0}
-  PositionOffset: {x: 0, y: 0, z: 0}
-  RoattionOffset: {x: 0, y: 0, z: 0}
-  Color:
-    r: 1
-    g: 0
-    b: 0.67
-    a: 0.5
-  TextOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4004271884967232265
 GameObject:
   m_ObjectHideFlags: 0
