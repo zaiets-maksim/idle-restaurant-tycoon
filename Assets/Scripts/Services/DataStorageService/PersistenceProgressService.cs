@@ -1,6 +1,4 @@
-using Services.DataStorageService;
-
-namespace StudentHistory.Scripts.Services.DataStorageService
+namespace Services.DataStorageService
 {
     public class PersistenceProgressService : IPersistenceProgressService
     {

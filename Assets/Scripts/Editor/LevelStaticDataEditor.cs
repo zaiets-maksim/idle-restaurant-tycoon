@@ -1,5 +1,5 @@
 using System.Linq;
-using Interactable;
+using SpawnMarkers;
 using StaticData;
 using UnityEditor;
 using UnityEngine;
@@ -48,18 +48,18 @@ namespace Editor
         }
 
         private KitchenData[] FindKitchemItems() =>
-            FindObjectsOfType<KitchenItem>()
+            FindObjectsOfType<KitchenItemSpawnMarker>()
                 .Select(KitchenItemsData).ToArray();
 
         private StorageData[] FindStorageItems() =>
             FindObjectsOfType<Crate>()
                 .Select(StorageItemsData).ToArray();
 
-        private KitchenData KitchenItemsData(KitchenItem kitchenItem) =>
+        private KitchenData KitchenItemsData(KitchenItemSpawnMarker kitchenItem) =>
             new()
             {
-                KitchenItem = kitchenItem,
-                KitchenItemTypeId = kitchenItem.TypeId,
+                TypeId = kitchenItem.TypeId,
+                PurchaseOrder = kitchenItem.PurchaseOrder,
                 Position = kitchenItem.transform.position,
                 Rotation = kitchenItem.transform.eulerAngles,
             };
@@ -67,7 +67,6 @@ namespace Editor
         private StorageData StorageItemsData(Crate crate) =>
             new()
             {
-                Crate = crate,
                 Position = crate.transform.position,
                 Rotation = crate.transform.eulerAngles,
             };

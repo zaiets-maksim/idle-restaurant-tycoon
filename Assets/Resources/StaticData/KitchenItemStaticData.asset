@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702f319d88033b041ba304aadc32f7bd, type: 3}
+  m_Name: KitchenItemStaticData
+  m_EditorClassIdentifier: 
+  Configs:
+  - TypeId: 1
+    Prefab: {fileID: 8445692753702087074, guid: e99591f050de5514591a22d1b3c7a590, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+  - TypeId: 2
+    Prefab: {fileID: 4257293860083960091, guid: 7ea2b8edc2c78894e9c76a1232cc3b55, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+  - TypeId: 3
+    Prefab: {fileID: 1956952587713869095, guid: c3f1570669a767a48a541dacce0b1771, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+  - TypeId: 4
+    Prefab: {fileID: 5908327468317833916, guid: 52ddaca5413233a4da7e2d43271dd2cc, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+  - TypeId: 5
+    Prefab: {fileID: 3226002654679131679, guid: 8f690abf1ab18ac4a8c8a4f8409ca6ee, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+  - TypeId: 6
+    Prefab: {fileID: 8759319448032219817, guid: eeba09728b302f245a9b092ca2f09087, type: 3}
+    Position: {x: 0, y: 0, z: 0}

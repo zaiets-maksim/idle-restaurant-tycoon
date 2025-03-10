@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Infrastructure;
+using Services.StaticDataService;
 using StudentHistory.Scripts;
 using StudentHistory.Scripts.Services.SceneLoader;
 using Unity.VisualScripting;

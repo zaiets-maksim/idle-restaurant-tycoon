@@ -1,6 +1,6 @@
 using System;
-using Interactable;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace StaticData
 {
@@ -15,7 +15,7 @@ namespace StaticData
     [Serializable]
     public class StorageData
     {
-        public Crate Crate;
+        // public CrateTypeId CrateTypeId;
         public Vector2 Position;
         public Vector3 Rotation;
     }
@@ -23,9 +23,10 @@ namespace StaticData
     [Serializable]
     public class KitchenData
     {
-        public KitchenItem KitchenItem;
-        public KitchenItemTypeId KitchenItemTypeId ;
-        public Vector2 Position;
+        [FormerlySerializedAs("KitchenItemTypeId")] public KitchenItemTypeId TypeId ;
+        public Vector3 Position;
         public Vector3 Rotation;
+        public int PurchaseOrder;
+        public Transform Parent;
     }
 }

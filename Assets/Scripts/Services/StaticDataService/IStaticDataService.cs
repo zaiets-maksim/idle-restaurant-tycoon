@@ -1,9 +1,15 @@
+using StaticData;
 using StaticData.Configs;
 
-public interface IStaticDataService
+namespace Services.StaticDataService
 {
-    void LoadData();
-    // GameStaticData GameConfig();
-    WindowConfig ForWindow(WindowTypeId windowTypeId);
-    // BalanceStaticData Balance();
+    public interface IStaticDataService
+    {
+        void LoadData();
+        // GameStaticData GameConfig();
+        WindowConfig ForWindow(WindowTypeId windowTypeId);
+        KitchenItemConfig ForKitchenItem(KitchenItemTypeId kitchenItemTypeId);
+        LevelStaticData LevelConfig();
+        // BalanceStaticData Balance();
+    }
 }

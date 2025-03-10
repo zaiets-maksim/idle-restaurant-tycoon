@@ -25,6 +25,12 @@ namespace Services.Factories
             GameObject gameObject = Object.Instantiate(prefab, position, rotation, parent);
             return MoveToCurrentScene(gameObject);
         }
+        
+        protected T InstantiateOnActiveScene<T>(GameObject prefab, Vector3 position, Vector3 rotation, Transform parent)
+        {
+            GameObject gameObject = Object.Instantiate(prefab, position, Quaternion.Euler(rotation), parent);
+            return MoveToCurrentScene(gameObject).GetComponent<T>();
+        }
 
         protected GameObject MoveToCurrentScene(GameObject gameObject)
         {

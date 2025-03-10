@@ -1,3 +1,4 @@
+using Services.StaticDataService;
 using StaticData.Configs;
 using UnityEngine;
 
@@ -5,8 +6,8 @@ namespace Services.Factories.UIFactory
 {
     public class UIFactory : Factory, IUIFactory
     {
-        private const string UiRootPath = "UI/UiRoot";
-        private const string HudPath = "UI/Hud";
+        private const string UiRootPath = "Prefabs/UI/UiRoot";
+        private const string HudPath = "Prefabs/UI/Hud";
 
         private readonly IStaticDataService _staticData;
 
