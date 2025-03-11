@@ -13,16 +13,6 @@ MonoBehaviour:
   m_Name: LevelStaticData
   m_EditorClassIdentifier: 
   KitchenItemsData:
-  - TypeId: 6
-    Position: {x: 0.375, y: 0, z: -1}
-    Rotation: {x: -0, y: 180, z: -0}
-    PurchaseOrder: 1
-    Parent: {fileID: 0}
-  - TypeId: 6
-    Position: {x: 3, y: 0, z: -1}
-    Rotation: {x: -0, y: 180, z: -0}
-    PurchaseOrder: 1
-    Parent: {fileID: 0}
   - TypeId: 4
     Position: {x: -3.8, y: 0, z: -13}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
@@ -52,6 +42,11 @@ MonoBehaviour:
     Position: {x: -3.8, y: 0, z: -9}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
     PurchaseOrder: 5
+    Parent: {fileID: 0}
+  - TypeId: 6
+    Position: {x: 3, y: 0, z: -1}
+    Rotation: {x: -0, y: 180, z: -0}
+    PurchaseOrder: 1
     Parent: {fileID: 0}
   - TypeId: 2
     Position: {x: 8, y: 0, z: -5}
@@ -113,26 +108,27 @@ MonoBehaviour:
     Rotation: {x: -0, y: 90, z: -0}
     PurchaseOrder: 3
     Parent: {fileID: 0}
+  - TypeId: 6
+    Position: {x: 0.375, y: 0, z: -1}
+    Rotation: {x: -0, y: 180, z: -0}
+    PurchaseOrder: 2
+    Parent: {fileID: 0}
   StorageItemsData:
-  - Position: {x: 18, y: 0}
-    Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 23, y: 0}
-    Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 23, y: 0.75}
     Rotation: {x: -0, y: 23.179995, z: -0}
-  - Position: {x: 23, y: 0}
-    Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 18.5, y: 0.75}
     Rotation: {x: -0, y: 29.799995, z: -0}
   - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 18, y: 0}
+  - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 18.5, y: 0}
-    Rotation: {x: -0, y: 341.24002, z: 0}
+  - Position: {x: 23, y: 0}
+    Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 18, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 23, y: 0}
+  - Position: {x: 18, y: 0}
+    Rotation: {x: 0.000002504478, y: -0, z: -0}
+  - Position: {x: 18, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}

@@ -3,17 +3,20 @@ using UnityEngine;
 
 namespace Interactable
 {
-    public class KitchenItem : MonoBehaviour, IInteractable
+    public abstract class KitchenItem : MonoBehaviour, IInteractable // => abstract!
     {
-        [SerializeField] private KitchenItemTypeId _typeId;
-        [SerializeField] private Transform _interactionPoint;
-
-        public Transform InteractionPoint => _interactionPoint;
+        [SerializeField] protected KitchenItemTypeId _typeId;
+        [SerializeField] protected Transform _interactionPoint;
+        [SerializeField] protected float _interactionTime = 2f;
+        
         public KitchenItemTypeId TypeId => _typeId;
-
-        public void Interact()
+        public Transform InteractionPoint => _interactionPoint;
+        public float InteractionTime
         {
-            
+            get => _interactionTime;
+            protected set => _interactionTime = value;
         }
+
+        public abstract void Interact();
     }
 }

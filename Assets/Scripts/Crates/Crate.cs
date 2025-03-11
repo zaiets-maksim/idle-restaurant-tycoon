@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Crate : MonoBehaviour
+namespace Crates
 {
-    
+    public class Crate : MonoBehaviour
+    {
+        [SerializeField] private Transform _interactionPoint;
+
+        public Transform InteractionPoint => _interactionPoint;
+    }
 }

@@ -9,6 +9,7 @@ namespace SpawnMarkers
     {
         [SerializeField] private KitchenItemTypeId _typeId;
         [SerializeField] private int _purchaseOrder;
+        // [SerializeField] private Transform _parent;
 
         public KitchenItemTypeId TypeId => _typeId;
         public int PurchaseOrder => _purchaseOrder;

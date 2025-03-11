@@ -51,6 +51,8 @@ public class LoadLevelState : GameStateEntity
             _purchasedItemRegistry.AddKitchenItem(_kitchenItem);
             _surfaceUpdaterService.Update();
         }
+        
+        _purchasedItemRegistry.AddStorageCrates();
     }
 
     public override void Tick()
