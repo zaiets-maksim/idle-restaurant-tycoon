@@ -9,5 +9,7 @@ namespace Services.ItemBuyingService
         void BuyKitchenItem(KitchenItemTypeId typeId);
 
         List<KitchenData> GetAvailableKitchenItemsForPurchase();
+        bool GetAvailableItemCount(KitchenItemTypeId typeId, out int count);
+        int GetNextAvailableOrder(KitchenItemTypeId typeId);
     }
 }

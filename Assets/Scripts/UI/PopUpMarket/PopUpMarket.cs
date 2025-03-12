@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
@@ -52,12 +53,15 @@ namespace UI.PopUpMarket
         {
             _availableKitchenItems = _itemBuyingService.GetAvailableKitchenItemsForPurchase();
         
-            foreach (var availableKitchenItem in _availableKitchenItems)
+            foreach (KitchenItemTypeId typeId in Enum.GetValues(typeof(KitchenItemTypeId)))
             {
+                if(typeId == KitchenItemTypeId.Unknown)
+                    continue;
+                
                 var kitchenItemElement = _uiFactory.CreateKitchenItemElement();
-                var config = _staticData.ForKitchenItem(availableKitchenItem.TypeId);
-            
-                kitchenItemElement.Initialize(config);
+                var config = _staticData.ForKitchenItem(typeId);
+                
+                kitchenItemElement.Initialize(config, _itemBuyingService);
                 _elements.Add(kitchenItemElement);
                 kitchenItemElement.transform.SetParent(_content);
                 kitchenItemElement.transform.localScale = Vector3.one;

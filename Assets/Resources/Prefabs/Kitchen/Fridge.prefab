@@ -92,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1724080987372072942, guid: cd1d1bfbf6286b843850d773504198a7, type: 3}
+  - {fileID: 2100000, guid: a86b65ded9855f148b12a097908fd4ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _typeId: 6
   _interactionPoint: {fileID: 1545760431877483488}
-  _foodCount: 0
+  _interactionTime: 2
   _animation: {fileID: 4899910261049938675}
 --- !u!111 &4899910261049938675
 Animation:

@@ -587,10 +587,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1758435779893381932}
   _icon: {fileID: 3393564844020409356}
+  _currencyImage: {fileID: 8867138373275948673}
   _name: {fileID: 1683857277942205118}
   _description: {fileID: 1095429003624536537}
-  _price: {fileID: 6153602549141781866}
+  _priceText: {fileID: 6153602549141781866}
   _buyKitchenItemButton: {fileID: 8495677312708447763}
+  _available: {fileID: 4177579046568041059}
+  _grayScaleMaterial: {fileID: 2100000, guid: 06d5aa63c0712b94a9c949364e7308cc, type: 2}
+  _defaultNameColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7674720374131348976
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +698,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuyBurgerStation
       objectReference: {fileID: 0}
+    - target: {fileID: 7130916204380673424, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
+      propertyPath: _buttonImage
+      value: 
+      objectReference: {fileID: 7754647040460883677}
+    - target: {fileID: 7130916204380673424, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
+      propertyPath: _grayScaleMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 06d5aa63c0712b94a9c949364e7308cc, type: 2}
+    - target: {fileID: 7130916204380673424, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
+      propertyPath: _kitchenItemElement
+      value: 
+      objectReference: {fileID: 3894040340602826620}
     - target: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -782,6 +798,17 @@ PrefabInstance:
       addedObject: {fileID: 1205719191587616179}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
+--- !u!114 &7754647040460883677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8975292960443620702, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
+  m_PrefabInstance: {fileID: 1662020682595883907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8071273144941069829 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}

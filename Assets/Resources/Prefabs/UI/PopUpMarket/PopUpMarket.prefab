@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 3420218325754471594}
   - component: {fileID: 9166945978841654439}
   - component: {fileID: 1125597859851279655}
+  - component: {fileID: 3152994530686946373}
   - component: {fileID: 3109134927938981560}
   m_Layer: 5
   m_Name: HideButton
@@ -366,6 +367,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3152994530686946373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109406473279645657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee7dca9c5ac8845a17c7160f7e3364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coefficientScale: 0.97
 --- !u!114 &3109134927938981560
 MonoBehaviour:
   m_ObjectHideFlags: 0
