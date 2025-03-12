@@ -61,7 +61,7 @@ namespace UI.PopUpMarket
         {
             _buyKitchenItemButton.Lock();
             _available.text = $"Available: 0";
-            _priceText.text = (_itemBuyingService.GetNextAvailableOrder(_kitchenItemTypeId) * _price).ToString();
+            _priceText.text = "0";
             _icon.material = _grayScaleMaterial;
             _currencyImage.material = _grayScaleMaterial;
             _name.color = Color.white;

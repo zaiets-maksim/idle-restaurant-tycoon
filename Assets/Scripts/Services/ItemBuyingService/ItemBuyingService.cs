@@ -71,7 +71,7 @@ namespace Services.ItemBuyingService
         public int GetNextAvailableOrder(KitchenItemTypeId typeId) =>
             _progress.PlayerData.ProgressData.PurchasedKitchenItems
                 .Where(item => item.TypeId == typeId)
-                .Max(item => (int?)item.PurchaseOrder + 1) ?? 0;
+                .Max(item => (int?)item.PurchaseOrder + 1) ?? 1;
 
         public List<KitchenData> GetAvailableKitchenItemsForPurchase()
         {
