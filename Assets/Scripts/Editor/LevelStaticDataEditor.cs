@@ -1,7 +1,7 @@
 using System.Linq;
 using Crates;
 using SpawnMarkers;
-using StaticData;
+using StaticData.Levels;
 using UnityEditor;
 using UnityEngine;
 

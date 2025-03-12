@@ -91,8 +91,8 @@ namespace Infrastructure
             _uiFactory = new UIFactory(_staticData);
             _windowService = new WindowService(_uiFactory);
             _kitchenItemFactory = new KitchenItemFactory(_staticData);
-            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
             _purchasedItemRegistry = new PurchasedItemRegistry();
+            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
             _surfaceUpdaterService = new SurfaceUpdaterService();
             _currencyService = new CurrencyService(_progress, _saveLoad);
         }

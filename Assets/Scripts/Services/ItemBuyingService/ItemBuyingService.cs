@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using System.Linq;
 using Services.DataStorageService;
 using Services.PurchasedItemRegistry;
 using Services.SaveLoad;
 using Services.StaticDataService;
 using StaticData;
+using StaticData.Levels;
+using UnityEngine;
 
 namespace Services.ItemBuyingService
 {
@@ -37,12 +40,23 @@ namespace Services.ItemBuyingService
             
             if (nextItem == null)
                 return;
-
-            // if (you have money)
+            
             var kitchenItem = _kitchenItemFactory.Create(typeId, nextItem.Position, nextItem.Rotation, null);
+            Debug.Log(kitchenItem);
             _purchasedItemRegistry.AddKitchenItem(kitchenItem);
             _progress.PlayerData.ProgressData.BuyKitchenItem(nextItem);
             _saveLoad.SaveProgress();
+        }
+
+        public List<KitchenData> GetAvailableKitchenItemsForPurchase()
+        {
+            var purchasedItems = _progress.PlayerData.ProgressData.PurchasedKitchenItems;
+            var levelStaticData = _staticData.LevelConfig();
+
+            return levelStaticData.KitchenItemsData
+                .Where(item => !purchasedItems
+                .Any(purchased => purchased.TypeId == item.TypeId && purchased.PurchaseOrder == item.PurchaseOrder))
+                .ToList();
         }
     }
 }

@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using StaticData;
-using UnityEngine;
-using UnityEngine.Serialization;
+using StaticData.Levels;
 
 namespace Services.DataStorageService
 {
@@ -11,37 +10,18 @@ namespace Services.DataStorageService
     public class PlayerProgressData
     {
         public int Money;
-        [FormerlySerializedAs("Start")] public int Stars;
+        public int Stars;
         public bool HasProgress => PurchasedKitchenItems.Count > 0;
 
-        public List<KitchenItemInfo> PurchasedKitchenItems = new();
+        public List<KitchenData> PurchasedKitchenItems = new();
 
-        public void BuyKitchenItem(KitchenData data)
-        {
-            PurchasedKitchenItems.Add(new KitchenItemInfo
-            {
-                TypeId = data.TypeId,
-                PurchaseOrder = data.PurchaseOrder,
-                Position = data.Position,
-                Rotation = data.Rotation,
-                Parent = data.Parent
-            });
-        }
+        public void BuyKitchenItem(KitchenData data) => 
+            PurchasedKitchenItems.Add(data);
 
         public int GetPurchasedCount(KitchenItemTypeId typeId)
         {
             var count = PurchasedKitchenItems.Count(x => x.TypeId == typeId);
             return count;
         }
-    }
-
-    [Serializable]
-    public class KitchenItemInfo
-    {
-        public KitchenItemTypeId TypeId;
-        public int PurchaseOrder;
-        public Vector3 Position;
-        public Vector3 Rotation;
-        public Transform Parent;
     }
 }

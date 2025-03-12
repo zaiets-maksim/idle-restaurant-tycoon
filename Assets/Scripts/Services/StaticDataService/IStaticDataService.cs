@@ -1,5 +1,6 @@
 using StaticData;
 using StaticData.Configs;
+using StaticData.Levels;
 
 namespace Services.StaticDataService
 {

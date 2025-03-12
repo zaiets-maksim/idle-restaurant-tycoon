@@ -6,12 +6,13 @@ using Services.Factories.UIFactory;
 using Services.PurchasedItemRegistry;
 using Services.SceneLoader;
 using Services.SurfaceUpdaterService;
+using StaticData.Levels;
 
 public class LoadLevelState : GameStateEntity
 {
     private readonly ISceneLoader _sceneLoader;
     private readonly IUIFactory _uiFactory;
-    private List<KitchenItemInfo> _purchasedKitchenItems = new();
+    private List<KitchenData> _purchasedKitchenItems = new();
     private readonly IKitchenItemFactory _kitchenItemFactory;
     private readonly IPersistenceProgressService _progress;
     private readonly IPurchasedItemRegistry _purchasedItemRegistry;
@@ -37,6 +38,7 @@ public class LoadLevelState : GameStateEntity
     public override void OnLevelLoad()
     {
         _uiFactory.CreateHud();
+        _uiFactory.CreatePopUpMarket();
         InitGameWorld();
     }
 

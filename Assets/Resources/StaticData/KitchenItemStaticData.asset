@@ -15,19 +15,43 @@ MonoBehaviour:
   Configs:
   - TypeId: 1
     Prefab: {fileID: 8445692753702087074, guid: e99591f050de5514591a22d1b3c7a590, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Burger Station
+      Description: Quickly prepares delicious burgers!
+      Price: 100
+      Icon: {fileID: 21300000, guid: 40160867a1ca4764aaf84e8d43139470, type: 3}
   - TypeId: 2
     Prefab: {fileID: 4257293860083960091, guid: 7ea2b8edc2c78894e9c76a1232cc3b55, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Dish Station
+      Description: Cooks and prepares a variety of meals!
+      Price: 150
+      Icon: {fileID: 21300000, guid: d19e79ca69d779e44925e583c0330a17, type: 3}
   - TypeId: 3
     Prefab: {fileID: 1956952587713869095, guid: c3f1570669a767a48a541dacce0b1771, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Dishwashing
+      Description: Keeps your dishes sparkling clean!
+      Price: 200
+      Icon: {fileID: 21300000, guid: 2778f439086e86f41b03eb46fafc274e, type: 3}
   - TypeId: 4
     Prefab: {fileID: 5908327468317833916, guid: 52ddaca5413233a4da7e2d43271dd2cc, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Serving Table
+      Description: Ready-to-serve meals for customers.
+      Price: 300
+      Icon: {fileID: 21300000, guid: 265d604d1313be64e8ded4acf35e88af, type: 3}
   - TypeId: 5
     Prefab: {fileID: 3226002654679131679, guid: 8f690abf1ab18ac4a8c8a4f8409ca6ee, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Silverware Table
+      Description: Provides clean utensils for every meal.
+      Price: 250
+      Icon: {fileID: 21300000, guid: 60e2bc9f212d59b4d845435e2f12ae03, type: 3}
   - TypeId: 6
     Prefab: {fileID: 8759319448032219817, guid: eeba09728b302f245a9b092ca2f09087, type: 3}
-    Position: {x: 0, y: 0, z: 0}
+    MarketItem:
+      Name: Fridge
+      Description: Keeps ingredients fresh and ready to use!
+      Price: 500
+      Icon: {fileID: 21300000, guid: 9656f963bb05c254b88b2b7c730d0401, type: 3}

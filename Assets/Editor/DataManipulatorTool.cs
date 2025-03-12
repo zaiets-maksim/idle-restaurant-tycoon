@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Developer.Scripts.Utilities;
 using Services.DataStorageService;
 using StaticData;
+using StaticData.Levels;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,18 +25,9 @@ namespace Editor
             var levelStaticData = Resources
                 .Load<LevelStaticData>(LevelStaticDataPath);
 
-            List<KitchenItemInfo> purchasedKitchenItems = new List<KitchenItemInfo>();
-            foreach (var data in levelStaticData.KitchenItemsData)
-            {
-                purchasedKitchenItems.Add(new KitchenItemInfo
-                {
-                    TypeId = data.TypeId,
-                    PurchaseOrder = data.PurchaseOrder,
-                    Position = data.Position,
-                    Rotation = data.Rotation,
-                    Parent = data.Parent
-                });
-            }
+            List<KitchenData> purchasedKitchenItems = new List<KitchenData>();
+            foreach (var data in levelStaticData.KitchenItemsData) 
+                purchasedKitchenItems.Add(data);
             
             PlayerData PlayerData = new PlayerData
             {

@@ -1,9 +1,7 @@
 using System;
-using Crates;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace StaticData
+namespace StaticData.Levels
 {
     [CreateAssetMenu(fileName = "LevelStaticData", menuName = "StaticData/Levels/Level", order = 0)]   
     public class LevelStaticData : ScriptableObject
@@ -24,10 +22,10 @@ namespace StaticData
     [Serializable]
     public class KitchenData
     {
-        [FormerlySerializedAs("KitchenItemTypeId")] public KitchenItemTypeId TypeId ;
+        public KitchenItemTypeId TypeId ;
+        public int PurchaseOrder;
         public Vector3 Position;
         public Vector3 Rotation;
-        public int PurchaseOrder;
         public Transform Parent;
     }
 }
