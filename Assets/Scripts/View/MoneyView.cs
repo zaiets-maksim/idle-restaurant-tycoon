@@ -1,3 +1,5 @@
+using System;
+using Extensions;
 using Infrastructure;
 using Services.CurrencyService;
 using UnityEngine;
@@ -16,6 +18,11 @@ namespace View
             _currencyService = ProjectContext.Instance.CurrencyService;
         }
 
+        private void Start()
+        {
+            UpdateText(_currencyService.Money);
+        }
+
         private void OnEnable()
         {
             _currencyService.OnMoneyChanged += UpdateText;
@@ -26,6 +33,15 @@ namespace View
             _currencyService.OnMoneyChanged -= UpdateText;
         }
 
-        private void UpdateText(int amount) => _text.text = amount.ToString();
+        private void UpdateText(int amount)
+        {
+            transform.AnimatePingPong(t => t.localScale, 
+                (t, value) => t.localScale = value, 
+                Vector3.one * 1.1f, 
+                0.1f
+            );
+            
+            _text.text = amount.ToString();
+        }
     }
 }

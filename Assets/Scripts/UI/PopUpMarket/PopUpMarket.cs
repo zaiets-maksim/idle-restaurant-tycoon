@@ -75,7 +75,7 @@ namespace UI.PopUpMarket
                 rect => rect.sizeDelta.y,
                 (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
                 1250f,
-                0.25f);
+                0.15f);
 
             _showMarketButton.gameObject.SetActive(false);
         }
@@ -86,7 +86,7 @@ namespace UI.PopUpMarket
                 rect => rect.sizeDelta.y,
                 (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
                 -250f,
-                0.25f);
+                0.15f);
             
             _showMarketButton.gameObject.SetActive(true);
         }

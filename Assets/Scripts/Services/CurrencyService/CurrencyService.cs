@@ -23,6 +23,9 @@ namespace Services.CurrencyService
             _progress = persistenceProgressService;
         }
 
+        public bool CanAffordWithMoney(int cost) => Money >= cost;
+        public bool CanAffordWithStars(int cost) => Stars >= cost;
+        
         public void AddMoney(int amount)
         {
             Money += amount;
@@ -31,19 +34,19 @@ namespace Services.CurrencyService
             UpdateMoney(Money);
         }
 
-        public void RemoveMoney(int amount)
-        {
-            Money -= amount;
-        
-            UpdateMoney(Money);
-        }
-    
         public void AddStars(int amount)
         {
             Stars += amount;
         
             OnAddStars?.Invoke(amount);
-            UpdateStars(Money);
+            UpdateStars(Stars);
+        }
+
+        public void RemoveMoney(int amount)
+        {
+            Money -= amount;
+        
+            UpdateMoney(Money);
         }
 
         public void RemoveStars(int amount)
@@ -84,7 +87,9 @@ namespace Services.CurrencyService
     
         int Money { get; }
         int Stars { get; }
-
+        
+        bool CanAffordWithMoney(int cost);
+        bool CanAffordWithStars(int cost);
         void AddMoney(int amount);
         void RemoveMoney(int amount);
         void AddStars(int amount);

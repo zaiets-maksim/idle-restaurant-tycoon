@@ -1,4 +1,5 @@
 using Infrastructure;
+using Services.CurrencyService;
 using Services.ItemBuyingService;
 using StaticData;
 using UI.PopUpMarket;
@@ -16,10 +17,12 @@ namespace UI.Buttons
         [SerializeField] private Material _grayScaleMaterial;
         
         private readonly IItemBuyingService _itemBuyingService;
+        private readonly ICurrencyService _currencyService;
 
         private BuyKitchenItemButton()
         {
             _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
+            _currencyService = ProjectContext.Instance?.CurrencyService;
         }
 
         private void Start()
@@ -46,8 +49,16 @@ namespace UI.Buttons
 
         private void BuyKitchenItem()
         {
-            _itemBuyingService.BuyKitchenItem(_typeId);
-            _kitchenItemElement.UpdateAvailableCount(_typeId);
+            if (_currencyService.CanAffordWithMoney(_kitchenItemElement.Price))
+            {
+                _currencyService.RemoveMoney(_kitchenItemElement.Price);
+                _itemBuyingService.BuyKitchenItem(_typeId);
+                _kitchenItemElement.UpdateAvailableCount(_typeId);
+            }
+            else
+            {
+                // money are not enough
+            }
         }
     }
 }

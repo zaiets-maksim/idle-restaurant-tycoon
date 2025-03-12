@@ -25,6 +25,8 @@ namespace UI.PopUpMarket
         private Color _defaultNameColor;
         private int _price;
 
+        public int Price => _price;
+
         public void Initialize(KitchenItemConfig config, IItemBuyingService itemBuyingService)
         {
             _itemBuyingService = itemBuyingService;
@@ -32,7 +34,7 @@ namespace UI.PopUpMarket
             _name.text = config.MarketItem.Name;
             _description.text = config.MarketItem.Description;
             _price = config.MarketItem.Price;
-            _priceText.text = _price.ToString();
+            _priceText.text = (_price * _itemBuyingService.GetNextAvailableOrder(config.TypeId)).ToString();
             _buyKitchenItemButton.Initialize(config.TypeId);
             _defaultNameColor = _name.color;
 
@@ -78,7 +80,8 @@ namespace UI.PopUpMarket
             if (_itemBuyingService.GetAvailableItemCount(_kitchenItemTypeId, out int count))
             {
                 _available.text = $"Available: {count}";
-                _priceText.text = (_itemBuyingService.GetNextAvailableOrder(kitchenItemTypeId) * _price).ToString();
+                _price = _itemBuyingService.GetNextAvailableOrder(kitchenItemTypeId) * _price;
+                _priceText.text = _price.ToString();
             }
             else
                 MakeLock();
