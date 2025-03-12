@@ -1,3 +1,4 @@
+using Characters.Behaviors;
 using UnityEngine;
 
 namespace Characters.Personal

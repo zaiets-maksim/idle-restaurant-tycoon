@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Characters.Personal;
+using Characters.Behaviors;
 using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
@@ -10,21 +10,24 @@ using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
 using UnityEngine;
 
-namespace Characters.States
+namespace Characters.States.Chef
 {
     public class CookingState : PersonBaseState
     {
         private readonly IPurchasedItemRegistry _purchasedItemRegistry;
         private readonly Transform _transform;
         private readonly PersonMover _personMover;
-        private ChefBehavior _chefBehavior;
+        private readonly ChefBehavior _chefBehavior;
+        private readonly DishHolder _dishHolder;
 
         private List<FoodStation> _foodStations;
-        readonly TaskCompletionSource<bool> _tcs = new();
+        TaskCompletionSource<bool> _tcs = new();
         private readonly PersonAnimator _personAnimator;
 
-        public CookingState(ChefBehavior chefBehavior, Transform transform, PersonMover personMover, PersonAnimator personAnimator)
+        public CookingState(ChefBehavior chefBehavior, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
+            DishHolder dishHolder)
         {
+            _dishHolder = dishHolder;
             _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
             _personAnimator = personAnimator;
             _personMover = personMover;
@@ -32,23 +35,30 @@ namespace Characters.States
             _chefBehavior = chefBehavior;
         }
     
-        public override void Enter()
+        public override async void Enter()
         {
-            _ = Cook();
+            _tcs = new TaskCompletionSource<bool>();
+            await Cook();
             _personAnimator.Idle();
+            _chefBehavior.ChangeState<DeliverAndServeState>();
         }
 
-        public async Task Cook()
+        private async Task Cook()
         {
             if (GetFoodStation(out FoodStation foodStation))
             {
                 foodStation.Occupy();
-                
                 _personMover.StartMovingTo(foodStation.InteractionPoint, () => _tcs.SetResult(true));
                 await _tcs.Task;
+
+                var dish = foodStation.MakeDish();
                 _personAnimator.Cook();
                 int randomTime = TimeExtensions.RandomTime(5, 15).ToMiliseconds();
                 await Task.Delay(randomTime);
+                
+                _dishHolder.TakeDish(dish);
+                foodStation.Release();
+                _personAnimator.Idle();
             }
         }
 

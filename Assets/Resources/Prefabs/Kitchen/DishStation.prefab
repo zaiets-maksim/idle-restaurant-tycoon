@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 128770251152835969}
   - component: {fileID: 6096295271464846175}
-  - component: {fileID: -5380551695458313288}
+  - component: {fileID: 139865061735973613}
   m_Layer: 0
   m_Name: DishStation
   m_TagString: Untagged
@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3394077524616915057}
+  - {fileID: 4877062700406170102}
   - {fileID: 4377453603617013675}
   - {fileID: 2186188194605133888}
   - {fileID: 1655214928256459477}
@@ -58,7 +59,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 1, z: 2}
   m_Center: {x: 1.5, y: 0.5, z: -1}
---- !u!114 &-5380551695458313288
+--- !u!114 &139865061735973613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,12 +68,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4257293860083960091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6ced2fff61f514aa9b8865fd684325, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b89c9c89935ad847a6d38216fa58df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeId: 1
+  _typeId: 2
   _interactionPoint: {fileID: 3394077524616915057}
   _interactionTime: 2
+  _dishPrefab: {fileID: -8679921383154817045, guid: d675a20367b1182459c5c2c33e455d05, type: 3}
+  _placeForDish: {fileID: 4877062700406170102}
 --- !u!1 &7133099261932350859
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +102,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5, y: 0, z: -2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 128770251152835969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7576290806886061199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4877062700406170102}
+  m_Layer: 0
+  m_Name: PlaceForBurger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4877062700406170102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576290806886061199}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 1.3, z: -1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

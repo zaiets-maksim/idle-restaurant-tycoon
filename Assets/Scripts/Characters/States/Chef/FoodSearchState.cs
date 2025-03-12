@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Characters.Personal;
+using Characters.Behaviors;
 using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
@@ -10,7 +10,7 @@ using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
 using UnityEngine;
 
-namespace Characters.States
+namespace Characters.States.Chef
 {
     public class FoodSearchState : PersonBaseState
     {
@@ -19,12 +19,12 @@ namespace Characters.States
         private readonly PersonAnimator _personAnimator;
         private readonly ChefBehavior _chefBehavior;
         private readonly Transform _transform;
-        private readonly Chef _chef;
+        private readonly Personal.Chef _chef;
 
         private List<Fridge> _fridgesWithFood;
-        readonly TaskCompletionSource<bool> _tcs = new();
+        TaskCompletionSource<bool> _tcs = new();
 
-        public FoodSearchState(ChefBehavior chefBehavior, Chef chef, PersonMover personMover, PersonAnimator personAnimator)
+        public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, PersonAnimator personAnimator)
         {
             _personAnimator = personAnimator;
             _chefBehavior = chefBehavior;
@@ -36,6 +36,7 @@ namespace Characters.States
 
         public override async void Enter()
         {
+            _tcs = new TaskCompletionSource<bool>();
             await GetSomeFood();
             _personAnimator.Idle();
             _chefBehavior.ChangeState<CookingState>();
@@ -50,18 +51,24 @@ namespace Characters.States
                     await GetFoodFromStorage();
                     return;
                 }
-                
-                fridge.Occupy();
-                _personMover.StartMovingTo(fridge.InteractionPoint, () => _tcs.SetResult(true));
 
-                await _tcs.Task;
-                fridge.Interact();
-                await Task.Delay(fridge.InteractionTime.ToMiliseconds());
+                await GetFoodFromFridge(fridge);
             }
             else
             {
                 await GetFoodFromStorage();
             }
+        }
+
+        private async Task GetFoodFromFridge(Fridge fridge)
+        {
+            fridge.Occupy();
+            _personMover.StartMovingTo(fridge.InteractionPoint, () => _tcs.SetResult(true));
+
+            await _tcs.Task;
+            fridge.Interact();
+            _personAnimator.PutTheItem();
+            await Task.Delay((fridge.InteractionTime + fridge.DelayAfterClose).ToMiliseconds());
         }
 
         private async Task GetFoodFromStorage()

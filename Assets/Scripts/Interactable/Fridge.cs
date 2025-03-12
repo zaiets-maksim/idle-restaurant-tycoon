@@ -11,11 +11,10 @@ namespace Interactable
 
         private const string OpenDoor = "OpenDoor";
         private const string CloseDoor = "CloseDoor";
-        
+        public float DelayAfterClose { get; private set; } = 1f;
+
         // [SerializeField] private int _foodCount;
         // public bool HasFood => _foodCount > 0;
-
-        public bool IsOccupied { get; private set; }
 
         public override void Interact()
         {
@@ -47,10 +46,6 @@ namespace Interactable
             _animation.Play(CloseDoor);
             return _animation[CloseDoor].length;
         }
-
-        public void Occupy() => IsOccupied = true;
-
-        public void Release() => IsOccupied = false;
         
         
         // private IEnumerator GetFood(Action<int> onFoodTaken)
