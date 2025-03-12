@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.States;
+using Services.CurrencyService;
 using Services.DataStorageService;
 using Services.Factories.UIFactory;
 using Services.ItemBuyingService;
@@ -32,7 +33,7 @@ namespace Infrastructure
         private IKitchenItemFactory _kitchenItemFactory;
         private IPurchasedItemRegistry _purchasedItemRegistry;
         private ISurfaceUpdaterService _surfaceUpdaterService;
-        
+        private ICurrencyService _currencyService;
 
         public IStaticDataService StaticData => _staticData;
         public ISceneLoader SceneLoader => _sceneLoader;
@@ -46,7 +47,7 @@ namespace Infrastructure
         public IKitchenItemFactory KitchenItemFactory => _kitchenItemFactory;
         public IPurchasedItemRegistry PurchasedItemRegistry => _purchasedItemRegistry;
         public ISurfaceUpdaterService SurfaceUpdaterService => _surfaceUpdaterService;
-
+        public ICurrencyService CurrencyService => _currencyService;
         
         
         public void Awake()
@@ -93,6 +94,7 @@ namespace Infrastructure
             _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
             _purchasedItemRegistry = new PurchasedItemRegistry();
             _surfaceUpdaterService = new SurfaceUpdaterService();
+            _currencyService = new CurrencyService(_progress, _saveLoad);
         }
 
 

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using StaticData;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Services.DataStorageService
 {
     [Serializable]
     public class PlayerProgressData
     {
+        public int Money;
+        [FormerlySerializedAs("Start")] public int Stars;
         public bool HasProgress => PurchasedKitchenItems.Count > 0;
 
         public List<KitchenItemInfo> PurchasedKitchenItems = new();
