@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using _Developer.Scripts.Utilities;
 using Services.DataStorageService;
-using StaticData;
 using StaticData.Levels;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace Editor
             PlayerPrefs.DeleteAll();
         }
     
-        [MenuItem("Tools/Data Manipulator/Buy all kitchen items")]
+        [MenuItem("Tools/Data Manipulator/Buy all items")]
         public static void AddAllItems()
         {
             var levelStaticData = Resources
@@ -29,15 +28,20 @@ namespace Editor
             foreach (var data in levelStaticData.KitchenItemsData) 
                 purchasedKitchenItems.Add(data);
             
-            PlayerData PlayerData = new PlayerData
+            List<HallData> purchasedHallItems = new List<HallData>();
+            foreach (var data in levelStaticData.HallItemsData) 
+                purchasedHallItems.Add(data);
+            
+            PlayerData playerData = new PlayerData
             {
                 ProgressData =
                 {
-                    PurchasedKitchenItems = purchasedKitchenItems
+                    PurchasedKitchenItems = purchasedKitchenItems,
+                    PurchasedHallItems = purchasedHallItems
                 }
             };
             
-            PlayerPrefs.SetString(PlayerProgressKey, PlayerData.ToJson());
+            PlayerPrefs.SetString(PlayerProgressKey, playerData.ToJson());
         }
 
     }

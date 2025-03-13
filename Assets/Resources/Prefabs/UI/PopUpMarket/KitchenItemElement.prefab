@@ -594,7 +594,6 @@ MonoBehaviour:
   _buyKitchenItemButton: {fileID: 8495677312708447763}
   _available: {fileID: 4177579046568041059}
   _grayScaleMaterial: {fileID: 2100000, guid: 06d5aa63c0712b94a9c949364e7308cc, type: 2}
-  _defaultNameColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7674720374131348976
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +695,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4652962344148881948, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_Name
-      value: BuyBurgerStation
+      value: BuyButton
       objectReference: {fileID: 0}
     - target: {fileID: 7130916204380673424, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: _buttonImage

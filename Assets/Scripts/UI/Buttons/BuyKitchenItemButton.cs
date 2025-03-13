@@ -49,11 +49,11 @@ namespace UI.Buttons
 
         private void BuyKitchenItem()
         {
-            if (_currencyService.CanAffordWithMoney(_kitchenItemElement.Price))
+            if (_currencyService.CanAffordWithMoney(_kitchenItemElement.ActualPrice))
             {
-                _currencyService.RemoveMoney(_kitchenItemElement.Price);
+                _currencyService.RemoveMoney(_kitchenItemElement.ActualPrice);
                 _itemBuyingService.BuyKitchenItem(_typeId);
-                _kitchenItemElement.UpdateAvailableCount(_typeId);
+                _kitchenItemElement.UpdateAvailableCount();
             }
             else
             {

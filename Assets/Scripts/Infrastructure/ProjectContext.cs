@@ -4,6 +4,7 @@ using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.States;
 using Services.CurrencyService;
 using Services.DataStorageService;
+using Services.Factories.ItemFactory;
 using Services.Factories.UIFactory;
 using Services.ItemBuyingService;
 using Services.PurchasedItemRegistry;
@@ -30,7 +31,7 @@ namespace Infrastructure
         private GameStateFactory _gameStateFactory;
         private IStateMachine _stateMachine;
         private IItemBuyingService _itemBuyingService;
-        private IKitchenItemFactory _kitchenItemFactory;
+        private IItemFactory _itemFactory;
         private IPurchasedItemRegistry _purchasedItemRegistry;
         private ISurfaceUpdaterService _surfaceUpdaterService;
         private ICurrencyService _currencyService;
@@ -44,7 +45,7 @@ namespace Infrastructure
         public GameStateFactory GameStateFactory => _gameStateFactory;
         public IStateMachine StateMachine => _stateMachine;
         public IItemBuyingService ItemBuyingService => _itemBuyingService;
-        public IKitchenItemFactory KitchenItemFactory => _kitchenItemFactory;
+        public IItemFactory ItemFactory => _itemFactory;
         public IPurchasedItemRegistry PurchasedItemRegistry => _purchasedItemRegistry;
         public ISurfaceUpdaterService SurfaceUpdaterService => _surfaceUpdaterService;
         public ICurrencyService CurrencyService => _currencyService;
@@ -90,9 +91,9 @@ namespace Infrastructure
             _sceneLoader = new SceneLoader(CoroutineRunner.instance, _staticData);
             _uiFactory = new UIFactory(_staticData);
             _windowService = new WindowService(_uiFactory);
-            _kitchenItemFactory = new KitchenItemFactory(_staticData);
+            _itemFactory = new ItemFactory(_staticData);
             _purchasedItemRegistry = new PurchasedItemRegistry();
-            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _kitchenItemFactory, _purchasedItemRegistry);
+            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _itemFactory, _purchasedItemRegistry);
             _surfaceUpdaterService = new SurfaceUpdaterService();
             _currencyService = new CurrencyService(_progress, _saveLoad);
         }

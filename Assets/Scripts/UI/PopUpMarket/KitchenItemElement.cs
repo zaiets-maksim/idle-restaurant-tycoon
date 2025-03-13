@@ -3,29 +3,14 @@ using StaticData;
 using StaticData.Configs;
 using UI.Buttons;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI.PopUpMarket
 {
-    public class KitchenItemElement : MonoBehaviour
+    public class KitchenItemElement : ItemElement
     {
-        [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private Image _icon;
-        [SerializeField] private Image _currencyImage;
-        [SerializeField] private Text _name;
-        [SerializeField] private Text _description;
-        [SerializeField] private Text _priceText;
         [SerializeField] private BuyKitchenItemButton _buyKitchenItemButton;
-        [SerializeField] private Text _available;
-        [SerializeField] private Material _grayScaleMaterial;
-        
-        private IItemBuyingService _itemBuyingService;
-        private KitchenItemTypeId _kitchenItemTypeId;
-        
-        private Color _defaultNameColor;
-        private int _price;
 
-        public int Price => _price;
+        private KitchenItemTypeId _kitchenItemTypeId;
 
         public void Initialize(KitchenItemConfig config, IItemBuyingService itemBuyingService)
         {
@@ -33,10 +18,11 @@ namespace UI.PopUpMarket
             _icon.sprite = config.MarketItem.Icon;
             _name.text = config.MarketItem.Name;
             _description.text = config.MarketItem.Description;
-            _price = config.MarketItem.Price;
-            _priceText.text = (_price * _itemBuyingService.GetNextAvailableOrder(config.TypeId)).ToString();
+            _defaultPrice = config.MarketItem.Price;
+            UpdatePrice(_defaultPrice * _itemBuyingService.GetNextAvailableOrder(config.TypeId));
             _buyKitchenItemButton.Initialize(config.TypeId);
             _defaultNameColor = _name.color;
+            _kitchenItemTypeId = config.TypeId;
 
             if (_itemBuyingService.GetAvailableItemCount(config.TypeId, out int count))
             {
@@ -67,21 +53,12 @@ namespace UI.PopUpMarket
             _name.color = Color.white;
         }
 
-        public float GetHeight()
+        public void UpdateAvailableCount()
         {
-            float height = _rectTransform.rect.height;
-            return height;
-        }
-
-        public void UpdateAvailableCount(KitchenItemTypeId kitchenItemTypeId)
-        {
-            _kitchenItemTypeId = kitchenItemTypeId;
-
             if (_itemBuyingService.GetAvailableItemCount(_kitchenItemTypeId, out int count))
             {
                 _available.text = $"Available: {count}";
-                _price = _itemBuyingService.GetNextAvailableOrder(kitchenItemTypeId) * _price;
-                _priceText.text = _price.ToString();
+                UpdatePrice(_itemBuyingService.GetNextAvailableOrder(_kitchenItemTypeId) * _defaultPrice);
             }
             else
                 MakeLock();

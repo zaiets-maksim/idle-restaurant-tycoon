@@ -1,6 +1,7 @@
 using Interactable;
 using SpawnMarkers;
 using StaticData;
+using StaticData.TypeId;
 using UnityEditor;
 using UnityEngine;
 
@@ -45,6 +46,24 @@ namespace Editor
            
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(kitchenItem.InteractionPoint.position, 0.3f);
+        }
+        
+        
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
+        private static void DrawHallItems(HallItemSpawnMarker hallItem, GizmoType gizmoType)
+        {
+            if (hallItem.TypeId == HallItemTypeId.Unknown)
+                return;
+
+            Matrix4x4 rotationMatrix = Matrix4x4.TRS(
+                hallItem.transform.position + hallItem.PositionOffset,
+                Quaternion.Euler(hallItem.transform.eulerAngles + hallItem.RoattionOffset), Vector3.one);
+            Gizmos.matrix = rotationMatrix;	
+        
+            Gizmos.color = hallItem.Color;
+            Gizmos.DrawCube(Vector3.zero, hallItem.Size);
+
+            Handles.Label(hallItem.transform.position + hallItem.TextOffset, hallItem.TypeId.ToString(), _textStyle);
         }
     }
 }

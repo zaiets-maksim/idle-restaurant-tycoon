@@ -3,6 +3,7 @@ using System.Linq;
 using StaticData;
 using StaticData.Configs;
 using StaticData.Levels;
+using StaticData.TypeId;
 using UnityEngine;
 
 namespace Services.StaticDataService
@@ -13,6 +14,7 @@ namespace Services.StaticDataService
         private const string BalanceConfigPath = "StaticData/Balance";
         private const string WindowsStaticDataPath = "StaticData/WindowsStaticData";
         private const string KitchenItemStaticDataPath = "StaticData/KitchenItemStaticData";
+        private const string HallItemStaticDataPath = "StaticData/HallItemStaticData";
         private const string LevelStaticDataPath = "StaticData/LevelStaticData";
         private const string PopUpWindowsStaticDataPath = "StaticData/PopUpWindowsStaticData";
         
@@ -20,6 +22,7 @@ namespace Services.StaticDataService
         // private BalanceStaticData _balanceStaticData;
         private Dictionary<WindowTypeId, WindowConfig> _windowConfigs;
         private Dictionary<KitchenItemTypeId, KitchenItemConfig> _kitchenItemConfigs;
+        private Dictionary<HallItemTypeId, HallItemConfig> _hallItemConfigs;
         private LevelStaticData _levelStaticData;
 
         // private Dictionary<PopUpWindowTypeId, PopUpWindowConfig> _popUpWindowConfigs;
@@ -40,6 +43,10 @@ namespace Services.StaticDataService
                 .Load<KitchenItemStaticData>(KitchenItemStaticDataPath)
                 .Configs.ToDictionary(x => x.TypeId, x => x);
             
+            _hallItemConfigs = Resources
+                .Load<HallItemStaticData>(HallItemStaticDataPath)
+                .Configs.ToDictionary(x => x.TypeId, x => x);
+            
             _levelStaticData = Resources
                 .Load<LevelStaticData>(LevelStaticDataPath);
             
@@ -51,12 +58,15 @@ namespace Services.StaticDataService
         // public BalanceStaticData Balance() => 
         //     _balanceStaticData;
         
-        public WindowConfig ForWindow(WindowTypeId windowTypeId) => 
-            _windowConfigs[windowTypeId];
+        public WindowConfig ForWindow(WindowTypeId typeId) => 
+            _windowConfigs[typeId];
         
-        public KitchenItemConfig ForKitchenItem(KitchenItemTypeId kitchenItemTypeId) => 
-            _kitchenItemConfigs[kitchenItemTypeId];
-        
+        public KitchenItemConfig ForKitchenItem(KitchenItemTypeId typeId) => 
+            _kitchenItemConfigs[typeId];
+
+        public HallItemConfig ForHallItem(HallItemTypeId typeId) => 
+            _hallItemConfigs[typeId];
+
         public LevelStaticData LevelConfig() => 
             _levelStaticData;
         

@@ -32,13 +32,13 @@ namespace Editor
             if (GUILayout.Button("Load Storage Items Data"))
                 LoadStorageItemsData();
 
-            // if (GUILayout.Button("Load Hall Items Data"))
-            //     LoadHallItemsData();
+            if (GUILayout.Button("Load Hall Items Data"))
+                LoadHallItemsData();
         }
 
-        private void LoadStorageItemsData()
+        private void LoadHallItemsData()
         {
-            _levelStaticData.StorageItemsData = FindStorageItems();
+            _levelStaticData.HallItemsData = FindHallItems();
             EditorUtility.SetDirty(_levelStaticData);
         }
 
@@ -48,6 +48,16 @@ namespace Editor
             EditorUtility.SetDirty(_levelStaticData);
         }
 
+        private void LoadStorageItemsData()
+        {
+            _levelStaticData.StorageItemsData = FindStorageItems();
+            EditorUtility.SetDirty(_levelStaticData);
+        }
+
+        private HallData[] FindHallItems() =>
+            FindObjectsOfType<HallItemSpawnMarker>()
+                .Select(HallItemsData).ToArray();
+        
         private KitchenData[] FindKitchemItems() =>
             FindObjectsOfType<KitchenItemSpawnMarker>()
                 .Select(KitchenItemsData).ToArray();
@@ -56,6 +66,15 @@ namespace Editor
             FindObjectsOfType<Crate>()
                 .Select(StorageItemsData).ToArray();
 
+        private HallData HallItemsData(HallItemSpawnMarker hallItem) =>
+            new()
+            {
+                TypeId = hallItem.TypeId,
+                PurchaseOrder = hallItem.PurchaseOrder,
+                Position = hallItem.transform.position,
+                Rotation = hallItem.transform.eulerAngles,
+            };
+        
         private KitchenData KitchenItemsData(KitchenItemSpawnMarker kitchenItem) =>
             new()
             {
@@ -71,5 +90,7 @@ namespace Editor
                 Position = crate.transform.position,
                 Rotation = crate.transform.eulerAngles,
             };
+        
+        
     }
 }

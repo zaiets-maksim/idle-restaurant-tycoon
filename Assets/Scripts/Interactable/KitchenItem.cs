@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Interactable
 {
-    public abstract class KitchenItem : MonoBehaviour, IInteractable // => abstract!
+    public abstract class KitchenItem : MonoBehaviour, IInteractable
     {
         [SerializeField] protected KitchenItemTypeId _typeId;
         [SerializeField] protected Transform _interactionPoint;

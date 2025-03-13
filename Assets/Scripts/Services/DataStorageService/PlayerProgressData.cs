@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using StaticData;
 using StaticData.Levels;
+using StaticData.TypeId;
 
 namespace Services.DataStorageService
 {
@@ -11,17 +12,22 @@ namespace Services.DataStorageService
     {
         public int Money;
         public int Stars;
-        public bool HasProgress => PurchasedKitchenItems.Count > 0;
-
+        
+        public List<HallData> PurchasedHallItems = new();
         public List<KitchenData> PurchasedKitchenItems = new();
+        
+        public bool HasProgress => PurchasedKitchenItems.Count > 0;
 
         public void BuyKitchenItem(KitchenData data) => 
             PurchasedKitchenItems.Add(data);
+        
+        public void BuyHallItem(HallData data) => 
+            PurchasedHallItems.Add(data);
+        
+        public int GetPurchasedCount(KitchenItemTypeId typeId) => 
+            PurchasedKitchenItems.Count(x => x.TypeId == typeId);
 
-        public int GetPurchasedCount(KitchenItemTypeId typeId)
-        {
-            var count = PurchasedKitchenItems.Count(x => x.TypeId == typeId);
-            return count;
-        }
+        public int GetPurchasedCount(HallItemTypeId typeId) => 
+            PurchasedHallItems.Count(x => x.TypeId == typeId);
     }
 }

@@ -19,22 +19,5 @@ namespace SpawnMarkers
         public Vector3 RoattionOffset;
         public Color Color = new Color(1f, 0f, 0.67f, 0.5f);
         public Vector3 TextOffset;
-
-
-        private void OnEnable()
-        {
-            UpdateIndex();
-        }
-
-        private void UpdateIndex()
-        {
-            if (_purchaseOrder != 0)
-                return;
-
-            var index = FindObjectsOfType<KitchenItemSpawnMarker>()
-                .Where(x => x.TypeId == _typeId)
-                .Max(x => x.PurchaseOrder);
-            _purchaseOrder = ++index;
-        }
     }
 }

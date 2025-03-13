@@ -1,4 +1,5 @@
 using System;
+using StaticData.TypeId;
 using UnityEngine;
 
 namespace StaticData.Levels
@@ -8,6 +9,7 @@ namespace StaticData.Levels
     {
         [Header("Data")]
         public KitchenData[] KitchenItemsData;
+        public HallData[] HallItemsData;
         public StorageData[] StorageItemsData;
     }
 
@@ -20,12 +22,24 @@ namespace StaticData.Levels
     }
 
     [Serializable]
-    public class KitchenData
+    public class ItemData<TTypeId>
     {
-        public KitchenItemTypeId TypeId ;
+        public TTypeId TypeId;
         public int PurchaseOrder;
         public Vector3 Position;
         public Vector3 Rotation;
         public Transform Parent;
+    }
+
+    [Serializable]
+    public class KitchenData : ItemData<KitchenItemTypeId>
+    {
+        
+    }
+
+    [Serializable]
+    public class HallData : ItemData<HallItemTypeId>
+    {
+        
     }
 }

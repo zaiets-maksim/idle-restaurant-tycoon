@@ -8,6 +8,7 @@ using Services.ItemBuyingService;
 using Services.StaticDataService;
 using StaticData;
 using StaticData.Levels;
+using StaticData.TypeId;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,10 @@ namespace UI.PopUpMarket
         private readonly IStaticDataService _staticData;
     
         private List<KitchenData> _availableKitchenItems;
-        private List<KitchenItemElement> _elements = new();
+        private List<HallData> _availableHallItems;
+        private List<KitchenItemElement> _kitchenElements = new();
+        private List<HallItemElement> _hallElements = new();
+        
         private ShowMarketButton _showMarketButton;
 
         public PopUpMarket()
@@ -52,6 +56,7 @@ namespace UI.PopUpMarket
         private void Fill()
         {
             _availableKitchenItems = _itemBuyingService.GetAvailableKitchenItemsForPurchase();
+            _availableHallItems = _itemBuyingService.GetAvailableHallItemsForPurchase();
         
             foreach (KitchenItemTypeId typeId in Enum.GetValues(typeof(KitchenItemTypeId)))
             {
@@ -62,10 +67,25 @@ namespace UI.PopUpMarket
                 var config = _staticData.ForKitchenItem(typeId);
                 
                 kitchenItemElement.Initialize(config, _itemBuyingService);
-                _elements.Add(kitchenItemElement);
+                _kitchenElements.Add(kitchenItemElement);
                 kitchenItemElement.transform.SetParent(_content);
                 kitchenItemElement.transform.localScale = Vector3.one;
                 AddContentHeight(kitchenItemElement.GetHeight() + _verticalLayoutGroup.spacing);
+            }
+            
+            foreach (HallItemTypeId typeId in Enum.GetValues(typeof(HallItemTypeId)))
+            {
+                if(typeId == HallItemTypeId.Unknown)
+                    continue;
+                
+                var hallItemElement = _uiFactory.CreateHallItemElement();
+                var config = _staticData.ForHallItem(typeId);
+                
+                hallItemElement.Initialize(config, _itemBuyingService);
+                _hallElements.Add(hallItemElement);
+                hallItemElement.transform.SetParent(_content);
+                hallItemElement.transform.localScale = Vector3.one;
+                AddContentHeight(hallItemElement.GetHeight() + _verticalLayoutGroup.spacing);
             }
         }
 

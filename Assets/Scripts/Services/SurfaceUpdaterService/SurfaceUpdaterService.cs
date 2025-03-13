@@ -5,16 +5,29 @@ namespace Services.SurfaceUpdaterService
 {
     public class SurfaceUpdaterService : ISurfaceUpdaterService
     {
-        private NavMeshSurface _navMesh;
+        private NavMeshSurface _navMeshKitchen;
+        private NavMeshSurface _navMeshHall;
+        private NavMeshSurface _navMeshCommon;
 
-        public void Init() => _navMesh = Object.FindObjectOfType<NavMeshSurface>();
+        public void Init()
+        {
+            // var navMesh = Object.FindObjectsOfType<NavMeshSurfaceType>();
+            // _navMeshKitchen = navMesh.FirstOrDefault(x => x.TypeId == NavMeshTypeId.Kitchen)?.Surface;
+            // _navMeshHall = navMesh.FirstOrDefault(x => x.TypeId == NavMeshTypeId.Hall)?.Surface;
+            
+            _navMeshCommon = Object.FindObjectOfType<NavMeshSurface>();
+        }
 
-        public void Update() => _navMesh.BuildNavMesh();
+        public void UpdateKitchen() => _navMeshKitchen.BuildNavMesh();
+        public void UpdateHall() => _navMeshHall.BuildNavMesh();
+        public void UpdateCommon() => _navMeshCommon.BuildNavMesh();
     }
 
     public interface ISurfaceUpdaterService
     {
         void Init();
-        void Update();
+        void UpdateKitchen();
+        void UpdateHall();
+        void UpdateCommon();
     }
 }
