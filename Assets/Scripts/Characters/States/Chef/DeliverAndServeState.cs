@@ -72,7 +72,10 @@ namespace Characters.States.Chef
         {
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
-            await Task.Delay(_personAnimator.GetCurrentCLipLength().ToMiliseconds());
+            
+            var time = _personAnimator.GetCurrentCLipLength();
+            await Task.Delay(time.ToMiliseconds());
+            
             _servingTable.Release();
             _orderStorageService.Cooked(_chef.Order);
         }

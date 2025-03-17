@@ -64,7 +64,9 @@ namespace Characters.States.Waiter
                 _dish = nearestServingTable.GetDish(_waiter.Order.DishTypeId);
                 _dishHolder.TakeDish(_dish);
                 _personAnimator.PutTheItem();
-                await Task.Delay(_personAnimator.GetCurrentCLipLength().ToMiliseconds());
+
+                var time = _personAnimator.GetCurrentCLipLength();
+                await Task.Delay(time.ToMiliseconds());
             }
             else
             {

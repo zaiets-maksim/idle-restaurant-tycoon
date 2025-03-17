@@ -3,6 +3,8 @@ using Characters;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
 using Characters.States;
+using Infrastructure;
+using Services.OrderStorageService;
 using tetris.Scripts.Extensions;
 using UnityEngine;
 
@@ -14,6 +16,7 @@ public class OrderDeliveryState : PersonBaseState
     private readonly PersonAnimator _personAnimator;
     private readonly DishHolder _dishHolder;
     private readonly Waiter _waiter;
+    private readonly IOrderStorageService _orderStorageService;
 
     public OrderDeliveryState(WaiterBehavior waiterBehavior, Waiter waiter, Transform transform, PersonMover personMover, PersonAnimator personAnimator, DishHolder dishHolder)
     {
@@ -23,6 +26,8 @@ public class OrderDeliveryState : PersonBaseState
         _personMover = personMover;
         _transform = transform;
         _waiterBehavior = waiterBehavior;
+        _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+
     }
     
     public override async void Enter()
@@ -44,9 +49,11 @@ public class OrderDeliveryState : PersonBaseState
         
         _dishHolder.Give(out var dish);
         customer.TakeDish(dish);
-        
         _personAnimator.PutTheItem();
-        await Task.Delay(_personAnimator.GetCurrentCLipLength().ToMiliseconds());
+        _orderStorageService.Served(_waiter.Order);
+
+        var time = _personAnimator.GetCurrentCLipLength();
+        await Task.Delay(time.ToMiliseconds());
     }
 
     public override void Exit()

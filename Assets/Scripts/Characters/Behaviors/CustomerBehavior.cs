@@ -18,7 +18,7 @@ public class CustomerBehavior : PersonBehavior
         _states = CreateStates(
             new IdleState(_personAnimator),
             new SeatAndOrderState(this, transform, _personMover, _personAnimator, _customer),
-            new EatAndPayState(this, transform, _personMover, _personAnimator),
+            new EatAndPayState(this, transform, _personMover, _personAnimator, _customer),
             new LeaveState(this, transform, _personMover, _personAnimator)
         );
 

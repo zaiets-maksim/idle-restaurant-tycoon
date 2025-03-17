@@ -56,8 +56,13 @@ namespace Characters.States.Chef
 
                 var dish = foodStation.MakeDish(_chef.Order.DishTypeId);
                 _personAnimator.Cook();
-                int randomTime = TimeExtensions.RandomTime(5, 15).ToMiliseconds();
-                await Task.Delay(randomTime);
+                
+                var time = TimeExtensions.RandomTime(5, 15);
+                
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _chef.ProgressIndicator.StartProgress(time, callback);
+                });
                 
                 _dishHolder.TakeDish(dish);
                 foodStation.Release();

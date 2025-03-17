@@ -31,7 +31,7 @@ namespace Characters.Personal
         {
             if (IsIdle)
             {
-                Order = order;
+                UpdateOrder();
                 _chefBehavior.ChangeState<FoodSearchState>();
             }
         }
@@ -47,5 +47,7 @@ namespace Characters.Personal
         }
 
         public bool HasOrders() => _orderStorageService.HasOrders();
+        
+        public void UpdateOrder() => Order = _orderStorageService.GetOrder();
     }
 }

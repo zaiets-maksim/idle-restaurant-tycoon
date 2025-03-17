@@ -37,6 +37,7 @@ namespace Characters.States.Chef
         public override async void Enter()
         {
             _tcs = new TaskCompletionSource<bool>();
+            _chef.UpdateOrder();
             await GetSomeFood();
             _personAnimator.Idle();
             _chefBehavior.ChangeState<CookingState>();
@@ -68,7 +69,13 @@ namespace Characters.States.Chef
             await _tcs.Task;
             fridge.Interact();
             _personAnimator.PutTheItem();
-            await Task.Delay((fridge.InteractionTime + fridge.DelayAfterClose).ToMiliseconds());
+            
+            var time = fridge.InteractionTime + fridge.DelayAfterClose;
+
+            await TaskExtension.WaitFor(callback =>
+            {
+                _chef.ProgressIndicator.StartProgress(time, callback);
+            });
         }
 
         private async Task GetFoodFromStorage()
@@ -78,8 +85,12 @@ namespace Characters.States.Chef
                 _personMover.StartMovingTo(point, () => _tcs.SetResult(true));
                 await _tcs.Task;
                 _personAnimator.PickUp();
-                int randomTime = TimeExtensions.RandomTime(5, 15).ToMiliseconds();
-                await Task.Delay(randomTime);
+                var time = TimeExtensions.RandomTime(5, 15);
+
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _chef.ProgressIndicator.StartProgress(time, callback);
+                });
             }
         }
 

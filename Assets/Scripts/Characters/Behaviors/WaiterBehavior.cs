@@ -1,7 +1,6 @@
 using System.Collections;
 using Characters.PersonStateMachine;
 using Characters.States;
-using Characters.States.Chef;
 using Characters.States.Waiter;
 using UnityEngine;
 

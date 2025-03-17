@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Extensions;
 using Infrastructure;
 using Interactable;
 using Services.CurrencyService;
@@ -25,12 +26,16 @@ namespace Characters.Customers
         private readonly IOrderStorageService _orderStorageService;
         private DishTypeId _dishTypeId;
         private float _mealDuration;
+        private Dish _dish;
+        private readonly TaskCompletionSource<bool> _tcs;
+
         public bool IsAwaiting => _customerBehavior.CurrentState is SeatAndOrderState && _dishTypeId != DishTypeId.Unknown;
         public Transform DishPoint => _dishPoint;
         public Chair Chair { get; private set; }
 
         public Customer()
         {
+            _tcs = new TaskCompletionSource<bool>();
             _staticData = ProjectContext.Instance?.StaticData;
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _balance = _staticData?.Balance();
@@ -54,16 +59,19 @@ namespace Characters.Customers
             _orderStorageService.NewOrder(new Order(_dishTypeId, this));
         }
         
-        public async Task Eat(Dish dish)
+        public async Task Eat()
         {
-            Debug.Log(_mealDuration.ToMiliseconds());
-            await Task.Delay(_mealDuration.ToMiliseconds());
+            await TaskExtension.WaitFor(callback =>
+            {
+                ProgressIndicator.StartProgress(_mealDuration, callback);
+            });
+            
+            Destroy(_dish.gameObject);
         }
 
-        public void PayBill(Dish dish)
+        public void PayBill()
         {
-            _currencyService.AddMoney(dish.Price);
-            Destroy(dish.gameObject);
+            _currencyService.AddMoney(_dish.Price);
         }
         
         public void SetAppearance(CustomerAppearance appearance)
@@ -84,13 +92,19 @@ namespace Characters.Customers
         public void SetObjectName(string name) => 
             gameObject.name = name;
 
-        public async void TakeDish(Dish dish)
+        public void TakeDish(Dish dish)
         {
+            _dish = dish;
+            
             dish.transform.SetPositionAndRotation(_dishPoint.position, _dishPoint.rotation);
             dish.transform.SetParent(transform);
             
-            await Eat(dish);
-            PayBill(dish);
+            _customerBehavior.ChangeState<EatAndPayState>();
+        }
+
+        public void TaleSeat()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

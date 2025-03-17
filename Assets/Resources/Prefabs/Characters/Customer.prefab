@@ -229,6 +229,7 @@ Transform:
   - {fileID: 2869403370496334861}
   - {fileID: 6171411199210303914}
   - {fileID: 5146615606166856462}
+  - {fileID: 208674381892801583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &1135392712796724400
@@ -287,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 7140061832758704390}
+  _progressIndicator: {fileID: 6744549695423362397}
   _skinnedMeshRenderer: {fileID: 623383009295813477}
   _personAnimator: {fileID: 5392965247750773833}
   _customerBehavior: {fileID: 4892711519900389548}
@@ -1357,3 +1359,80 @@ Transform:
   - {fileID: 8323238465230120563}
   m_Father: {fileID: 366564681030478078}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7290438238337775762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1841327474695008732}
+    m_Modifications:
+    - target: {fileID: 988300673529455864, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446488839253654036, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_Name
+      value: ProgressIndicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+--- !u!4 &208674381892801583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7478661270028020925, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+  m_PrefabInstance: {fileID: 7290438238337775762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6744549695423362397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4086351204716744143, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+  m_PrefabInstance: {fileID: 7290438238337775762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1ce83121cc49b429fef1067d260269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

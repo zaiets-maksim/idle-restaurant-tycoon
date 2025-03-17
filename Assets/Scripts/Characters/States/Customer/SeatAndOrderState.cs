@@ -8,6 +8,7 @@ using Infrastructure;
 using Interactable;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
+using UI.ProgressIndicator;
 using UnityEngine;
 
 internal class SeatAndOrderState : PersonBaseState
@@ -32,6 +33,7 @@ internal class SeatAndOrderState : PersonBaseState
 
     public override async void Enter()
     {
+        _tcs = new TaskCompletionSource<bool>();
         await TakeSeatAndOrder();
     }
 
@@ -46,8 +48,13 @@ internal class SeatAndOrderState : PersonBaseState
             await _tcs.Task;
             _customer.DisableAgent();
             _personAnimator.SitDown();
+            
+            
+            _customer.ProgressIndicator.AddPosition(_customer.transform.forward * -0.5f);
             _transform.position = chair.transform.position + chair.transform.forward * 0.5f;
+            
             await Task.Delay(chair.InteractionTime.ToMiliseconds());
+            
             _customer.MakeOrder();
         }
     }
