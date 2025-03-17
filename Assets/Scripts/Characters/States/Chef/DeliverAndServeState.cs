@@ -5,7 +5,9 @@ using Characters.Behaviors;
 using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
+using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
+using tetris.Scripts.Extensions;
 using UnityEngine;
 
 namespace Characters.States.Chef
@@ -23,13 +25,17 @@ namespace Characters.States.Chef
         private TaskCompletionSource<bool> _tcs = new();
         private List<ServingTable> _servingTables;
         private ServingTable _servingTable;
+        private readonly IOrderStorageService _orderStorageService;
+        private readonly Personal.Chef _chef;
 
-        public DeliverAndServeState(ChefBehavior chefBehavior, Transform transform, PersonMover personMover,
+        public DeliverAndServeState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover,
             PersonAnimator personAnimator, DishHolder dishHolder)
         {
+            _chef = chef;
             _dishHolder = dishHolder;
             _chefBehavior = chefBehavior;
             _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;
@@ -41,7 +47,10 @@ namespace Characters.States.Chef
             await DeliverDish();
             await ServeDish();
             
-            _chefBehavior.ChangeState<FoodSearchState>();
+            if(_chef.HasOrders())
+                _chefBehavior.ChangeState<FoodSearchState>();
+            else
+                _chefBehavior.ChangeState<IdleState>();
         }
 
         private async Task DeliverDish()
@@ -63,8 +72,9 @@ namespace Characters.States.Chef
         {
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
-            await Task.Delay(1300);
+            await Task.Delay(_personAnimator.GetCurrentCLipLength().ToMiliseconds());
             _servingTable.Release();
+            _orderStorageService.Cooked(_chef.Order);
         }
 
         private bool GetServingTable(out ServingTable nearestServingTable)

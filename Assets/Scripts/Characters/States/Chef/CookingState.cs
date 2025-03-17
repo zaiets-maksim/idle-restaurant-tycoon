@@ -6,6 +6,7 @@ using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
 using Interactable;
+using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
 using UnityEngine;
@@ -23,10 +24,12 @@ namespace Characters.States.Chef
         private List<FoodStation> _foodStations;
         TaskCompletionSource<bool> _tcs = new();
         private readonly PersonAnimator _personAnimator;
+        private readonly Personal.Chef _chef;
 
-        public CookingState(ChefBehavior chefBehavior, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
+        public CookingState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
             DishHolder dishHolder)
         {
+            _chef = chef;
             _dishHolder = dishHolder;
             _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
             _personAnimator = personAnimator;
@@ -51,7 +54,7 @@ namespace Characters.States.Chef
                 _personMover.StartMovingTo(foodStation.InteractionPoint, () => _tcs.SetResult(true));
                 await _tcs.Task;
 
-                var dish = foodStation.MakeDish();
+                var dish = foodStation.MakeDish(_chef.Order.DishTypeId);
                 _personAnimator.Cook();
                 int randomTime = TimeExtensions.RandomTime(5, 15).ToMiliseconds();
                 await Task.Delay(randomTime);
@@ -67,6 +70,7 @@ namespace Characters.States.Chef
             _foodStations = _purchasedItemRegistry.KitchenItems
                 .OfType<FoodStation>()
                 .Where(x => !x.IsOccupied)
+                .Where(x => x.DishTypeId.Contains(_chef.Order.DishTypeId))
                 .ToList();
             
             int count = _foodStations.Count;

@@ -48,6 +48,16 @@ namespace Editor
             Gizmos.DrawSphere(kitchenItem.InteractionPoint.position, 0.3f);
         }
         
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
+        private static void DrawCharactersSwanPoints(CharacterSpawnMarker spawnMarker, GizmoType gizmoType)
+        {
+            if (spawnMarker.TypeId == CharacterTypeId.Unknown)
+                return;
+           
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(spawnMarker.transform.position, 0.3f);
+        }
+        
         
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         private static void DrawHallItems(HallItemSpawnMarker hallItem, GizmoType gizmoType)

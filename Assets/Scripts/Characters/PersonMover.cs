@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 namespace Characters
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class PersonMover : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
@@ -13,12 +14,12 @@ namespace Characters
 
         private Coroutine _moveToCoroutine;
 
-        public void StartMovingTo(Transform target, Action callback = null)
+        public void StartMovingTo(Transform target, Action callback = null, bool walkWithFood = false)
         {
             if (_moveToCoroutine != null)
                 StopCoroutine(_moveToCoroutine);
 
-            _moveToCoroutine = StartCoroutine(MoveTo(target, callback));
+            _moveToCoroutine = StartCoroutine(MoveTo(target, callback, walkWithFood));
         }
 
         public void StopMoving()
@@ -33,12 +34,16 @@ namespace Characters
             _navMeshAgent.isStopped = true;
         }
 
-        private IEnumerator MoveTo(Transform target, Action callback = null)
+        private IEnumerator MoveTo(Transform target, Action callback = null, bool walkWithFood = false)
         {
             _personRotator.Enable();
             _navMeshAgent.SetDestination(target.position);
             _navMeshAgent.isStopped = false;
-            _animator.Walk();
+            
+            if(walkWithFood)
+                _animator.WalkWithFood();
+            else
+                _animator.Walk();
 
             while (!HasArrived())
                 yield return null;

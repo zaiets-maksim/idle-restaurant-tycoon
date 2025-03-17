@@ -14,6 +14,11 @@ namespace Services.StaticDataService
         HallItemConfig ForHallItem(HallItemTypeId typeId);
         LevelStaticData LevelConfig();
 
-        // BalanceStaticData Balance();
+        BalanceStaticData Balance();
+        CharacterConfig ForCharacter(CharacterTypeId typeId);
+        DishConfig ForDish(DishTypeId typeId);
+        CustomerAppearance ForCharacterAppearance(CustomerTypeId typeId);
+        CustomerTypeId[] GetCustomerTypeIdsInAppearance();
+        DishTypeId[] GetDishTypeIds();
     }
 }

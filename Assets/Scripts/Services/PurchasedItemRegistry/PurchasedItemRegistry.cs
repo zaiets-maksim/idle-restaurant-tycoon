@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using Crates;
 using Interactable;
+using StaticData.TypeId;
 using UnityEngine;
 
 namespace Services.PurchasedItemRegistry
@@ -22,6 +24,9 @@ namespace Services.PurchasedItemRegistry
 
         public void AddStorageCrates() => 
             StorageCrates.AddRange(Object.FindObjectsOfType<Crate>());
+
+        public bool HasFreeChair() =>
+            HallItems.Any(x => x.TypeId == HallItemTypeId.Chair && !x.IsOccupied);
     }
     
 
@@ -36,5 +41,6 @@ namespace Services.PurchasedItemRegistry
         
         void AddKitchenItems(List<KitchenItem> kitchenItems);
         void AddStorageCrates();
+        bool HasFreeChair();
     }
 }

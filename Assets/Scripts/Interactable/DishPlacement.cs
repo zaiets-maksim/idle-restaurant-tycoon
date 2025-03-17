@@ -1,28 +1,34 @@
+using Interactable;
 using UnityEngine;
 
 public class DishPlacement : MonoBehaviour
 {
-    [SerializeField] private Transform _dish;
+    [SerializeField] private Dish _dish;
     
-    public Transform Dish => _dish;
+    public Dish Dish => _dish;
     public bool IsOccupied { get; private set; }
 
     private void Occupy() => IsOccupied = true;
 
     private void Release() => IsOccupied = false;
-    
-    public void Place(Transform dish)
+
+    public bool HasDishTypeId(DishTypeId dishTypeId) => 
+        IsOccupied && _dish.DishTypeId == dishTypeId;
+
+    public void Place(Dish dish)
     {
         Occupy();
         _dish = dish;
         _dish.transform.position = transform.position;
         _dish.transform.rotation = transform.rotation;
-        _dish.parent = transform;
+        _dish.transform.parent = transform;
     }
 
-    public Transform Get()
+    public Dish Get()
     {
         Release();
-        return _dish;
+        var dishToReturn = _dish; 
+        _dish = null;
+        return dishToReturn;
     }
 }

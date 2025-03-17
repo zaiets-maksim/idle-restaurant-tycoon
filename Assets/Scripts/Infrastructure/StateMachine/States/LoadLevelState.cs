@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Infrastructure;
 using Interactable;
+using Services.CustomerArrivalService;
 using Services.DataStorageService;
 using Services.Factories.ItemFactory;
 using Services.Factories.UIFactory;
@@ -17,6 +18,7 @@ public class LoadLevelState : GameStateEntity
     private readonly IPersistenceProgressService _progress;
     private readonly IPurchasedItemRegistry _purchasedItemRegistry;
     private readonly ISurfaceUpdaterService _surfaceUpdaterService;
+    private readonly ICustomerArrivalService _customerArrivalService;
 
     private KitchenItem _kitchenItem;
     private HallItem _hallItem;
@@ -32,6 +34,7 @@ public class LoadLevelState : GameStateEntity
         _progress = projectContext?.Progress;
         _purchasedItemRegistry = projectContext?.PurchasedItemRegistry;
         _surfaceUpdaterService = projectContext?.SurfaceUpdaterService;
+        _customerArrivalService = projectContext?.CustomerArrivalService;
     }
 
     public override void Enter()
@@ -68,6 +71,7 @@ public class LoadLevelState : GameStateEntity
         }
         
         _purchasedItemRegistry.AddStorageCrates();
+        _customerArrivalService.StartSpawning();
     }
 
     public override void Tick()

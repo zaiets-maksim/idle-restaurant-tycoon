@@ -8,6 +8,19 @@ namespace Extensions
 {
     public static class TransformExtensions
     {
+        public static Vector3 ToVector3(this Vector2 v, float y = 0f) => 
+            new(v.x, y, v.y);
+
+        public static Vector2 ToVector2(this Vector3 v) => 
+            new(v.x, v.z);
+        
+        public static List<Vector3> ToVector3List(this List<Vector2> list, float y = 0f) => 
+            list.Select(v => new Vector3(v.x, y, v.y)).ToList();
+
+        public static List<Vector2> ToVector2List(this List<Vector3> list) => 
+            list.Select(v => new Vector2(v.x, v.z)).ToList();
+
+
         public static T NearestTo<T>(Transform target, IEnumerable<T> objects) where T : Component =>
             objects
                 .OrderBy(obj => Vector3.Distance(target.position, obj.transform.position))

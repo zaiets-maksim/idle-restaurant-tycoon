@@ -1,3 +1,4 @@
+using Interactable;
 using UnityEngine;
 
 public class DishHolder : MonoBehaviour
@@ -5,16 +6,16 @@ public class DishHolder : MonoBehaviour
     [SerializeField] private Transform _pointForDish;
 
     public bool HasDish => Dish != null;
-    public Transform Dish { get; private set; }
+    public Dish Dish { get; private set; }
 
-    public void TakeDish(Transform dish)
+    public void TakeDish(Dish dish)
     {
-        dish.SetParent(_pointForDish.parent);
-        dish.SetPositionAndRotation(_pointForDish.position, _pointForDish.rotation);
+        dish.transform.SetParent(_pointForDish.parent);
+        dish.transform.SetPositionAndRotation(_pointForDish.position, _pointForDish.rotation);
         Dish = dish;
     }
 
-    private void Give(out Transform dish)
+    public void Give(out Dish dish)
     {
         dish = Dish;
         Dish = null;

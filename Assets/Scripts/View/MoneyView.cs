@@ -15,7 +15,7 @@ namespace View
     
         public MoneyView()
         {
-            _currencyService = ProjectContext.Instance.CurrencyService;
+            _currencyService = ProjectContext.Instance?.CurrencyService;
         }
 
         private void Start()

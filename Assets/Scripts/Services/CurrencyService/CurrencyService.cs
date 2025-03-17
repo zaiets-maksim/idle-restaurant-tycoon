@@ -60,8 +60,12 @@ namespace Services.CurrencyService
         {
             Money = _progress.PlayerData.ProgressData.Money;
             Stars = _progress.PlayerData.ProgressData.Stars;
-            UpdateMoney(Money);
-            UpdateMoney(Stars);
+            
+            OnMoneyChanged?.Invoke(Money);
+            OnStarsChanged?.Invoke(Stars);
+            
+            // UpdateMoney(Money);
+            // UpdateStars(Stars);
         }
 
         private void UpdateMoney(int money)

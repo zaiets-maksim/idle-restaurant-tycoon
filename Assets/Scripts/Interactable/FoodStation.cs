@@ -1,3 +1,6 @@
+using Infrastructure;
+using Services.Factories.ItemFactory;
+using Services.StaticDataService;
 using UnityEngine;
 
 namespace Interactable
@@ -6,15 +9,28 @@ namespace Interactable
     {
         [SerializeField] private Transform _dishPrefab;
         [SerializeField] private Transform _placeForDish;
+        [SerializeField] private DishTypeId[] _dishTypeId;
+        
+        private readonly IItemFactory _itemFactory;
+        private readonly IStaticDataService _staticData;
+        
+        public DishTypeId[] DishTypeId => _dishTypeId;
+
+        public FoodStation()
+        {
+            _itemFactory = ProjectContext.Instance?.ItemFactory;
+            _staticData = ProjectContext.Instance?.StaticData;
+        }
+        
         public override void Interact()
         {
             
         }
 
-        public Transform MakeDish()
+        public Dish MakeDish(DishTypeId dishTypeId)
         {
-            var dish = Instantiate(_dishPrefab, _placeForDish.position, _placeForDish.rotation);
-            dish.SetParent(transform);
+            var dish = _itemFactory.Create(dishTypeId, _placeForDish.position, _placeForDish.rotation.eulerAngles, null);
+            dish.transform.SetParent(transform);
 
             return dish;
         }

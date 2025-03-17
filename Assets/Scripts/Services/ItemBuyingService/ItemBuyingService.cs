@@ -154,7 +154,7 @@ namespace Services.ItemBuyingService
 
             return levelStaticData.HallItemsData
                 .Where(item => !purchasedItems
-                    .Any(purchased => purchased.TypeId == item.TypeId && purchased.PurchaseOrder == item.PurchaseOrder))
+                .Any(purchased => purchased.TypeId == item.TypeId && purchased.PurchaseOrder == item.PurchaseOrder))
                 .ToList();
         }
     }

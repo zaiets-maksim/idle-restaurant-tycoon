@@ -1,4 +1,9 @@
+using System;
 using Characters.Behaviors;
+using Characters.States;
+using Characters.States.Chef;
+using Infrastructure;
+using Services.OrderStorageService;
 using UnityEngine;
 
 namespace Characters.Personal
@@ -7,24 +12,40 @@ namespace Characters.Personal
     {
         [SerializeField] private ChefBehavior _chefBehavior;
         [SerializeField] private PersonItemCollector _itemCollector;
-        // [SerializeField] private 
 
+        private IOrderStorageService _orderStorageService;
+
+        public bool IsIdle => _chefBehavior.CurrentState is IdleState;
         public int Food => _itemCollector.Food;
         public bool HasFood => _itemCollector.Food > 0;
+        public Order Order { get; private set; }
+
+
+        private void Start()
+        {
+            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+            _orderStorageService!.OnNewOrderReceived += TryChangeToCookingState;
+        }
+
+        private void TryChangeToCookingState(Order order)
+        {
+            if (IsIdle)
+            {
+                Order = order;
+                _chefBehavior.ChangeState<FoodSearchState>();
+            }
+        }
 
         public override void PerformDuties()
         {
             
         }
 
-        public void CheckQuality()
-        {
-        
-        }
-
         public void Cook()
         {
-        
+            
         }
+
+        public bool HasOrders() => _orderStorageService.HasOrders();
     }
 }

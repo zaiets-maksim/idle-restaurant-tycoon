@@ -5,11 +5,16 @@ using UnityEngine;
 namespace Characters.PersonStateMachine
 {
     [RequireComponent(typeof(PersonMover))]
+    [RequireComponent(typeof(PersonRotator))]
     [RequireComponent(typeof(PersonAnimator))]
+    
     public class PersonBehavior : MonoBehaviour
     {
         protected List<PersonBaseState> _states;
         protected PersonBaseState _currentState;
+
+        public PersonBaseState CurrentState => _currentState;
+
         protected List<PersonBaseState> CreateStates(params PersonBaseState[] states) => 
             new(states);
 

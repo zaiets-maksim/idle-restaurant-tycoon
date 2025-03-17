@@ -34,6 +34,9 @@ namespace Editor
 
             if (GUILayout.Button("Load Hall Items Data"))
                 LoadHallItemsData();
+            
+            if (GUILayout.Button("Load Characters Data"))
+                LoadCharactersData();
         }
 
         private void LoadHallItemsData()
@@ -54,6 +57,16 @@ namespace Editor
             EditorUtility.SetDirty(_levelStaticData);
         }
 
+        private void LoadCharactersData()
+        {
+            _levelStaticData.CharactersData = FindCharactersData();
+            EditorUtility.SetDirty(_levelStaticData);
+        }
+
+        private CharacterData[] FindCharactersData() =>
+            FindObjectsOfType<CharacterSpawnMarker>()
+                .Select(CharactersData).ToArray();
+
         private HallData[] FindHallItems() =>
             FindObjectsOfType<HallItemSpawnMarker>()
                 .Select(HallItemsData).ToArray();
@@ -66,6 +79,14 @@ namespace Editor
             FindObjectsOfType<Crate>()
                 .Select(StorageItemsData).ToArray();
 
+        private CharacterData CharactersData(CharacterSpawnMarker characterSpawnMarker) =>
+            new()
+            {
+                TypeId = characterSpawnMarker.TypeId,
+                Position = characterSpawnMarker.transform.position,
+                Rotation = characterSpawnMarker.transform.eulerAngles,
+            };
+        
         private HallData HallItemsData(HallItemSpawnMarker hallItem) =>
             new()
             {

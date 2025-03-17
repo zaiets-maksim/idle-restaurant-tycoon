@@ -1,6 +1,7 @@
 using System;
 using StaticData.TypeId;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace StaticData.Levels
 {
@@ -11,6 +12,7 @@ namespace StaticData.Levels
         public KitchenData[] KitchenItemsData;
         public HallData[] HallItemsData;
         public StorageData[] StorageItemsData;
+        public CharacterData[] CharactersData;
     }
 
     [Serializable]
@@ -41,5 +43,13 @@ namespace StaticData.Levels
     public class HallData : ItemData<HallItemTypeId>
     {
         
+    }
+    
+    [Serializable]
+    public class CharacterData
+    {
+        public CharacterTypeId TypeId;
+        public Vector3 Position;
+        public Vector3 Rotation;
     }
 }

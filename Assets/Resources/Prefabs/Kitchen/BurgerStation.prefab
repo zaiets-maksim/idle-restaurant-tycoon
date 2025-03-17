@@ -121,6 +121,7 @@ MonoBehaviour:
   _interactionTime: 2
   _dishPrefab: {fileID: 3187018931159890537, guid: 5f1adb3b6f04e094e9306169767b60b6, type: 3}
   _placeForDish: {fileID: 3739868069750294904}
+  _dishTypeId: 01000000
 --- !u!1 &8522756153192480509
 GameObject:
   m_ObjectHideFlags: 0

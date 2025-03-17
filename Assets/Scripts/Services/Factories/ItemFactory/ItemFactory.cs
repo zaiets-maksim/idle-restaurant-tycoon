@@ -28,11 +28,20 @@ namespace Services.Factories.ItemFactory
             var kitchenItem = InstantiateOnActiveScene<HallItem>(config.Prefab, position, rotation, parent);
             return kitchenItem;
         }
+
+        public Dish Create(DishTypeId typeId, Vector3 position, Vector3 rotation, Transform parent)
+        {
+            var config = _staticData.ForDish(typeId);
+            var dish = InstantiateOnActiveScene<Dish>(config.Prefab, position, rotation, parent);
+            dish.Initialize(config);
+            return dish;
+        }
     }
 
     public interface IItemFactory
     {
         KitchenItem Create(KitchenItemTypeId typeId, Vector3 position, Vector3 rotation, Transform parent);
         HallItem Create(HallItemTypeId typeId, Vector3 position, Vector3 rotation, Transform parent);
+        Dish Create(DishTypeId typeId, Vector3 position, Vector3 rotation, Transform parent);
     }
 }

@@ -14,7 +14,7 @@ namespace View
     
         public StarsView()
         {
-            _currencyService = ProjectContext.Instance.CurrencyService;
+            _currencyService = ProjectContext.Instance?.CurrencyService;
         }
         
         private void Start()
