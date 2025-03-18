@@ -14,16 +14,16 @@ namespace Services.Factories.UIFactory
         private const string KitchenItemElementPath = "Prefabs/UI/PopUpMarket/KitchenItemElement";
         private const string HallItemElementPath = "Prefabs/UI/PopUpMarket/HallItemElement";
         private const string UpgradeElementPath = "Prefabs/UI/PopUpMarket/UpgradeElement";
+        private const string StuffElementPath = "Prefabs/UI/PopUpMarket/StuffElement";
 
         private readonly IStaticDataService _staticData;
         private Transform _uiRoot;
-
+        
         public PopUpMarket PopUpMarket { get; private set; }
-
         public KitchenItemElement KitchenItemElement { get; private set; }
-
         public HallItemElement HallItemElement { get; private set; }
         public UpgradeElement UpgradeElement { get; private set; }
+        public StuffElement StuffElement { get; private set; }
 
         public UIFactory(IStaticDataService staticDataService)
         {
@@ -38,6 +38,12 @@ namespace Services.Factories.UIFactory
         {
             PopUpMarket = InstantiateOnActiveScene(PopUpMarketPath).GetComponent<PopUpMarket>();
             return PopUpMarket;
+        }
+        
+        public StuffElement CreateStuffElement()
+        {
+            StuffElement = InstantiateOnActiveScene(StuffElementPath).GetComponent<StuffElement>();
+            return StuffElement;
         }
         
         public UpgradeElement CreateUpgradeElement()

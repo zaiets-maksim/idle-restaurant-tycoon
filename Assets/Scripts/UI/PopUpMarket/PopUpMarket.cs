@@ -13,6 +13,8 @@ namespace UI.PopUpMarket
 
         [SerializeField] private ItemsList _itemsList;
         [SerializeField] private UpgradesList _upgradesList;
+        [SerializeField] private StuffList _stuffList;
+        
         
         private ShowMarketButton _showMarketButton;
         public RectTransform Content => _content;
@@ -38,13 +40,19 @@ namespace UI.PopUpMarket
             _upgradesList.Fill();
         }
 
+        public void ShowStuff()
+        {
+            ClearContent();
+            _stuffList.Fill();
+        }
+
         private void ClearContent()
         {
             _content.sizeDelta = new Vector2(_content.sizeDelta.x, 0f);
             foreach (Transform child in _content.transform) 
                 Destroy(child.gameObject);
         }
-        
+
         public void Show()
         {
             _rectScrollView.AnimateOverTime(

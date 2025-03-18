@@ -1017,7 +1017,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.4
-  m_Speed: 3.5
+  m_Speed: 33.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -1043,6 +1043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 7730624225756253409}
   _progressIndicator: {fileID: 2087925321352976061}
+  _personAnimator: {fileID: 1293852968252556180}
   _chefBehavior: {fileID: 2283261003506355929}
   _itemCollector: {fileID: 8074499422512747425}
 --- !u!114 &2283261003506355929
@@ -1394,6 +1395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 202666479327214626}
     m_Modifications:
+    - target: {fileID: 988300673529455864, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6446488839253654036, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
       propertyPath: m_Name
       value: ProgressIndicator

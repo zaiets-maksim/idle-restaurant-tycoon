@@ -15,6 +15,25 @@ MonoBehaviour:
   Configs:
   - TypeId: 1
     Prefab: {fileID: 1352880035822611302, guid: 2d6eaad743feec24b92d927a45930705, type: 3}
+    MarketItem:
+      Name: 
+      Description: 
+      Price: 0
+      Icon: {fileID: 0}
+  - TypeId: 2
+    Prefab: {fileID: 7029970993553439832, guid: 55304b57021e1cb4dbc9a84956b5e059, type: 3}
+    MarketItem:
+      Name: Chef
+      Description: 
+      Price: 750
+      Icon: {fileID: 0}
+  - TypeId: 3
+    Prefab: {fileID: 1970822987818208235, guid: e33e15b8ae04f2347838dbe3fc9eb04b, type: 3}
+    MarketItem:
+      Name: Waiter
+      Description: 
+      Price: 750
+      Icon: {fileID: 0}
   Appearances:
   - TypeId: 1
     Mesh: {fileID: 2959467708922500008, guid: d9ac496b8a307d14d999a762068fd862, type: 3}

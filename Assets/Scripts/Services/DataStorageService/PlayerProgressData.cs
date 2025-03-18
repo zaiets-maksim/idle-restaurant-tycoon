@@ -19,11 +19,12 @@ namespace Services.DataStorageService
         public List<Upgrade> Upgrades;
         public List<HallData> PurchasedHallItems = new();
         public List<KitchenData> PurchasedKitchenItems = new();
+        public List<CharacterData> PurchasedStuff = new();
         
         public int Money;
         public int Stars;
         
-        public bool HasProgress => PurchasedKitchenItems.Count > 0;
+        public bool HasProgress => PurchasedKitchenItems.Count > 0 || PurchasedHallItems.Count > 0 || PurchasedStuff.Count > 0;
 
 
         public PlayerProgressData()
@@ -82,6 +83,12 @@ namespace Services.DataStorageService
         
         public void BuyHallItem(HallData data) => 
             PurchasedHallItems.Add(data);
+
+        public void BuyStuff(CharacterData characterData) => 
+            PurchasedStuff.Add(characterData);
+
+        public int GetPurchasedCount(CharacterTypeId typeId) => 
+            PurchasedStuff.Count(x => x.TypeId == typeId);
         
         public int GetPurchasedCount(KitchenItemTypeId typeId) => 
             PurchasedKitchenItems.Count(x => x.TypeId == typeId);

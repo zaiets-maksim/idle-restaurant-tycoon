@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Characters;
 using Crates;
 using Interactable;
 using StaticData.TypeId;
@@ -11,6 +12,7 @@ namespace Services.PurchasedItemRegistry
     {
         public List<KitchenItem> KitchenItems { get; } = new();
         public List<HallItem> HallItems { get; } = new();
+        public List<Person> Stuff { get; } = new();
         public List<Crate> StorageCrates { get; } = new();
 
         public void AddKitchenItems(List<KitchenItem> kitchenItems) => 
@@ -21,6 +23,9 @@ namespace Services.PurchasedItemRegistry
 
         public void AddHallItem(HallItem hallItem) => 
             HallItems.Add(hallItem);
+        
+        public void AddStuff(Person person) => 
+            Stuff.Add(person);
 
         public void AddStorageCrates() => 
             StorageCrates.AddRange(Object.FindObjectsOfType<Crate>());
@@ -34,13 +39,16 @@ namespace Services.PurchasedItemRegistry
     {
         void AddKitchenItem(KitchenItem kitchenItem);
         void AddHallItem(HallItem hallItem);
-
+        void AddStuff(Person person);
+        
         List<KitchenItem> KitchenItems { get; }
         List<HallItem> HallItems { get; }
         List<Crate> StorageCrates { get; }
-        
+        List<Person> Stuff { get; }
+
         void AddKitchenItems(List<KitchenItem> kitchenItems);
         void AddStorageCrates();
         bool HasFreeChair();
+ 
     }
 }

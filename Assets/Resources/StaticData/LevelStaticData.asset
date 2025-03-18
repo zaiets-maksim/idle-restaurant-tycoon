@@ -419,24 +419,88 @@ MonoBehaviour:
     Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 18, y: 0}
+  - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 18, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
+  - Position: {x: 18, y: 0}
+    Rotation: {x: 0.000002504478, y: -0, z: -0}
+  - Position: {x: 18.5, y: 0.75}
+    Rotation: {x: -0, y: 29.799995, z: -0}
   - Position: {x: 23, y: 0.75}
     Rotation: {x: -0, y: 23.179995, z: -0}
   - Position: {x: 23, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
   - Position: {x: 18, y: 0}
     Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 23, y: 0}
-    Rotation: {x: 0.000002504478, y: -0, z: -0}
-  - Position: {x: 18.5, y: 0.75}
-    Rotation: {x: -0, y: 29.799995, z: -0}
   CharactersData:
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -8.5, y: 0, z: -5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -10.5, y: 0, z: -6.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -10.5, y: 0, z: -5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -4.5, y: 0, z: -17}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -8.5, y: 0, z: -6.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
   - TypeId: 1
+    PurchaseOrder: 0
     Position: {x: 74.5, y: 0, z: 33}
     Rotation: {x: -0, y: 270, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -2.5, y: 0, z: -15.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -2.5, y: 0, z: -18.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -10.5, y: 0, z: -3.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -2.5, y: 0, z: -17}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -4.5, y: 0, z: -18.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 3
+    PurchaseOrder: 0
+    Position: {x: -8.5, y: 0, z: -3.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
+  - TypeId: 2
+    PurchaseOrder: 0
+    Position: {x: -4.5, y: 0, z: -15.5}
+    Rotation: {x: -0, y: 0, z: 0}
+    Parent: {fileID: 0}
   - TypeId: 1
+    PurchaseOrder: 0
     Position: {x: -74.5, y: 0, z: 33}
     Rotation: {x: -0, y: 90, z: 0}
+    Parent: {fileID: 0}

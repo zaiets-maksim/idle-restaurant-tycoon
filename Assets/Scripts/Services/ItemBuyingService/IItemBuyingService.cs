@@ -13,14 +13,17 @@ namespace Services.ItemBuyingService
         
         void BuyKitchenItem(KitchenItemTypeId typeId);
         void BuyHallItem(HallItemTypeId typeId);
+        void BuyStuff(CharacterTypeId typeId);
         
-        List<KitchenData> GetAvailableKitchenItemsForPurchase();
+        List<KitchenData>  GetAvailableKitchenItemsForPurchase();
         List<HallData> GetAvailableHallItemsForPurchase();
         
         bool GetAvailableItemCount(KitchenItemTypeId typeId, out int count);
         bool GetAvailableItemCount(HallItemTypeId typeId, out int count);
-        
+
+        int GetNextAvailableOrder(CharacterTypeId typeId);
         int GetNextAvailableOrder(KitchenItemTypeId typeId);
         int GetNextAvailableOrder(HallItemTypeId typeId);
+        int GetAvailableStuffCount(CharacterTypeId configTypeId);
     }
 }

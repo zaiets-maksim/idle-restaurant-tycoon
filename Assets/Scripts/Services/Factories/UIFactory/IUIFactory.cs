@@ -14,9 +14,11 @@ namespace Services.Factories.UIFactory
         UpgradeElement CreateUpgradeElement();
         KitchenItemElement CreateKitchenItemElement();
         HallItemElement CreateHallItemElement();
+        StuffElement CreateStuffElement();
 
         PopUpMarket PopUpMarket { get; }
         KitchenItemElement KitchenItemElement { get; }
         UpgradeElement UpgradeElement { get; }
+        StuffElement StuffElement { get; }
     }
 }

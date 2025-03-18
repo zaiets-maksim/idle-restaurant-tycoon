@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Characters.Customers;
 using Infrastructure;
 using Services.ActiveCustomersRegistry;
 using Services.Factories.CharacterFactory;
@@ -63,7 +64,7 @@ namespace Services.CustomerArrivalService
                 if (_purchasedItemRegistry.HasFreeChair())
                 {
                     var point = _customersPointsForSpawn[Random.Range(0, _customersPointsForSpawn.Count)];
-                    var customer = _characterFactory.Create(point.TypeId, point.Position, point.Rotation, null);
+                    var customer = _characterFactory.Create<Customer>(point.TypeId, point.Position, point.Rotation, null);
                     var randomAppearance = _characterFactory.GetRandomCustomerAppearance();
                     customer.SetAppearance(randomAppearance);
                     customer.SetObjectName(randomAppearance.TypeId.ToString());

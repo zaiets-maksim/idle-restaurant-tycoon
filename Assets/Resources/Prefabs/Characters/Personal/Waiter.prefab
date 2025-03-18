@@ -537,6 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 9179556259113510827}
   _progressIndicator: {fileID: 4226764761929691993}
+  _personAnimator: {fileID: 4923008095846720054}
   _waiterBehavior: {fileID: 7592881360200513057}
 --- !u!114 &7592881360200513057
 MonoBehaviour:
@@ -1393,6 +1394,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1593829494819620353}
     m_Modifications:
+    - target: {fileID: 988300673529455864, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6446488839253654036, guid: 8771ab443376f0646b4ae2e40c2f02c7, type: 3}
       propertyPath: m_Name
       value: ProgressIndicator

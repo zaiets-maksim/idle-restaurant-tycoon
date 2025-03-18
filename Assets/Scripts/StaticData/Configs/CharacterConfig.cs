@@ -9,6 +9,7 @@ namespace StaticData.Configs
     {
         public CharacterTypeId TypeId;
         public GameObject Prefab;
+        public MarketItem MarketItem;
     }
 
     [Serializable]

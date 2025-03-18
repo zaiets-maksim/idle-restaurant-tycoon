@@ -105,10 +105,10 @@ namespace Infrastructure
             _windowService = new WindowService(_uiFactory);
             _itemFactory = new ItemFactory(_staticData);
             _purchasedItemRegistry = new PurchasedItemRegistry();
-            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _itemFactory, _purchasedItemRegistry);
+            _characterFactory = new CharacterFactory(_staticData);
+            _itemBuyingService = new ItemBuyingService(_progress, _staticData, _saveLoad, _itemFactory, _purchasedItemRegistry, _characterFactory);
             _surfaceUpdaterService = new SurfaceUpdaterService();
             _currencyService = new CurrencyService(_progress, _saveLoad);
-            _characterFactory = new CharacterFactory(_staticData);
             _activeCustomersRegistry = new ActiveCustomersRegistry();
             _customerArrivalService = new CustomerArrivalService(_staticData, _itemBuyingService, _purchasedItemRegistry, _characterFactory, _activeCustomersRegistry);
             _orderStorageService = new OrderStorageService();

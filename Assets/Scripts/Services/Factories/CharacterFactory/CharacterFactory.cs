@@ -1,3 +1,4 @@
+using Characters;
 using Characters.Customers;
 using Services.StaticDataService;
 using StaticData.Configs;
@@ -14,11 +15,11 @@ namespace Services.Factories.CharacterFactory
         {
             _staticData = staticData;
         }
-    
-        public Customer Create(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent)
+
+        public T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent) where T : Person
         {
             var config = _staticData.ForCharacter(typeId);
-            var customer = InstantiateOnActiveScene<Customer>(config.Prefab, position, rotation, parent);
+            var customer = InstantiateOnActiveScene<T>(config.Prefab, position, rotation, parent);
             return customer;
         }
 
@@ -33,7 +34,7 @@ namespace Services.Factories.CharacterFactory
 
     public interface ICharacterFactory
     {
-        Customer Create(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent);
+        T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent = null) where T : Person;
         CustomerAppearance GetRandomCustomerAppearance();
     }
 }

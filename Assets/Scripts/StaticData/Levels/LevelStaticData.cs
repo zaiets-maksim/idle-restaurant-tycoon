@@ -46,10 +46,8 @@ namespace StaticData.Levels
     }
     
     [Serializable]
-    public class CharacterData
+    public class CharacterData : ItemData<CharacterTypeId>
     {
-        public CharacterTypeId TypeId;
-        public Vector3 Position;
-        public Vector3 Rotation;
+        
     }
 }
