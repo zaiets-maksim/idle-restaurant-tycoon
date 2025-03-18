@@ -10,7 +10,7 @@ namespace Services.DataStorageService
     [Serializable]
     public class PlayerProgressData
     {
-        private const float PriceIncreaseRatePercent = 25f;
+        private const float PriceIncreaseRatePercent = 30f;
         private const float SpeedIncreaseRatePercent = 10f;
         
         public Staff Staff = new();
@@ -30,28 +30,44 @@ namespace Services.DataStorageService
         {
             Upgrades = new List<Upgrade>
             {
-                new("Meal", $"Raising prices by {Meals.PriceMultiplier + PriceIncreaseRatePercent}%",
-                    new List<int> { 1000, 2000, 3000, 5000 }, RaisePrices),
+                new("Meal", $"Raising prices by {PriceIncreaseRatePercent}%", new List<int> { 1000, 2000, 3000, 5000 }, () =>
+                    {
+                        RaisePrices();
+                        Meals.UpdatePriceMultiplier();
+                    }),
                 
                 new("Customers", $"Reduce eating time by {2f}sec", new List<int> { 1500, 2500, 4500, 6500, 8000 }, () =>
                 {
                     ReduceTime(ref Customers.EatingTimeDelay, 2f);
+                    Customers.UpdateEatingTimeDelay();
                 }),
                 new("Chef", $"Reduce food searching time by {2f}sec", new List<int> { 2000, 2500, 3000 }, () =>
                 {
                     ReduceTime(ref Staff.Chef.FoodSearchingTimeDelay, 2f);
+                    Staff.Chef.UpdateFoodSearchingTime();
                 }),
                 new("Chef", $"Reduce cooking time by {2f}sec", new List<int> { 2500, 3000, 3500 }, () =>
                 {
                     ReduceTime(ref Staff.Chef.CookingTimeDelay, 2f);
+                    Staff.Chef.UpdateCookingTime();
                 }),
+                new("Chef", $"Increase speed by {SpeedIncreaseRatePercent}%", new List<int> { 500, 750, 1000, 1250, 1500 }, () =>
+                {
+                    IncreaseSpeed(ref Staff.Chef.Speed);
+                    Staff.Chef.UpdateSpeed();
+                }),
+                new("Waiter", $"Increase speed by {SpeedIncreaseRatePercent}%", new List<int> { 500, 750, 1000, 1250, 1500 }, () =>
+                {
+                    IncreaseSpeed(ref Staff.Waiter.Speed);
+                    Staff.Waiter.UpdateSpeed();
+                })
             };
         }
 
         
         public void ReduceTime(ref float time, float delay) => time -= delay;
         
-        public void IncreaseSpeed(ref float speed) => speed += SpeedIncreaseRatePercent;
+        public void IncreaseSpeed(ref float speed) => speed += speed / SpeedIncreaseRatePercent;
         
         public void RaisePrices() => Meals.PriceMultiplier += PriceIncreaseRatePercent;
 
@@ -94,13 +110,21 @@ namespace Services.DataStorageService
     [Serializable]
     public class Customers
     {
+        public event Action<float> OnEatingTimeDelayUpdated;
+        
         public float EatingTimeDelay;
+        
+        public void UpdateEatingTimeDelay() => OnEatingTimeDelayUpdated?.Invoke(EatingTimeDelay);
     }
     
     [Serializable]
     public class Meals
     {
+        public event Action<float> OnPriceMultiplierUpdated;
+        
         public float PriceMultiplier;
+
+        public void UpdatePriceMultiplier() => OnPriceMultiplierUpdated?.Invoke(PriceMultiplier);
     }
 
     [Serializable]
@@ -113,8 +137,15 @@ namespace Services.DataStorageService
     [Serializable]
     public class Chef : Worker
     {
+        public event Action<float> OnFoodSearchingTimeUpdated;
+        public event Action<float> OnCookingTimeDUpdated;
+        
+        
         public float FoodSearchingTimeDelay;
         public float CookingTimeDelay;
+
+        public void UpdateFoodSearchingTime() => OnFoodSearchingTimeUpdated?.Invoke(FoodSearchingTimeDelay);
+        public void UpdateCookingTime() => OnCookingTimeDUpdated?.Invoke(CookingTimeDelay);
     }
 
     [Serializable]
@@ -126,6 +157,10 @@ namespace Services.DataStorageService
     [Serializable]
     public class Worker
     {
+        public event Action<float> OnSpeedUpdated;
+
         public float Speed = 3.5f;
+        public void UpdateSpeed() => OnSpeedUpdated?.Invoke(Speed);
+
     }
 }

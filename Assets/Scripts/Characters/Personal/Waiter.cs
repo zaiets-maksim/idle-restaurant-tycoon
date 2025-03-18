@@ -1,4 +1,3 @@
-using System;
 using Characters.Behaviors;
 using Characters.States;
 using Characters.States.Waiter;
@@ -22,11 +21,15 @@ namespace Characters
             base.Start();
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _orderStorageService!.OnOrderCooked += TryChangeToDishHandlingState;
+
+            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
+            UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Waiter.Speed);
         }
 
-        public Waiter()
+        private void OnDestroy()
         {
-            
+            _orderStorageService!.OnOrderCooked -= TryChangeToDishHandlingState;
+            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToDishHandlingState(Order order)

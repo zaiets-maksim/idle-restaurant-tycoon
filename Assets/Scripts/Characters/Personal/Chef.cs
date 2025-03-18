@@ -1,4 +1,3 @@
-using System;
 using Characters.Behaviors;
 using Characters.States;
 using Characters.States.Chef;
@@ -26,6 +25,15 @@ namespace Characters.Personal
             base.Start();
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _orderStorageService!.OnNewOrderReceived += TryChangeToCookingState;
+            
+            _progress!.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
+            UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Chef.Speed);
+        }
+        
+        private void OnDestroy()
+        {
+            _orderStorageService!.OnNewOrderReceived -= TryChangeToCookingState;
+            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToCookingState(Order order)

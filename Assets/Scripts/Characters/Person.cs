@@ -1,4 +1,5 @@
-using System;
+using Infrastructure;
+using Services.DataStorageService;
 using UI.ProgressIndicator;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,15 +10,27 @@ namespace Characters
     {
         [SerializeField] protected NavMeshAgent _navMeshAgent;
         [SerializeField] protected ProgressIndicator _progressIndicator;
+        [SerializeField] protected PersonAnimator _personAnimator;
+
+        protected IPersistenceProgressService _progress;
 
         public ProgressIndicator ProgressIndicator => _progressIndicator;
 
         public string Name { get; set; }
-        public abstract void PerformDuties();
+        
 
         public virtual void Start()
         {
             _navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+            _progress = ProjectContext.Instance?.Progress;
+        }
+
+        public abstract void PerformDuties();
+
+        protected void UpdateAgentSpeed(float speed)
+        {
+            _navMeshAgent.speed = speed;
+            _personAnimator.SetSpeed(speed / 3.5f);
         }
 
         public void EnableAgent()
