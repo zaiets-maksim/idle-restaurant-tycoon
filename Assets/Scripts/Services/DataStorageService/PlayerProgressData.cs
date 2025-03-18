@@ -10,9 +10,9 @@ namespace Services.DataStorageService
     [Serializable]
     public class PlayerProgressData
     {
-        private const float PriceIncreaseRatePercent = 30f;
         private const float SpeedIncreaseRatePercent = 10f;
-        
+        private const float PriceIncreaseRate = 5f;
+
         public Staff Staff = new();
         public Meals Meals = new();
         public Customers Customers = new();
@@ -31,7 +31,7 @@ namespace Services.DataStorageService
         {
             Upgrades = new List<Upgrade>
             {
-                new("Meal", $"Raising prices by {PriceIncreaseRatePercent}%", new List<int> { 1000, 2000, 3000, 5000 }, () =>
+                new("Meal", $"Raising prices by {PriceIncreaseRate}%", new List<int> { 1000, 2000, 3000, 5000 }, () =>
                     {
                         RaisePrices();
                         Meals.UpdatePriceMultiplier();
@@ -70,7 +70,7 @@ namespace Services.DataStorageService
         
         public void IncreaseSpeed(ref float speed) => speed += speed / SpeedIncreaseRatePercent;
         
-        public void RaisePrices() => Meals.PriceMultiplier += PriceIncreaseRatePercent;
+        public void RaisePrices() => Meals.PriceMultiplier += PriceIncreaseRate;
 
         public void BuyUpgrade(Upgrade upgrade)
         {
@@ -129,7 +129,7 @@ namespace Services.DataStorageService
     {
         public event Action<float> OnPriceMultiplierUpdated;
         
-        public float PriceMultiplier;
+        public float PriceMultiplier = 1f;
 
         public void UpdatePriceMultiplier() => OnPriceMultiplierUpdated?.Invoke(PriceMultiplier);
     }
