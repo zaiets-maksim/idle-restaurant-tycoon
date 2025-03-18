@@ -61,7 +61,7 @@ namespace Characters.Customers
         {
             await TaskExtension.WaitFor(callback =>
             {
-                _personMover.StartMovingTo(_spawnPosition, () => _tcs.SetResult(true));
+                _personMover.StartMovingTo(_spawnPosition, callback);
             });
             
             Destroy(gameObject);
