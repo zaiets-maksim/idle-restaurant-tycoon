@@ -17,9 +17,9 @@ namespace Characters
         public bool IsIdle => _waiterBehavior.CurrentState is IdleState;
         public Order Order { get; private set; }
 
-        private void Start()
+        public override void Start()
         {
-            // to -> Constructor
+            base.Start();
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _orderStorageService!.OnOrderCooked += TryChangeToDishHandlingState;
         }

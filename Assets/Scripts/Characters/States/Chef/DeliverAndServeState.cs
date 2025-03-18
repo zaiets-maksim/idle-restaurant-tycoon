@@ -59,8 +59,11 @@ namespace Characters.States.Chef
             {
                 _servingTable = servingTable;
                 _servingTable.Occupy();
-                _personMover.StartMovingTo(servingTable.InteractionPoint, () => _tcs.SetResult(true));
-                await _tcs.Task;
+                
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _personMover.StartMovingTo(servingTable.InteractionPoint, callback);
+                });
             }
             else
             {
@@ -72,12 +75,12 @@ namespace Characters.States.Chef
         {
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
-            
+            _orderStorageService.Cooked(_chef.Order);
+
             var time = _personAnimator.GetCurrentCLipLength();
             await Task.Delay(time.ToMiliseconds());
             
             _servingTable.Release();
-            _orderStorageService.Cooked(_chef.Order);
         }
 
         private bool GetServingTable(out ServingTable nearestServingTable)

@@ -21,8 +21,9 @@ namespace Characters.Personal
         public Order Order { get; private set; }
 
 
-        private void Start()
+        public override void Start()
         {
+            base.Start();
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _orderStorageService!.OnNewOrderReceived += TryChangeToCookingState;
         }

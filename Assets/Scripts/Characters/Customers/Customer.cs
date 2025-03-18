@@ -7,8 +7,9 @@ using Services.OrderStorageService;
 using Services.StaticDataService;
 using StaticData;
 using StaticData.Configs;
-using tetris.Scripts.Extensions;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Characters.Customers
 {
@@ -19,6 +20,7 @@ namespace Characters.Customers
         [SerializeField] private PersonAnimator _personAnimator;
         [SerializeField] private CustomerBehavior _customerBehavior;
         [SerializeField] private Transform _dishPoint;
+        [SerializeField] private PersonMover _personMover;
         
         private readonly IStaticDataService _staticData;
         private readonly BalanceStaticData _balance;
@@ -28,6 +30,8 @@ namespace Characters.Customers
         private float _mealDuration;
         private Dish _dish;
         private readonly TaskCompletionSource<bool> _tcs;
+        private Vector3 _lastPosition;
+        private Vector3 _spawnPosition;
 
         public bool IsAwaiting => _customerBehavior.CurrentState is SeatAndOrderState && _dishTypeId != DishTypeId.Unknown;
         public Transform DishPoint => _dishPoint;
@@ -36,14 +40,31 @@ namespace Characters.Customers
         public Customer()
         {
             _tcs = new TaskCompletionSource<bool>();
+            
             _staticData = ProjectContext.Instance?.StaticData;
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _balance = _staticData?.Balance();
             _currencyService = ProjectContext.Instance?.CurrencyService;
         }
 
+        public override void Start()
+        {
+            base.Start();    
+            _spawnPosition = transform.position;
+        }
+        
         public override void PerformDuties()
         {
+        }
+
+        public async void LeaveRestaurant()
+        {
+            await TaskExtension.WaitFor(callback =>
+            {
+                _personMover.StartMovingTo(_spawnPosition, () => _tcs.SetResult(true));
+            });
+            
+            Destroy(gameObject);
         }
         
         public void AssignChair(Chair chair)
@@ -102,9 +123,16 @@ namespace Characters.Customers
             _customerBehavior.ChangeState<EatAndPayState>();
         }
 
-        public void TaleSeat()
+        public void SetPosition(Vector3 position)
         {
-            throw new System.NotImplementedException();
+            _lastPosition = position;
+            transform.position = position;
+        }
+
+        public void LeaveChair()
+        {
+            transform.position = _lastPosition;
+            Chair.Release();
         }
     }
 }

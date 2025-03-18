@@ -1,3 +1,4 @@
+using System;
 using UI.ProgressIndicator;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +14,11 @@ namespace Characters
 
         public string Name { get; set; }
         public abstract void PerformDuties();
+
+        public virtual void Start()
+        {
+            _navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        }
 
         public void EnableAgent()
         {

@@ -265,7 +265,7 @@ NavMeshAgent:
   m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 0
   m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -293,6 +293,7 @@ MonoBehaviour:
   _personAnimator: {fileID: 5392965247750773833}
   _customerBehavior: {fileID: 4892711519900389548}
   _dishPoint: {fileID: 5146615606166856462}
+  _personMover: {fileID: 1991115088778643845}
 --- !u!114 &4892711519900389548
 MonoBehaviour:
   m_ObjectHideFlags: 0

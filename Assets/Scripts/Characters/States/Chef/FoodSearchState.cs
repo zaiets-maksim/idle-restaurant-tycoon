@@ -64,9 +64,12 @@ namespace Characters.States.Chef
         private async Task GetFoodFromFridge(Fridge fridge)
         {
             fridge.Occupy();
-            _personMover.StartMovingTo(fridge.InteractionPoint, () => _tcs.SetResult(true));
+            
+            await TaskExtension.WaitFor(callback =>
+            {
+                _personMover.StartMovingTo(fridge.InteractionPoint, callback);
+            });
 
-            await _tcs.Task;
             fridge.Interact();
             _personAnimator.PutTheItem();
             
@@ -82,8 +85,11 @@ namespace Characters.States.Chef
         {
             if (GetRandomCrateInteractionPoint(out Transform point))
             {
-                _personMover.StartMovingTo(point, () => _tcs.SetResult(true));
-                await _tcs.Task;
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _personMover.StartMovingTo(point, callback);
+                });
+
                 _personAnimator.PickUp();
                 var time = TimeExtensions.RandomTime(5, 15);
 

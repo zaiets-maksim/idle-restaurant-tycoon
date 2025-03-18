@@ -59,8 +59,11 @@ namespace Characters.States.Waiter
 
             if (HasServingTableWithDish(out ServingTable nearestServingTable))
             {
-                _personMover.StartMovingTo(nearestServingTable.OrderCollectionPoint, () => _tcs.SetResult(true));
-                await _tcs.Task;
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _personMover.StartMovingTo(nearestServingTable.OrderCollectionPoint, callback);
+                });
+
                 _dish = nearestServingTable.GetDish(_waiter.Order.DishTypeId);
                 _dishHolder.TakeDish(_dish);
                 _personAnimator.PutTheItem();

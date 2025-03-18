@@ -4,30 +4,25 @@ using System.Threading.Tasks;
 using Characters;
 using Characters.Customers;
 using Characters.PersonStateMachine;
+using Extensions;
 using Infrastructure;
 using Interactable;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
-using UI.ProgressIndicator;
 using UnityEngine;
 
 internal class SeatAndOrderState : PersonBaseState
 {
     private readonly IPurchasedItemRegistry _purchasedItemRegistry;
-    private readonly Transform _transform;
-    private readonly CustomerBehavior _customerBehavior;
     private readonly PersonMover _personMover;
     private readonly PersonAnimator _personAnimator;
     private readonly Customer _customer;
 
-    public SeatAndOrderState(CustomerBehavior customerBehavior, Transform transform, PersonMover personMover, 
-        PersonAnimator personAnimator, Customer customer)
+    public SeatAndOrderState( PersonMover personMover, PersonAnimator personAnimator, Customer customer)
     {
         _customer = customer;
         _personAnimator = personAnimator;
         _personMover = personMover;
-        _transform = transform;
-        _customerBehavior = customerBehavior;
         _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
     }
 
@@ -43,15 +38,16 @@ internal class SeatAndOrderState : PersonBaseState
         {
             _customer.AssignChair(chair);
             
-            _personMover.StartMovingTo(chair.InteractionPoint, () => _tcs.SetResult(true));
+            await TaskExtension.WaitFor(callback =>
+            {
+                _personMover.StartMovingTo(chair.InteractionPoint, callback);
+            });
             
-            await _tcs.Task;
             _customer.DisableAgent();
             _personAnimator.SitDown();
             
-            
             _customer.ProgressIndicator.AddPosition(_customer.transform.forward * -0.5f);
-            _transform.position = chair.transform.position + chair.transform.forward * 0.5f;
+            _customer.SetPosition(chair.transform.position + chair.transform.forward * 0.5f);
             
             await Task.Delay(chair.InteractionTime.ToMiliseconds());
             

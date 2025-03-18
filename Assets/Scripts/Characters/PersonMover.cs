@@ -21,6 +21,14 @@ namespace Characters
 
             _moveToCoroutine = StartCoroutine(MoveTo(target, callback, walkWithFood));
         }
+        
+        public void StartMovingTo(Vector3 position, Action callback = null)
+        {
+            if (_moveToCoroutine != null)
+                StopCoroutine(_moveToCoroutine);
+
+            _moveToCoroutine = StartCoroutine(MoveTo(position, callback));
+        }
 
         public void StopMoving()
         {
@@ -57,6 +65,23 @@ namespace Characters
             
             yield return null;
         }
+        
+        private IEnumerator MoveTo(Vector3 position, Action callback = null)
+        {
+            _personRotator.Enable();
+            _navMeshAgent.SetDestination(position);
+            _navMeshAgent.isStopped = false;
+            
+            _animator.Walk();
+
+            while (!HasArrived())
+                yield return null;
+
+            StopMoving();
+            
+            yield return null;
+        }
+
 
         private bool HasArrived() => _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
                                      !_navMeshAgent.pathPending;

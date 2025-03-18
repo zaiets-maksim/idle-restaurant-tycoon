@@ -1,15 +1,23 @@
-using Characters;
+using System.Threading.Tasks;
+using Characters.Customers;
 using Characters.PersonStateMachine;
-using UnityEngine;
 
 internal class LeaveState : PersonBaseState
 {
-    public LeaveState(CustomerBehavior customerBehavior, Transform transform, PersonMover personMover, PersonAnimator personAnimator)
+    private readonly Customer _customer;
+
+    public LeaveState(Customer customer)
     {
+        _customer = customer;
     }
 
-    public override void Enter()
+    public override async void Enter()
     {
+        _tcs = new TaskCompletionSource<bool>();
+
+        _customer.LeaveChair();
+        _customer.EnableAgent();
+        _customer.LeaveRestaurant();
     }
 
     public override void Exit()

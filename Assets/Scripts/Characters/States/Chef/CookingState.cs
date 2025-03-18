@@ -51,8 +51,11 @@ namespace Characters.States.Chef
             if (GetFoodStation(out FoodStation foodStation))
             {
                 foodStation.Occupy();
-                _personMover.StartMovingTo(foodStation.InteractionPoint, () => _tcs.SetResult(true));
-                await _tcs.Task;
+                
+                await TaskExtension.WaitFor(callback =>
+                {
+                    _personMover.StartMovingTo(foodStation.InteractionPoint, callback);
+                });
 
                 var dish = foodStation.MakeDish(_chef.Order.DishTypeId);
                 _personAnimator.Cook();
