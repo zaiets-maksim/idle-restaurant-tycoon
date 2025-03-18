@@ -8,7 +8,6 @@ using Services.StaticDataService;
 using StaticData;
 using StaticData.Configs;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Characters.Customers
@@ -17,7 +16,6 @@ namespace Characters.Customers
     public class Customer : Person
     {
         [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
-        [SerializeField] private PersonAnimator _personAnimator;
         [SerializeField] private CustomerBehavior _customerBehavior;
         [SerializeField] private Transform _dishPoint;
         [SerializeField] private PersonMover _personMover;
@@ -45,6 +43,7 @@ namespace Characters.Customers
             _orderStorageService = ProjectContext.Instance?.OrderStorageService;
             _balance = _staticData?.Balance();
             _currencyService = ProjectContext.Instance?.CurrencyService;
+            _progress = ProjectContext.Instance?.Progress;
         }
 
         public override void Start()
@@ -107,7 +106,9 @@ namespace Characters.Customers
             _navMeshAgent.speed = randomSpeed;
             float coefficient = randomSpeed / _balance.Customers.DefaultSpeed;
             _personAnimator.SetSpeed(coefficient);
-            _mealDuration = Random.Range(_balance.Customers.MealDurationInterval.x, _balance.Customers.MealDurationInterval.y);
+            Debug.Log(_progress.PlayerData.ProgressData.Customers.EatingTimeDelay);
+            _mealDuration = Random.Range(_balance.Customers.MealDurationInterval.x, _balance.Customers.MealDurationInterval.y) - 
+                _progress.PlayerData.ProgressData.Customers.EatingTimeDelay;
         }
 
         public void SetObjectName(string name) => 

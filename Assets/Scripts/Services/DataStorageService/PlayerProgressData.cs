@@ -66,7 +66,7 @@ namespace Services.DataStorageService
         }
 
         
-        public void ReduceTime(ref float time, float delay) => time -= delay;
+        public void ReduceTime(ref float time, float delay) => time += delay;
         
         public void IncreaseSpeed(ref float speed) => speed += speed / SpeedIncreaseRatePercent;
         

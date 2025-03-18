@@ -6,6 +6,7 @@ using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
 using Interactable;
+using Services.DataStorageService;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Characters.States.Chef
 
         private List<Fridge> _fridgesWithFood;
         TaskCompletionSource<bool> _tcs = new();
+        private readonly IPersistenceProgressService _progress;
 
         public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, PersonAnimator personAnimator)
         {
@@ -32,6 +34,7 @@ namespace Characters.States.Chef
             _chef = chef;
             _transform = chef.transform;
             _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+            _progress = ProjectContext.Instance?.Progress;
         }
 
         public override async void Enter()
@@ -73,8 +76,9 @@ namespace Characters.States.Chef
             fridge.Interact();
             _personAnimator.PutTheItem();
             
-            var time = fridge.InteractionTime + fridge.DelayAfterClose;
-
+            var time = fridge.InteractionTime + fridge.DelayAfterClose - _progress.PlayerData.ProgressData.Staff.Chef.FoodSearchingTimeDelay;
+            time = Mathf.Max(time, 2f);
+            
             await TaskExtension.WaitFor(callback =>
             {
                 _chef.ProgressIndicator.StartProgress(time, callback);
@@ -91,7 +95,9 @@ namespace Characters.States.Chef
                 });
 
                 _personAnimator.PickUp();
-                var time = TimeExtensions.RandomTime(5, 15);
+
+                var time = TimeExtensions.RandomTime(5, 15) - _progress.PlayerData.ProgressData.Staff.Chef.FoodSearchingTimeDelay;
+                time = Mathf.Max(time, 2f);
 
                 await TaskExtension.WaitFor(callback =>
                 {

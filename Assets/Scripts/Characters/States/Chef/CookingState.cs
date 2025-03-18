@@ -6,6 +6,7 @@ using Characters.PersonStateMachine;
 using Extensions;
 using Infrastructure;
 using Interactable;
+using Services.DataStorageService;
 using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
@@ -25,6 +26,7 @@ namespace Characters.States.Chef
         TaskCompletionSource<bool> _tcs = new();
         private readonly PersonAnimator _personAnimator;
         private readonly Personal.Chef _chef;
+        private readonly IPersistenceProgressService _progress;
 
         public CookingState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
             DishHolder dishHolder)
@@ -32,6 +34,7 @@ namespace Characters.States.Chef
             _chef = chef;
             _dishHolder = dishHolder;
             _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+            _progress = ProjectContext.Instance?.Progress;
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;
@@ -60,7 +63,8 @@ namespace Characters.States.Chef
                 var dish = foodStation.MakeDish(_chef.Order.DishTypeId);
                 _personAnimator.Cook();
                 
-                var time = TimeExtensions.RandomTime(5, 15);
+                var time = TimeExtensions.RandomTime(5, 15) - _progress.PlayerData.ProgressData.Staff.Chef.CookingTimeDelay;
+                time = Mathf.Max(time, 2f);
                 
                 await TaskExtension.WaitFor(callback =>
                 {

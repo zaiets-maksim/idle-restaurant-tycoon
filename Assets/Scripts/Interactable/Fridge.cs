@@ -23,7 +23,7 @@ namespace Interactable
 
         private IEnumerator GetFood()
         {
-            float randomTime = TimeExtensions.RandomTime(1, 5);
+            float randomTime = TimeExtensions.RandomTime(5, 10);
             InteractionTime = randomTime;
             var animationTime = Open();
             yield return new WaitForSeconds(animationTime);
