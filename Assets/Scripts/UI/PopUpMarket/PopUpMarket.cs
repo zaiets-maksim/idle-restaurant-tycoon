@@ -1,14 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Extensions;
-using Infrastructure;
-using Services.Factories.UIFactory;
-using Services.ItemBuyingService;
-using Services.StaticDataService;
-using StaticData;
-using StaticData.Levels;
-using StaticData.TypeId;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,82 +9,54 @@ namespace UI.PopUpMarket
         [SerializeField] private RectTransform _rectScrollView;
         [SerializeField] private RectTransform _content;
         [SerializeField] private VerticalLayoutGroup _verticalLayoutGroup;
-    
-        private readonly IUIFactory _uiFactory;
-        private readonly IItemBuyingService _itemBuyingService;
-        private readonly IStaticDataService _staticData;
-    
-        private List<KitchenData> _availableKitchenItems;
-        private List<HallData> _availableHallItems;
-        private List<KitchenItemElement> _kitchenElements = new();
-        private List<HallItemElement> _hallElements = new();
+        [SerializeField] private Transform _bottom;
+
+        [SerializeField] private ItemsList _itemsList;
+        [SerializeField] private UpgradesList _upgradesList;
         
         private ShowMarketButton _showMarketButton;
-
-        public PopUpMarket()
-        {
-            _uiFactory = ProjectContext.Instance?.UIFactory;
-            _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
-            _staticData = ProjectContext.Instance?.StaticData;
-        }
+        public RectTransform Content => _content;
+        public VerticalLayoutGroup VerticalLayoutGroup => _verticalLayoutGroup;
 
         private void Start()
         {
-            Fill();
-            _rectScrollView.sizeDelta = new Vector2(_rectScrollView.sizeDelta.x, -250f);
-        }
-
-        public void RemoveAvailableKitchenItem(KitchenItemTypeId typeId, int purchaseOrder)
-        {
-            var itemToRemove = _availableKitchenItems
-                .FirstOrDefault(item => item.TypeId == typeId && item.PurchaseOrder == purchaseOrder);
-
-            if (itemToRemove != null)
-                _availableKitchenItems.Remove(itemToRemove);
-        }
-
-        private void Fill()
-        {
-            _availableKitchenItems = _itemBuyingService.GetAvailableKitchenItemsForPurchase();
-            _availableHallItems = _itemBuyingService.GetAvailableHallItemsForPurchase();
-        
-            foreach (KitchenItemTypeId typeId in Enum.GetValues(typeof(KitchenItemTypeId)))
-            {
-                if(typeId == KitchenItemTypeId.Unknown)
-                    continue;
-                
-                var kitchenItemElement = _uiFactory.CreateKitchenItemElement();
-                var config = _staticData.ForKitchenItem(typeId);
-                
-                kitchenItemElement.Initialize(config, _itemBuyingService);
-                _kitchenElements.Add(kitchenItemElement);
-                kitchenItemElement.transform.SetParent(_content);
-                kitchenItemElement.transform.localScale = Vector3.one;
-                AddContentHeight(kitchenItemElement.GetHeight() + _verticalLayoutGroup.spacing);
-            }
+            _itemsList.Fill();
             
-            foreach (HallItemTypeId typeId in Enum.GetValues(typeof(HallItemTypeId)))
-            {
-                if(typeId == HallItemTypeId.Unknown)
-                    continue;
-                
-                var hallItemElement = _uiFactory.CreateHallItemElement();
-                var config = _staticData.ForHallItem(typeId);
-                
-                hallItemElement.Initialize(config, _itemBuyingService);
-                _hallElements.Add(hallItemElement);
-                hallItemElement.transform.SetParent(_content);
-                hallItemElement.transform.localScale = Vector3.one;
-                AddContentHeight(hallItemElement.GetHeight() + _verticalLayoutGroup.spacing);
-            }
+            _rectScrollView.sizeDelta = new Vector2(_rectScrollView.sizeDelta.x, -250f);
+            _bottom.position = new Vector3(_bottom.position.x, -125f, _bottom.position.z);
         }
 
+        public void ShowItems()
+        {
+            ClearContent();
+            _itemsList.Fill();
+        }
+
+        public void ShowUpgrades()
+        {
+            ClearContent();
+            _upgradesList.Fill();
+        }
+
+        private void ClearContent()
+        {
+            _content.sizeDelta = new Vector2(_content.sizeDelta.x, 0f);
+            foreach (Transform child in _content.transform) 
+                Destroy(child.gameObject);
+        }
+        
         public void Show()
         {
             _rectScrollView.AnimateOverTime(
                 rect => rect.sizeDelta.y,
                 (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
                 1250f,
+                0.15f);
+            
+            _bottom.AnimateOverTime(
+                t => t.position.y, 
+                (t, value) => t.position = new Vector3(t.position.x, value, t.position.z), 
+                0f, 
                 0.15f);
 
             _showMarketButton.gameObject.SetActive(false);
@@ -108,10 +70,16 @@ namespace UI.PopUpMarket
                 -250f,
                 0.15f);
             
+            _bottom.AnimateOverTime(
+                t => t.position.y, 
+                (t, value) => t.position = new Vector3(t.position.x, value, t.position.z), 
+                -125f, 
+                0.15f);
+            
             _showMarketButton.gameObject.SetActive(true);
         }
 
-        private void AddContentHeight(float height)
+        public void AddContentHeight(float height)
         {
             Vector2 size = _content.sizeDelta;
             size.y += height;

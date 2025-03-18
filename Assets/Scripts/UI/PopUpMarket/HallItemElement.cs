@@ -1,3 +1,4 @@
+using System;
 using Services.ItemBuyingService;
 using StaticData.TypeId;
 using UI.Buttons;
@@ -16,6 +17,7 @@ namespace UI.PopUpMarket
         {
             _itemBuyingService = itemBuyingService;
             _itemBuyingService.OnHallItemPurchased += TryUpdateElement;
+            
             _icon.sprite = config.MarketItem.Icon;
             _name.text = config.MarketItem.Name;
             _description.text = config.MarketItem.Description;
@@ -35,6 +37,11 @@ namespace UI.PopUpMarket
                 SetAvailable(count);
             else
                 MakeLock();
+        }
+
+        private void OnDestroy()
+        {
+            _itemBuyingService.OnHallItemPurchased -= TryUpdateElement;
         }
 
         private void TryUpdateElement(HallItemTypeId purchasedItemTypeId)
