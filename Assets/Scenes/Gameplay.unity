@@ -183,8 +183,16 @@ PrefabInstance:
       value: wall (21)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -262,7 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93952208}
   - component: {fileID: 93952209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,8 +368,16 @@ PrefabInstance:
       value: kitchencounter_innercorner
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -397,12 +413,12 @@ GameObject:
   - component: {fileID: 123258239}
   - component: {fileID: 123258238}
   - component: {fileID: 123258237}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &123258237
 MeshRenderer:
@@ -526,8 +542,16 @@ PrefabInstance:
       value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -591,8 +615,16 @@ PrefabInstance:
       value: wall (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -609,7 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160807578}
   - component: {fileID: 160807579}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162468419}
   - component: {fileID: 162468420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 173226487}
   - component: {fileID: 173226488}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179403324}
   - component: {fileID: 179403325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -865,8 +897,16 @@ PrefabInstance:
       value: kitchencounter_innercorner (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -883,7 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197032458}
   - component: {fileID: 197032459}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,8 +1107,16 @@ PrefabInstance:
       value: wall_orderwindow_decorated
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 42c7d46464e380942b2562c3ba341e75, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 42c7d46464e380942b2562c3ba341e75, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 42c7d46464e380942b2562c3ba341e75, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1136,8 +1184,16 @@ PrefabInstance:
       value: wall (24)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1164,7 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256224905}
   - component: {fileID: 256224906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,7 +1281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 280777994}
   - component: {fileID: 280777995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,9 +1398,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -1370,7 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291921267}
   - component: {fileID: 291921268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,9 +1616,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_ham
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -1705,7 +1793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 392898577}
   - component: {fileID: 392898578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398907875}
   - component: {fileID: 398907876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 410397911}
   - component: {fileID: 410397912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1864,7 +1952,7 @@ GameObject:
   - component: {fileID: 411129844}
   - component: {fileID: 411129843}
   - component: {fileID: 411129842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor_hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +2061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 428989514}
   - component: {fileID: 428989515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2027,12 +2115,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429910045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &429910045
 Transform:
@@ -2126,8 +2214,16 @@ PrefabInstance:
       value: wall_doorway
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2152,7 +2248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463992337}
   - component: {fileID: 463992338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2203,7 +2299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 501050100}
   - component: {fileID: 501050101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2254,12 +2350,12 @@ GameObject:
   m_Component:
   - component: {fileID: 520542701}
   - component: {fileID: 520542702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &520542701
 Transform:
@@ -2357,8 +2453,16 @@ PrefabInstance:
       value: kitchencounter_innercorner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2375,7 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551505786}
   - component: {fileID: 551505787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2426,7 +2530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551930305}
   - component: {fileID: 551930306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2477,7 +2581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556461453}
   - component: {fileID: 556461454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2579,8 +2683,16 @@ PrefabInstance:
       value: wall (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2644,8 +2756,16 @@ PrefabInstance:
       value: wall (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2670,7 +2790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568904346}
   - component: {fileID: 568904347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2768,8 +2888,16 @@ PrefabInstance:
       value: wall (19)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2791,7 +2919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624553590}
   - component: {fileID: 624553591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2869,12 +2997,12 @@ GameObject:
   - component: {fileID: 642596870}
   - component: {fileID: 642596869}
   - component: {fileID: 642596868}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &642596868
 MeshRenderer:
@@ -2951,7 +3079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654784334}
   - component: {fileID: 654784335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3048,6 +3176,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: food_ingredient_lettuce
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9bd9d064f21f6346bf8055fab0ca344, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9bd9d064f21f6346bf8055fab0ca344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3114,8 +3250,16 @@ PrefabInstance:
       value: wall_window_closed (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3187,8 +3331,16 @@ PrefabInstance:
       value: wall (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3217,7 +3369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3229,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9507324
+      value: 0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3237,7 +3389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3100128
+      value: 0.86602545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3249,7 +3401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 36.12
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3258,6 +3410,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_Name
       value: door_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3350,9 +3510,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_carrots
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -3383,7 +3559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 702143754}
   - component: {fileID: 702143755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3594,13 +3770,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_buns
       objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -3631,7 +3823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764209640}
   - component: {fileID: 764209641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3691,7 +3883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773948323}
   - component: {fileID: 773948324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3742,7 +3934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781641975}
   - component: {fileID: 781641976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3792,12 +3984,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 784689502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &784689502
 Transform:
@@ -3852,7 +4044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787117286}
   - component: {fileID: 787117287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3974,9 +4166,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_onions
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -4002,7 +4210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811844721}
   - component: {fileID: 811844722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4159,7 +4367,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -4196,7 +4404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 919662348}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4246,7 +4454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 947780376}
   - component: {fileID: 947780377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4344,8 +4552,16 @@ PrefabInstance:
       value: wall (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4428,9 +4644,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_lettuce
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -4573,7 +4805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967661404}
   - component: {fileID: 967661405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4670,6 +4902,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchencounter_straight_decorated
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bc671559e3ff434bbdbb9a1cbb59339, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bc671559e3ff434bbdbb9a1cbb59339, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4736,8 +4976,16 @@ PrefabInstance:
       value: wall (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4855,8 +5103,16 @@ PrefabInstance:
       value: wall (23)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4955,8 +5211,16 @@ PrefabInstance:
       value: wall_window_closed (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5002,7 +5266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9507324
+      value: 0.42261827
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5010,7 +5274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3100128
+      value: -0.9063079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5022,7 +5286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 36.12
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5035,6 +5299,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_Name
       value: door_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5056,7 +5328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065900907}
   - component: {fileID: 1065900908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5107,7 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077163953}
   - component: {fileID: 1077163954}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5209,8 +5481,16 @@ PrefabInstance:
       value: wall (22)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5227,7 +5507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1138587225}
   - component: {fileID: 1138587226}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5333,8 +5613,16 @@ PrefabInstance:
       value: wall (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5359,7 +5647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188239742}
   - component: {fileID: 1188239743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5459,12 +5747,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1211272690}
   - component: {fileID: 1211272691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1211272690
 Transform:
@@ -5628,8 +5916,16 @@ PrefabInstance:
       value: kitchencounter_innercorner (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f77c27754c28216439aacf3afcb6fa38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5649,7 +5945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263228711}
   - component: {fileID: 1263228712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5705,7 +6001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1325861073}
   - component: {fileID: 1325861074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5807,8 +6103,16 @@ PrefabInstance:
       value: wall (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5894,9 +6198,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_potatoes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -5922,7 +6242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346171482}
   - component: {fileID: 1346171483}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6069,8 +6389,16 @@ PrefabInstance:
       value: wall (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6179,9 +6507,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_tomatoes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -6207,7 +6551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425300029}
   - component: {fileID: 1425300030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6262,7 +6606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447652746}
   - component: {fileID: 1447652747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6358,7 +6702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1464648762}
   - component: {fileID: 1464648763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6502,7 +6846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486227447}
   - component: {fileID: 1486227448}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,12 +6906,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1489612685}
   - component: {fileID: 1489612686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1489612685
 Transform:
@@ -6660,8 +7004,16 @@ PrefabInstance:
       value: wall_doorway (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6686,7 +7038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1504243883}
   - component: {fileID: 1504243884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6737,7 +7089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515266944}
   - component: {fileID: 1515266945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6889,8 +7241,16 @@ PrefabInstance:
       value: wall_window_closed (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6992,8 +7352,16 @@ PrefabInstance:
       value: wall_doorway (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7018,7 +7386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604738681}
   - component: {fileID: 1604738682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7069,12 +7437,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1608535667}
   - component: {fileID: 1608535668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1608535667
 Transform:
@@ -7120,7 +7488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618161309}
   - component: {fileID: 1618161310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7171,7 +7539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632544024}
   - component: {fileID: 1632544025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7222,12 +7590,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1641214367}
   - component: {fileID: 1641214368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1641214367
 Transform:
@@ -7273,7 +7641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666651521}
   - component: {fileID: 1666651522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7326,12 +7694,12 @@ GameObject:
   - component: {fileID: 1673847422}
   - component: {fileID: 1673847421}
   - component: {fileID: 1673847420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor_storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &1673847420
 MeshCollider:
@@ -7482,8 +7850,16 @@ PrefabInstance:
       value: wall (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7561,6 +7937,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
       propertyPath: m_Name
       value: door_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7684,12 +8068,12 @@ GameObject:
   - component: {fileID: 1781408340}
   - component: {fileID: 1781408341}
   - component: {fileID: 1781408342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1781408339
 Transform:
@@ -7826,8 +8210,16 @@ PrefabInstance:
       value: wall_window_closed
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7900,8 +8292,16 @@ PrefabInstance:
       value: wall (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7965,8 +8365,16 @@ PrefabInstance:
       value: wall_window_closed (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7988,7 +8396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792428373}
   - component: {fileID: 1792428374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8084,12 +8492,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1799508745}
   - component: {fileID: 1799508746}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1799508745
 Transform:
@@ -8204,8 +8612,16 @@ PrefabInstance:
       value: kitchencounter_innercorner_backsplash
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0ff959c1e46373a40b1921ba9055a422, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ff959c1e46373a40b1921ba9055a422, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ff959c1e46373a40b1921ba9055a422, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8223,12 +8639,12 @@ GameObject:
   - component: {fileID: 1850313661}
   - component: {fileID: 1850313662}
   - component: {fileID: 1850313663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1850313661
 Transform:
@@ -8394,9 +8810,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594969165892811274, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: m_Name
       value: crate_steak
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562907839007535052, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8035018307786828352, guid: 4ce4b4f3f9c45c840a1680e8cb874482, type: 3}
       propertyPath: _interactionPoint
@@ -8427,7 +8859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1876643092}
   - component: {fileID: 1876643093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8482,7 +8914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879642455}
   - component: {fileID: 1879642456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8587,6 +9019,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f83962b75bd7614a85678c1703992fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8658,8 +9098,16 @@ PrefabInstance:
       value: wall (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8676,7 +9124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902697955}
   - component: {fileID: 1902697956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8772,7 +9220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928940097}
   - component: {fileID: 1928940098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8825,12 +9273,12 @@ GameObject:
   - component: {fileID: 1983146893}
   - component: {fileID: 1983146892}
   - component: {fileID: 1983146895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &1983146892
 MeshRenderer:
@@ -8930,12 +9378,12 @@ GameObject:
   - component: {fileID: 1988247432}
   - component: {fileID: 1988247431}
   - component: {fileID: 1988247430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor_kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &1988247430
 MeshCollider:
@@ -9085,8 +9533,16 @@ PrefabInstance:
       value: wall (20)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9228,7 +9684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2069154818}
   - component: {fileID: 2069154819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9330,8 +9786,16 @@ PrefabInstance:
       value: wall (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ef54bfc2fc6a343ad516f697bcf5a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9353,7 +9817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2095248620}
   - component: {fileID: 2095248621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9404,7 +9868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102250729}
   - component: {fileID: 2102250730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9506,8 +9970,16 @@ PrefabInstance:
       value: wall_window_closed (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f7df39107b73ef4dadb9c72e79477e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9529,7 +10001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119923247}
   - component: {fileID: 2119923248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,8 +10107,16 @@ PrefabInstance:
       value: wall_doorway (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80f4786d9cf739488151a93cfcb2644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9691,7 +10171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467597801575884361}
   - component: {fileID: 467597801575884362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9815,12 +10295,12 @@ GameObject:
   - component: {fileID: 543450651938182594}
   - component: {fileID: 3469287837935196775}
   - component: {fileID: 1711813855214382765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kitchencabinet_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &919132148288632855
 GameObject:
@@ -9833,12 +10313,12 @@ GameObject:
   - component: {fileID: 543450652292080301}
   - component: {fileID: 3469287838357253384}
   - component: {fileID: 1711813854361360834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: crate (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &919132148426554856
 GameObject:
@@ -9851,12 +10331,12 @@ GameObject:
   - component: {fileID: 543450652146886482}
   - component: {fileID: 3469287838210877687}
   - component: {fileID: 1711813854485584957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kitchencabinet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &1711813854361360834
 MeshRenderer:
@@ -9994,12 +10474,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2452323829946688620}
   - component: {fileID: 7772576975435263378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishStationMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &1956952587737282205
 GameObject:
@@ -10011,12 +10491,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7458676549775514607}
   - component: {fileID: 8516372300982590508}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishwashingMarker (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &1956952588621444823
 GameObject:
@@ -10028,12 +10508,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7458676549017181093}
   - component: {fileID: 8516372300098460770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishwashingMarker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &1956952589223916201
 GameObject:
@@ -10045,12 +10525,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7458676548288356315}
   - component: {fileID: 8516372299248523296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishwashingMarker (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2334034859708830706
 Transform:
@@ -10107,12 +10587,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2334034859708830706}
   - component: {fileID: 3395340793702198507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &3226002655333641947
 GameObject:
@@ -10124,12 +10604,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5331424525268055903}
   - component: {fileID: 5331424525268055904}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SilverwareTableMarker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &3395340793702198507
 MonoBehaviour:
@@ -10184,7 +10664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5696804622849346548}
   - component: {fileID: 5696804622849346549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10216,12 +10696,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5420360187023535739}
   - component: {fileID: 6524112147773516224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishwashingMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4177536975353127844
 Transform:
@@ -10248,7 +10728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4177536975353127844}
   - component: {fileID: 4232984809821715327}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10284,12 +10764,12 @@ GameObject:
   m_Component:
   - component: {fileID: 128770251195727370}
   - component: {fileID: 5196205983531595768}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishStationMarker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &4257293861502971436
 GameObject:
@@ -10301,12 +10781,12 @@ GameObject:
   m_Component:
   - component: {fileID: 128770249717588662}
   - component: {fileID: 5196205984469379916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DishStationMarker (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &5196205983531595768
 MonoBehaviour:
@@ -10420,12 +10900,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2934248339410808453}
   - component: {fileID: 6159949067891840723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SilverwareTableMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5696804622849346548
 Transform:
@@ -10486,12 +10966,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7776869727972327704}
   - component: {fileID: 7776869727972327705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BurgerStationMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &6159949067891840723
 MonoBehaviour:
@@ -10522,7 +11002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3801884625388539409}
   - component: {fileID: 6293064189455010941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10578,12 +11058,12 @@ GameObject:
   - component: {fileID: 743746976435420277}
   - component: {fileID: 769422874074907421}
   - component: {fileID: 7526882416596220306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7458676548288356315
 Transform:
@@ -10640,12 +11120,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5421361773593553747}
   - component: {fileID: 8082054238456053490}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ServingTableMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &7526882416596220306
 MeshRenderer:
@@ -10801,12 +11281,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5705999103676933241}
   - component: {fileID: 8445692752194108061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BurgerStationMarker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &8445692752194108061
 MonoBehaviour:
@@ -10894,12 +11374,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8269886606964815968}
   - component: {fileID: 9060695088810952569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fridge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &8892440660798259991
 GameObject:
@@ -10911,7 +11391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7833220570251689977}
   - component: {fileID: 8892440660798259992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
