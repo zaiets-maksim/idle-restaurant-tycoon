@@ -52,7 +52,6 @@ namespace Characters.States.Waiter
 
         private async Task HandleOrder()
         {
-            _waiter.GetOrder();
             _servingTables = _purchasedItemRegistry.KitchenItems
                 .OfType<ServingTable>()
                 .Where(x => x.TypeId == KitchenItemTypeId.ServingTable);
