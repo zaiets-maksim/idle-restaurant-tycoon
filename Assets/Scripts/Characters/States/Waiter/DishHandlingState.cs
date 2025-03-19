@@ -81,11 +81,11 @@ namespace Characters.States.Waiter
         {
             Debug.Log($"waiter looking for : {_waiter.Order.DishTypeId}");
             if(_purchasedItemRegistry.KitchenItems
-               .OfType<ServingTable>().Any(x => x.HasDishNew(_waiter.Order.DishTypeId)))
+               .OfType<ServingTable>().Any(x => x.HasDish(_waiter.Order.DishTypeId)))
                 
             _servingTables = _purchasedItemRegistry.KitchenItems
                 .OfType<ServingTable>()
-                .Where(x => x.HasDishNew(_waiter.Order.DishTypeId))
+                .Where(x => x.HasDish(_waiter.Order.DishTypeId))
                 .ToList();
 
             int count = _servingTables.Count();

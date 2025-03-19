@@ -25,5 +25,5 @@ MonoBehaviour:
     MarketItem:
       Name: Chair
       Description: Furniture for placing items in the hall.
-      Price: 50
+      Price: 25
       Icon: {fileID: 21300000, guid: 5dda40dbd614b104a993e35fd1904953, type: 3}

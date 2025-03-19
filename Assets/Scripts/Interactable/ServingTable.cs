@@ -19,6 +19,9 @@ public class ServingTable : KitchenItem
         
     }
 
+    public override void Occupy() { }
+    public override void Release() { }
+
     public void PlaceDish(Transform person, Dish dish)
     {
         _nearestDishPlacement = _placementsForDish
@@ -30,9 +33,6 @@ public class ServingTable : KitchenItem
     }
 
     public bool HasDish(DishTypeId typeId) => 
-        _placementsForDish.Any(x => x.Dish.DishTypeId == typeId);
-
-    public bool HasDishNew(DishTypeId typeId) => 
         _placementsForDish.Any(x => x.HasDishTypeId(typeId));
 
     public Dish GetDish(DishTypeId dishTypeId)

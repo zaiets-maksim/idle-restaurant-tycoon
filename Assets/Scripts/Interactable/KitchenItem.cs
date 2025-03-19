@@ -14,9 +14,9 @@ namespace Interactable
         
         public bool IsOccupied { get; private set; }
 
-        public void Occupy() => IsOccupied = true;
+        public virtual void Occupy() => IsOccupied = true;
 
-        public void Release() => IsOccupied = false;
+        public virtual void Release() => IsOccupied = false;
         
         public float InteractionTime
         {
