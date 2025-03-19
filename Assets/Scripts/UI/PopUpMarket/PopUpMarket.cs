@@ -61,6 +61,12 @@ namespace UI.PopUpMarket
                 1250f,
                 0.15f);
             
+            _rectScrollView.AnimateOverTime(
+                rect => rect.anchoredPosition.y,
+                (rect, value) => rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, value),
+                125f,
+                0.15f);
+            
             _bottom.AnimateOverTime(
                 t => t.position.y, 
                 (t, value) => t.position = new Vector3(t.position.x, value, t.position.z), 
@@ -77,6 +83,8 @@ namespace UI.PopUpMarket
                 (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
                 -250f,
                 0.15f);
+
+            _rectScrollView.anchoredPosition = new Vector2(_rectScrollView.anchoredPosition.x, 0f);
             
             _bottom.AnimateOverTime(
                 t => t.position.y, 
