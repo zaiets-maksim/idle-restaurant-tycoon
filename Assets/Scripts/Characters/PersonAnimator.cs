@@ -19,10 +19,13 @@ namespace Characters
 
         public void SetSpeed(float speed) => _animator.speed = speed;
 
-        public float GetCurrentCLipLength()
+        public float GetCurrentClipLength()
         {
-            float remainingTime = (1f - _animator.GetCurrentAnimatorStateInfo(0).normalizedTime) * _animator.GetCurrentAnimatorStateInfo(0).length;
-            return remainingTime;
+            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            return stateInfo.normalizedTime;
+
+            // float remainingTime = (1f - _animator.GetCurrentAnimatorStateInfo(0).normalizedTime) * _animator.GetCurrentAnimatorStateInfo(0).length;
+            // return remainingTime;
         }
 
         public void Idle() => _animator.SetTrigger(IsIdling);

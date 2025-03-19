@@ -68,7 +68,7 @@ namespace Characters.States.Waiter
                 _dishHolder.TakeDish(_dish);
                 _personAnimator.PutTheItem();
 
-                var time = _personAnimator.GetCurrentCLipLength();
+                var time = _personAnimator.GetCurrentClipLength();
                 await Task.Delay(time.ToMiliseconds());
             }
             else

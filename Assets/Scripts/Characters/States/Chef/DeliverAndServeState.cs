@@ -77,7 +77,7 @@ namespace Characters.States.Chef
             _personAnimator.PutTheItem();
             _orderStorageService.Cooked(_chef.Order);
 
-            var time = _personAnimator.GetCurrentCLipLength();
+            var time = _personAnimator.GetCurrentClipLength();
             await Task.Delay(time.ToMiliseconds());
             
             _servingTable.Release();

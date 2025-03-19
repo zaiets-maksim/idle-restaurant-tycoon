@@ -54,7 +54,7 @@ public class OrderDeliveryState : PersonBaseState
         _personAnimator.PutTheItem();
         _orderStorageService.Served(_waiter.Order);
 
-        var time = _personAnimator.GetCurrentCLipLength();
+        var time = _personAnimator.GetCurrentClipLength();
         await Task.Delay(time.ToMiliseconds());
     }
 
