@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Characters;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
-using Characters.States;
+using Characters.States.Waiter;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
@@ -36,7 +36,10 @@ public class OrderDeliveryState : PersonBaseState
         
         await DeliverOrder();
         
-        _waiterBehavior.ChangeState<IdleState>();
+        if(_waiter.GotNewOrder())
+            _waiterBehavior.ChangeState<DishHandlingState>();
+        else
+            _waiterBehavior.ChangeState<LeaveHallState>();
     }
 
     private async Task DeliverOrder()
@@ -48,11 +51,11 @@ public class OrderDeliveryState : PersonBaseState
         {
             _personMover.StartMovingTo(servingPoint, callback, true);
         });
-        
+
         _dishHolder.Give(out var dish);
         customer.TakeDish(dish);
         _personAnimator.PutTheItem();
-        _orderStorageService.Served(_waiter.Order);
+        _waiter.Delivered();
 
         var time = _personAnimator.GetCurrentClipLength();
         await Task.Delay(time.ToMiliseconds());

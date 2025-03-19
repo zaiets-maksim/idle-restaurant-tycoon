@@ -47,7 +47,7 @@ namespace Characters.States.Chef
             await DeliverDish();
             await ServeDish();
             
-            if(_chef.HasOrders())
+            if(_chef.GotNewOrder())
                 _chefBehavior.ChangeState<FoodSearchState>();
             else
                 _chefBehavior.ChangeState<IdleState>();
@@ -75,7 +75,7 @@ namespace Characters.States.Chef
         {
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
-            _orderStorageService.Cooked(_chef.Order);
+            _chef.Cooked(_chef.Order);
 
             var time = _personAnimator.GetCurrentClipLength();
             await Task.Delay(time.ToMiliseconds());

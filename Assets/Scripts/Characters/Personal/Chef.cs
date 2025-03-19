@@ -38,11 +38,11 @@ namespace Characters.Personal
 
         private void TryChangeToCookingState(Order order)
         {
-            if (IsIdle)
-            {
-                UpdateOrder();
+            if (!IsIdle)
+                return;
+            
+            if (GotNewOrder()) 
                 _chefBehavior.ChangeState<FoodSearchState>();
-            }
         }
 
         public override void PerformDuties()
@@ -54,9 +54,29 @@ namespace Characters.Personal
         {
             
         }
-
-        public bool HasOrders() => _orderStorageService.HasOrders();
         
-        public void UpdateOrder() => Order = _orderStorageService.GetOrder();
+        
+        public bool GotNewOrder()
+        {
+            if(Order != null)
+                return false;
+            
+            // Debug.Log($"{gameObject.name} - {_orderStorageService.HasOrders()}");
+            if (_orderStorageService.HasOrders())
+            {
+                Order = _orderStorageService.GetOrder();
+                // Debug.Log($"{gameObject.name} want to take {Order.DishTypeId}");
+                
+                return true;
+            }
+            
+            return false;
+        }
+
+        public void Cooked(Order order)
+        {
+            Order = null;
+            _orderStorageService.Cooked(order);
+        }
     }
 }

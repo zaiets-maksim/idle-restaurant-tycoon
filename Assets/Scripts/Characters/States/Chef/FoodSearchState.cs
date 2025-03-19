@@ -40,7 +40,7 @@ namespace Characters.States.Chef
         public override async void Enter()
         {
             _tcs = new TaskCompletionSource<bool>();
-            _chef.UpdateOrder();
+            
             await GetSomeFood();
             _personAnimator.Idle();
             _chefBehavior.ChangeState<CookingState>();

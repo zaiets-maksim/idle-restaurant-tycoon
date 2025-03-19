@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.States;
 using Characters.States.Waiter;
+using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
 using UnityEngine;
@@ -13,7 +15,7 @@ namespace Characters
         
         private IOrderStorageService _orderStorageService;
 
-        public bool IsIdle => _waiterBehavior.CurrentState is IdleState;
+        public bool IsIdle => _waiterBehavior.CurrentState is IdleState or LeaveHallState;
         public Order Order { get; private set; }
 
         public override void Start()
@@ -24,6 +26,7 @@ namespace Characters
 
             _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Waiter.Speed);
+            _spawnPosition = transform.position;
         }
 
         private void OnDestroy()
@@ -34,14 +37,41 @@ namespace Characters
 
         private void TryChangeToDishHandlingState(Order order)
         {
-            if (IsIdle)
+            if (!IsIdle)
+                return;
+            
+            if(GotNewOrder())
                 _waiterBehavior.ChangeState<DishHandlingState>();
         }
 
-        public void GetOrder()
+        public async Task LeaveHall()
         {
+            await TaskExtension.WaitFor(callback =>
+            {
+                _personMover.StartMovingTo(_spawnPosition, callback);
+            });
+        }
+        
+        public bool GotNewOrder()
+        {
+            if(Order != null)
+                return false;
+            
+            Debug.Log($"{gameObject.name} - {_orderStorageService.HasOrdersForServe()}");
             if(_orderStorageService.HasOrdersForServe())
+            {
                 Order = _orderStorageService.GetOrderForServe();
+                Debug.Log($"{gameObject.name} want to take {Order.DishTypeId}");
+                
+                return true;
+            }
+            
+            return false;
+        }
+        
+        public void Delivered()
+        {
+            Order = null;
         }
 
         public override void PerformDuties()

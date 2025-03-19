@@ -1,3 +1,4 @@
+using Extensions;
 using Infrastructure;
 using Services.DataStorageService;
 using UI.ProgressIndicator;
@@ -11,6 +12,9 @@ namespace Characters
         [SerializeField] protected NavMeshAgent _navMeshAgent;
         [SerializeField] protected ProgressIndicator _progressIndicator;
         [SerializeField] protected PersonAnimator _personAnimator;
+        [SerializeField] protected PersonMover _personMover;
+
+        protected Vector3 _spawnPosition;
 
         protected IPersistenceProgressService _progress;
 

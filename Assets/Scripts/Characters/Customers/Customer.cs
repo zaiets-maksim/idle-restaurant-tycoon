@@ -18,7 +18,6 @@ namespace Characters.Customers
         [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
         [SerializeField] private CustomerBehavior _customerBehavior;
         [SerializeField] private Transform _dishPoint;
-        [SerializeField] private PersonMover _personMover;
         
         private readonly IStaticDataService _staticData;
         private readonly BalanceStaticData _balance;
@@ -29,7 +28,6 @@ namespace Characters.Customers
         private Dish _dish;
         private readonly TaskCompletionSource<bool> _tcs;
         private Vector3 _lastPosition;
-        private Vector3 _spawnPosition;
 
         public bool IsAwaiting => _customerBehavior.CurrentState is SeatAndOrderState && _dishTypeId != DishTypeId.Unknown;
         public Transform DishPoint => _dishPoint;
@@ -106,7 +104,6 @@ namespace Characters.Customers
             _navMeshAgent.speed = randomSpeed;
             float coefficient = randomSpeed / _balance.Customers.DefaultSpeed;
             _personAnimator.SetSpeed(coefficient);
-            Debug.Log(_progress.PlayerData.ProgressData.Customers.EatingTimeDelay);
             _mealDuration = Random.Range(_balance.Customers.MealDurationInterval.x, _balance.Customers.MealDurationInterval.y) - 
                 _progress.PlayerData.ProgressData.Customers.EatingTimeDelay;
         }

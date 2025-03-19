@@ -20,7 +20,8 @@ namespace Characters.Behaviors
             _states = CreateStates(
                 new IdleState(_personAnimator),
                 new DishHandlingState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
-                new OrderDeliveryState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder)
+                new OrderDeliveryState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
+                new LeaveHallState(this, _waiter)
             );
 
             ChangeState<IdleState>();

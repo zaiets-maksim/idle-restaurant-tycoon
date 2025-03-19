@@ -538,6 +538,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 9179556259113510827}
   _progressIndicator: {fileID: 4226764761929691993}
   _personAnimator: {fileID: 4923008095846720054}
+  _personMover: {fileID: 5332925942410688229}
   _waiterBehavior: {fileID: 7592881360200513057}
 --- !u!114 &7592881360200513057
 MonoBehaviour:

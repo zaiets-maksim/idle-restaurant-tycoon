@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Characters.Customers;
@@ -12,17 +11,18 @@ namespace Services.OrderStorageService
         public event Action<Order> OnOrderCooked;
         public event Action<Order> OnNewOrderReceived;
         
-        private Queue<Order> _orders = new();
-        private Queue<Order> _ordersForServing = new();
+        private readonly Queue<Order> _orders = new();
+        private readonly Queue<Order> _ordersForServing = new();
 
+        
         public bool HasOrders() => _orders.Count > 0;
+        
         public bool HasOrdersForServe() => _ordersForServing.Count > 0;
         
-        public Order GetOrder() => _orders.Peek();
-        
-        public Order GetOrderForServe() => _ordersForServing.Peek();
+        public Order GetOrder() => _orders.Dequeue();
 
-        // for customer
+        public Order GetOrderForServe() => _ordersForServing.Dequeue();
+        
         public void NewOrder(Order order)
         {
             // Debug.Log($"new order: {order.DishTypeId}");
@@ -32,22 +32,16 @@ namespace Services.OrderStorageService
 
             Output();
         }
-
-        // call in chef
+        
         public void Cooked(Order order)
         {
             // Debug.Log($"order cooked: {order.DishTypeId}");
-            _orders.Dequeue();
+            // _orders.Dequeue();
             
             _ordersForServing.Enqueue(order);
-            OnOrderCooked?.Invoke(order); // subscribe in waiter
+            OnOrderCooked?.Invoke(order);
 
             Output();
-        }
-
-        public void Served(Order order)
-        {
-            _ordersForServing.Dequeue();
         }
 
         private void Output()
@@ -92,6 +86,5 @@ namespace Services.OrderStorageService
         Order GetOrderForServe();
         void NewOrder(Order order);
         void Cooked(Order order);
-        void Served(Order order);
     }
 }
