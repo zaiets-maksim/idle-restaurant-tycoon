@@ -11,8 +11,6 @@ using Services.StaticDataService;
 using StaticData;
 using StaticData.Levels;
 using StaticData.TypeId;
-using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Services.ItemBuyingService
 {
@@ -141,7 +139,8 @@ namespace Services.ItemBuyingService
             var stuff = _levelStaticData.CharactersData
                 .Where(item => item.TypeId == typeId).ToList();
 
-            var characterData = stuff[Random.Range(0, stuff.Count)];
+            var count = _purchasedItemRegistry.Stuff.Count(x => x.CharacterTypeId == typeId);
+            var characterData = stuff[count];
 
             var character = _characterFactory.Create<Person>(typeId, characterData.Position, characterData.Rotation);
             _purchasedItemRegistry.AddStuff(character);

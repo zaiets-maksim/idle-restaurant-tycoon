@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.DataStorageService;
+using StaticData.Configs;
+using StaticData.TypeId;
 using UI.ProgressIndicator;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,11 +16,12 @@ namespace Characters
         [SerializeField] protected ProgressIndicator _progressIndicator;
         [SerializeField] protected PersonAnimator _personAnimator;
         [SerializeField] protected PersonMover _personMover;
-
+        [SerializeField] private CharacterTypeId _characterTypeId;
+        
         protected Vector3 _spawnPosition;
-
         protected IPersistenceProgressService _progress;
 
+        public CharacterTypeId CharacterTypeId => _characterTypeId;
         public ProgressIndicator ProgressIndicator => _progressIndicator;
 
         public string Name { get; set; }
@@ -56,6 +59,11 @@ namespace Characters
             {
                 _personMover.StartMovingTo(_spawnPosition, callback);
             });
+        }
+
+        public void Initialize(CharacterConfig config)
+        {
+            _characterTypeId = config.TypeId;
         }
     }
 }

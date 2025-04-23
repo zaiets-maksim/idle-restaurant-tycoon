@@ -1,3 +1,6 @@
+using StaticData.TypeId;
+using UnityEngine;
+
 namespace Characters
 {
     public abstract class Employee : Person

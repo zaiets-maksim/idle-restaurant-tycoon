@@ -77,9 +77,9 @@ public class LoadLevelState : GameStateEntity
             _surfaceUpdaterService.UpdateCommon();
         }
         
-        foreach (var item in _purchasedStuff)
+        foreach (var person in _purchasedStuff)
         {
-            _person = _characterFactory.Create<Person>(item.TypeId, item.Position, item.Rotation, item.Parent);
+            _person = _characterFactory.Create<Person>(person.TypeId, person.Position, person.Rotation, person.Parent);
             _purchasedItemRegistry.AddStuff(_person);
         }
         

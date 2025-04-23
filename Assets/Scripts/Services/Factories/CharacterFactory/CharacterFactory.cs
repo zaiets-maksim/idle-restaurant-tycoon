@@ -20,6 +20,7 @@ namespace Services.Factories.CharacterFactory
         {
             var config = _staticData.ForCharacter(typeId);
             var customer = InstantiateOnActiveScene<T>(config.Prefab, position, rotation, parent);
+            customer.Initialize(config);
             return customer;
         }
 
