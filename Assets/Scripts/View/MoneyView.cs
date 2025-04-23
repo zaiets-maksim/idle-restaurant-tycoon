@@ -41,7 +41,9 @@ namespace View
                 0.1f
             );
             
-            _text.text = amount.ToString();
+            _text.text = amount >= 1000
+                ? $"{(amount >= 10000 ? amount / 1000 : (amount / 1000f)):0.#}K"
+                : amount.ToString();
         }
     }
 }
