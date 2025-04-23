@@ -9,6 +9,9 @@ internal class EatAndPayState : PersonBaseState
 {
     private readonly Customer _customer;
     private readonly CustomerBehavior _customerBehavior;
+    
+    private TaskCompletionSource<bool> _tcs = new();
+
 
     public EatAndPayState(CustomerBehavior customerBehavior, Customer customer)
     {

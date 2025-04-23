@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.DataStorageService;
@@ -47,6 +48,14 @@ namespace Characters
         {
             _navMeshAgent.isStopped = true;
             _navMeshAgent.enabled = false;
+        }
+        
+        public async Task MoveToSpawn()
+        {
+            await TaskExtension.WaitFor(callback =>
+            {
+                _personMover.StartMovingTo(_spawnPosition, callback);
+            });
         }
     }
 }

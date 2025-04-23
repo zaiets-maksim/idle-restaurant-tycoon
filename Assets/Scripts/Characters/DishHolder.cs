@@ -1,3 +1,4 @@
+using Extensions;
 using Interactable;
 using UnityEngine;
 
@@ -10,12 +11,12 @@ public class DishHolder : MonoBehaviour
 
     public void TakeDish(Dish dish)
     {
-        dish.transform.SetParent(_pointForDish.parent);
-        dish.transform.SetPositionAndRotation(_pointForDish.position, _pointForDish.rotation);
         Dish = dish;
+        Dish.transform.SetParent(_pointForDish.parent);
+        Dish.transform.SetPositionAndRotation(_pointForDish.position, _pointForDish.rotation);
     }
 
-    public void Give(out Dish dish)
+    public void GiveDish(out Dish dish)
     {
         dish = Dish;
         Dish = null;

@@ -32,14 +32,12 @@ public class OrderDeliveryState : PersonBaseState
     
     public override async void Enter()
     {
-        _tcs = new TaskCompletionSource<bool>();
-        
         await DeliverOrder();
         
-        if(_waiter.GotNewOrder())
+        if(_waiter.Order != null || _waiter.TryGetNewOrder())
             _waiterBehavior.ChangeState<DishHandlingState>();
         else
-            _waiterBehavior.ChangeState<LeaveHallState>();
+            _waiterBehavior.ChangeState<ReturnToSpawnState>();
     }
 
     private async Task DeliverOrder()
@@ -52,7 +50,7 @@ public class OrderDeliveryState : PersonBaseState
             _personMover.StartMovingTo(servingPoint, callback, true);
         });
 
-        _dishHolder.Give(out var dish);
+        _dishHolder.GiveDish(out var dish);
         customer.TakeDish(dish);
         _personAnimator.PutTheItem();
         _waiter.Delivered();

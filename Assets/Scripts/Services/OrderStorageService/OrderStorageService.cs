@@ -28,9 +28,11 @@ namespace Services.OrderStorageService
             // Debug.Log($"new order: {order.DishTypeId}");
 
             _orders.Enqueue(order);
-            OnNewOrderReceived?.Invoke(order);
-
+            
+            Debug.Log($"<<OnNewOrderReceived>> {order.DishTypeId}");
             Output();
+            
+            OnNewOrderReceived?.Invoke(order);
         }
         
         public void Cooked(Order order)
@@ -39,9 +41,11 @@ namespace Services.OrderStorageService
             // _orders.Dequeue();
             
             _ordersForServing.Enqueue(order);
-            OnOrderCooked?.Invoke(order);
-
+            
             Output();
+            Debug.Log($"<<OnOrderCooked>> {order.DishTypeId}");
+            
+            OnOrderCooked?.Invoke(order);
         }
 
         private void Output()

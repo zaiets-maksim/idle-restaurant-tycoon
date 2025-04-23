@@ -21,7 +21,7 @@ namespace Characters.Behaviors
                 new IdleState(_personAnimator),
                 new DishHandlingState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
                 new OrderDeliveryState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
-                new LeaveHallState(this, _waiter)
+                new ReturnToSpawnState(this, _waiter)
             );
 
             ChangeState<IdleState>();

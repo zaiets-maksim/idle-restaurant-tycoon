@@ -22,10 +22,8 @@ namespace Characters
         public float GetCurrentClipLength()
         {
             AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-            return stateInfo.normalizedTime;
-
-            // float remainingTime = (1f - _animator.GetCurrentAnimatorStateInfo(0).normalizedTime) * _animator.GetCurrentAnimatorStateInfo(0).length;
-            // return remainingTime;
+            var time =  stateInfo.normalizedTime;
+            return time / Time.timeScale;
         }
 
         public void Idle() => _animator.SetTrigger(IsIdling);

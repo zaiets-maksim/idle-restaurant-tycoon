@@ -53,16 +53,6 @@ namespace Characters.Customers
         public override void PerformDuties()
         {
         }
-
-        public async void LeaveRestaurant()
-        {
-            await TaskExtension.WaitFor(callback =>
-            {
-                _personMover.StartMovingTo(_spawnPosition, callback);
-            });
-            
-            Destroy(gameObject);
-        }
         
         public void AssignChair(Chair chair)
         {

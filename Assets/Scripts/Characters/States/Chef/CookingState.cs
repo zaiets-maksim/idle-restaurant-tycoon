@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
@@ -7,7 +8,6 @@ using Extensions;
 using Infrastructure;
 using Interactable;
 using Services.DataStorageService;
-using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
 using tetris.Scripts.Extensions;
 using UnityEngine;
@@ -23,10 +23,12 @@ namespace Characters.States.Chef
         private readonly DishHolder _dishHolder;
 
         private List<FoodStation> _foodStations;
-        TaskCompletionSource<bool> _tcs = new();
         private readonly PersonAnimator _personAnimator;
         private readonly Personal.Chef _chef;
         private readonly IPersistenceProgressService _progress;
+        
+        private CancellationTokenSource _cts = new();
+        
 
         public CookingState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
             DishHolder dishHolder)
@@ -43,14 +45,32 @@ namespace Characters.States.Chef
     
         public override async void Enter()
         {
-            _tcs = new TaskCompletionSource<bool>();
+            _cts = new CancellationTokenSource();
+
             await Cook();
+
+            if (_cts.IsCancellationRequested)
+            {
+                Debug.Log(Make.Colored($"All dish stations are occupy now {_chef.gameObject.GetInstanceID()}", Color.red));
+                Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
+                
+                while (_chefBehavior.IsTransitioning)
+                    await Task.Yield();
+                
+                Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
+                _chefBehavior.ChangeState<IdleState>();
+                return;
+            }
+
             _personAnimator.Idle();
             _chefBehavior.ChangeState<DeliverAndServeState>();
         }
 
         private async Task Cook()
         {
+            if(_cts.IsCancellationRequested)
+                return;
+            
             if (GetFoodStation(out FoodStation foodStation))
             {
                 foodStation.Occupy();
@@ -70,10 +90,14 @@ namespace Characters.States.Chef
                 {
                     _chef.ProgressIndicator.StartProgress(time, callback);
                 });
-                
+
                 _dishHolder.TakeDish(dish);
                 foodStation.Release();
                 _personAnimator.Idle();
+            }
+            else
+            {
+                _cts.Cancel();
             }
         }
 
@@ -104,7 +128,7 @@ namespace Characters.States.Chef
     
         public override void Exit()
         {
-        
+            _cts.Cancel();
         }
     }
 }

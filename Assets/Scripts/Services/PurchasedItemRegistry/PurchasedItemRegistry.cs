@@ -1,15 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using Crates;
 using Interactable;
 using StaticData.TypeId;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Services.PurchasedItemRegistry
 {
     public class PurchasedItemRegistry : IPurchasedItemRegistry
     {
+        public event Action<KitchenItem> OnNewItemKitchenPurchased;
         public List<KitchenItem> KitchenItems { get; } = new();
         public List<HallItem> HallItems { get; } = new();
         public List<Person> Stuff { get; } = new();
@@ -18,8 +20,11 @@ namespace Services.PurchasedItemRegistry
         public void AddKitchenItems(List<KitchenItem> kitchenItems) => 
             KitchenItems.AddRange(kitchenItems);
 
-        public void AddKitchenItem(KitchenItem kitchenItem) => 
+        public void AddKitchenItem(KitchenItem kitchenItem)
+        {
             KitchenItems.Add(kitchenItem);
+            OnNewItemKitchenPurchased?.Invoke(kitchenItem);
+        }
 
         public void AddHallItem(HallItem hallItem) => 
             HallItems.Add(hallItem);
@@ -37,6 +42,7 @@ namespace Services.PurchasedItemRegistry
 
     public interface IPurchasedItemRegistry
     {
+        event Action<KitchenItem> OnNewItemKitchenPurchased;
         void AddKitchenItem(KitchenItem kitchenItem);
         void AddHallItem(HallItem hallItem);
         void AddStuff(Person person);

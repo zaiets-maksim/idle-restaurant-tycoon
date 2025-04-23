@@ -12,10 +12,10 @@ namespace Characters
     public class Waiter : Employee, IServiceWorker
     {
         [SerializeField] private WaiterBehavior _waiterBehavior;
-        
         private IOrderStorageService _orderStorageService;
 
-        public bool IsIdle => _waiterBehavior.CurrentState is IdleState or LeaveHallState;
+        public WaiterBehavior WaiterBehavior => _waiterBehavior;
+        public bool IsIdle => _waiterBehavior.CurrentState is IdleState or ReturnToSpawnState;
         public Order Order { get; private set; }
 
         public override void Start()
@@ -40,28 +40,27 @@ namespace Characters
             if (!IsIdle)
                 return;
             
-            if(GotNewOrder())
+            if(Order != null && HasSameOrderType(order) || TryGetNewOrder())
                 _waiterBehavior.ChangeState<DishHandlingState>();
         }
 
-        public async Task LeaveHall()
+        public new async Task MoveToSpawn()
         {
             await TaskExtension.WaitFor(callback =>
             {
                 _personMover.StartMovingTo(_spawnPosition, callback);
             });
         }
-        
-        public bool GotNewOrder()
+
+        public bool HasSameOrderType(Order order) => Order.DishTypeId == order.DishTypeId;
+
+        public bool TryGetNewOrder()
         {
-            if(Order != null)
-                return false;
-            
-            Debug.Log($"{gameObject.name} - {_orderStorageService.HasOrdersForServe()}");
+            Debug.Log($"{gameObject.name} ({gameObject.GetInstanceID()}) - {_orderStorageService.HasOrdersForServe()}");
             if(_orderStorageService.HasOrdersForServe())
             {
                 Order = _orderStorageService.GetOrderForServe();
-                Debug.Log($"{gameObject.name} want to take {Order.DishTypeId}");
+                Debug.Log($"{gameObject.name} ({gameObject.GetInstanceID()}) got order: {Order.DishTypeId}");
                 
                 return true;
             }

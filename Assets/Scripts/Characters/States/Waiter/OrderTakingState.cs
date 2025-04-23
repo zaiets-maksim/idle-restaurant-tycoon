@@ -25,7 +25,6 @@ namespace Characters.States.Waiter
 
         public override void Enter()
         {
-            _tcs = new TaskCompletionSource<bool>();
         }
         
 

@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using Characters.Customers;
 using Characters.PersonStateMachine;
+using UnityEngine;
 
 internal class LeaveState : PersonBaseState
 {
@@ -13,11 +13,10 @@ internal class LeaveState : PersonBaseState
 
     public override async void Enter()
     {
-        _tcs = new TaskCompletionSource<bool>();
-
         _customer.LeaveChair();
         _customer.EnableAgent();
-        _customer.LeaveRestaurant();
+        await _customer.MoveToSpawn();
+        Object.Destroy(_customer.gameObject);
     }
 
     public override void Exit()

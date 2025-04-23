@@ -44,13 +44,14 @@ namespace Characters.States.Chef
         public override async void Enter()
         {
             _tcs = new TaskCompletionSource<bool>();
+
             await DeliverDish();
             await ServeDish();
             
-            if(_chef.GotNewOrder())
+            if(_chef.TryGetNewOrder())
                 _chefBehavior.ChangeState<FoodSearchState>();
             else
-                _chefBehavior.ChangeState<IdleState>();
+                _chefBehavior.ChangeState<ReturnToSpawnState>();
         }
 
         private async Task DeliverDish()
@@ -67,12 +68,13 @@ namespace Characters.States.Chef
             }
             else
             {
-                _chefBehavior.ChangeState<IdleState>();
+                _chefBehavior.ChangeState<ReturnToSpawnState>();
             }
         }
         
         private async Task ServeDish()
         {
+            Debug.Log(_dishHolder.Dish);
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
             _chef.Cooked(_chef.Order);

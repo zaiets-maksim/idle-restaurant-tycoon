@@ -1,3 +1,4 @@
+using System;
 using StaticData;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ namespace Interactable
         [SerializeField] protected KitchenItemTypeId _typeId;
         [SerializeField] protected Transform _interactionPoint;
         [SerializeField] protected float _interactionTime = 2f;
-        
+
+        public event Action<KitchenItem> OnRelease;
         public KitchenItemTypeId TypeId => _typeId;
         public Transform InteractionPoint => _interactionPoint;
         
@@ -16,8 +18,12 @@ namespace Interactable
 
         public virtual void Occupy() => IsOccupied = true;
 
-        public virtual void Release() => IsOccupied = false;
-        
+        public virtual void Release()
+        {
+            IsOccupied = false;
+            OnRelease?.Invoke(this);
+        }
+
         public float InteractionTime
         {
             get => _interactionTime;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
@@ -27,6 +28,9 @@ namespace Characters.States.Waiter
         private IEnumerable<ServingTable> _servingTables;
         private Dish _dish;
         private readonly Characters.Waiter _waiter;
+        
+        private CancellationTokenSource _cts = new();
+
 
         public DishHandlingState(WaiterBehavior waiterBehavior, Characters.Waiter waiter, Transform transform, PersonMover personMover,
             PersonAnimator personAnimator, DishHolder dishHolder)
@@ -44,10 +48,13 @@ namespace Characters.States.Waiter
 
         public override async void Enter()
         {
-            _tcs = new TaskCompletionSource<bool>();
-            
+            _cts = new CancellationTokenSource();
             await HandleOrder();
-            _waiterBehavior.ChangeState<OrderDeliveryState>();
+            
+            if(_cts.IsCancellationRequested)
+                _waiterBehavior.ChangeState<ReturnToSpawnState>();
+            else
+                _waiterBehavior.ChangeState<OrderDeliveryState>();
         }
 
         private async Task HandleOrder()
@@ -63,7 +70,21 @@ namespace Characters.States.Waiter
                     _personMover.StartMovingTo(nearestServingTable.OrderCollectionPoint, callback);
                 });
 
+
                 _dish = nearestServingTable.GetDish(_waiter.Order.DishTypeId);
+                if (_dish == null)
+                {
+                    Debug.Log("CANCEL!");
+                    _cts.Cancel();
+                    return;
+                }
+                
+                
+                if(_cts.IsCancellationRequested)
+                    return;
+                
+                // Debug.Log(_waiter.Order.DishTypeId);
+                
                 _dishHolder.TakeDish(_dish);
                 _personAnimator.PutTheItem();
 
@@ -107,7 +128,7 @@ namespace Characters.States.Waiter
 
         public override void Exit()
         {
-            
+            _cts.Cancel();
         }
     }
 }

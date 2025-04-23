@@ -28,7 +28,6 @@ internal class SeatAndOrderState : PersonBaseState
 
     public override async void Enter()
     {
-        _tcs = new TaskCompletionSource<bool>();
         await TakeSeatAndOrder();
     }
 
