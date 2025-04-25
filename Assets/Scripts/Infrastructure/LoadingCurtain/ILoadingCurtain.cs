@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-public class ILoadingCurtain
+namespace Connect4.Scripts.Infrastructure
 {
+    public interface ILoadingCurtain
+    {
+        event Action OnComplete;
+        void Show();
+        void Hide();
+    }
 }
