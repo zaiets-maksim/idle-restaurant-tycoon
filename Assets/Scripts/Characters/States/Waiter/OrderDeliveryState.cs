@@ -3,6 +3,7 @@ using Characters;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
 using Characters.States.Waiter;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
@@ -42,7 +43,7 @@ public class OrderDeliveryState : PersonBaseState
             _waiterBehavior.ChangeState<ReturnToSpawnState>();
     }
 
-    private async Task DeliverOrder()
+    private async UniTask DeliverOrder()
     {
         var customer = _waiter.Order.Customer;
         var servingPoint = customer.Chair.ServingPoints[Random.Range(0, customer.Chair.ServingPoints.Length)];
@@ -58,7 +59,7 @@ public class OrderDeliveryState : PersonBaseState
         _waiter.Delivered();
 
         var time = _personAnimator.GetCurrentClipLength();
-        await Task.Delay(time.ToMiliseconds());
+        await UniTask.Delay(time.ToMiliseconds());
     }
 
     public override void Exit()

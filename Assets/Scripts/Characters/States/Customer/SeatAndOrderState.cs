@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Characters;
 using Characters.Customers;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Interactable;
@@ -31,7 +32,7 @@ internal class SeatAndOrderState : PersonBaseState
         await TakeSeatAndOrder();
     }
 
-    private async Task TakeSeatAndOrder()
+    private async UniTask TakeSeatAndOrder()
     {
         if (HasFreeChair(out Chair chair))
         {
@@ -48,7 +49,7 @@ internal class SeatAndOrderState : PersonBaseState
             _customer.ProgressIndicator.AddPosition(_customer.transform.forward * -0.5f);
             _customer.SetPosition(chair.transform.position + chair.transform.forward * 0.5f);
             
-            await Task.Delay(chair.InteractionTime.ToMiliseconds());
+            await UniTask.Delay(chair.InteractionTime.ToMiliseconds());
             
             _customer.MakeOrder();
         }

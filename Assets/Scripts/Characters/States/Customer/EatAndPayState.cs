@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Characters;
 using Characters.Customers;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using tetris.Scripts.Extensions;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ internal class EatAndPayState : PersonBaseState
     private readonly Customer _customer;
     private readonly CustomerBehavior _customerBehavior;
     
-    private TaskCompletionSource<bool> _tcs = new();
+    private UniTaskCompletionSource<bool> _tcs = new();
 
 
     public EatAndPayState(CustomerBehavior customerBehavior, Customer customer)
@@ -21,12 +22,12 @@ internal class EatAndPayState : PersonBaseState
 
     public override async void Enter()
     {
-        _tcs = new TaskCompletionSource<bool>();
+        _tcs = new UniTaskCompletionSource<bool>();
         
         await _customer.Eat();
         _customer.PayBill();
 
-        await Task.Delay(1.ToMiliseconds());
+        await UniTask.Delay(1.ToMiliseconds());
         
         _customerBehavior.ChangeState<LeaveState>();
     }

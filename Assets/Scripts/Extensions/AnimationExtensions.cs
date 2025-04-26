@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using tetris.Scripts.Extensions;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Extensions
                 duration
             );
             
-            await Task.Delay(duration.ToMiliseconds());
+            await UniTask.Delay(duration.ToMiliseconds());
 
             transform.AnimateOverTime(
                 getValue, 

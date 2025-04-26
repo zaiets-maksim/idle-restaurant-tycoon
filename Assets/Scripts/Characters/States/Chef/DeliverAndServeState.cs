@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
@@ -22,7 +23,7 @@ namespace Characters.States.Chef
         private readonly Transform _transform;
         private readonly DishHolder _dishHolder;
 
-        private TaskCompletionSource<bool> _tcs = new();
+        private UniTaskCompletionSource<bool> _tcs = new();
         private List<ServingTable> _servingTables;
         private ServingTable _servingTable;
         private readonly IOrderStorageService _orderStorageService;
@@ -43,7 +44,7 @@ namespace Characters.States.Chef
 
         public override async void Enter()
         {
-            _tcs = new TaskCompletionSource<bool>();
+            _tcs = new UniTaskCompletionSource<bool>();
 
             await DeliverDish();
             await ServeDish();
@@ -54,7 +55,7 @@ namespace Characters.States.Chef
                 _chefBehavior.ChangeState<ReturnToSpawnState>();
         }
 
-        private async Task DeliverDish()
+        private async UniTask DeliverDish()
         {
             if (GetServingTable(out ServingTable servingTable))
             {
@@ -72,7 +73,7 @@ namespace Characters.States.Chef
             }
         }
         
-        private async Task ServeDish()
+        private async UniTask ServeDish()
         {
             Debug.Log(_dishHolder.Dish);
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
@@ -80,7 +81,7 @@ namespace Characters.States.Chef
             _chef.Cooked(_chef.Order);
 
             var time = _personAnimator.GetCurrentClipLength();
-            await Task.Delay(time.ToMiliseconds());
+            await UniTask.Delay(time.ToMiliseconds());
             
             _servingTable.Release();
         }

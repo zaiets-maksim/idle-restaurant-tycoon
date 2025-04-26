@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Interactable;
@@ -55,7 +56,7 @@ namespace Characters.States.Chef
                 Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
                 
                 while (_chefBehavior.IsTransitioning)
-                    await Task.Yield();
+                    await UniTask.Yield();
                 
                 Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
                 _chefBehavior.ChangeState<IdleState>();
@@ -66,7 +67,7 @@ namespace Characters.States.Chef
             _chefBehavior.ChangeState<DeliverAndServeState>();
         }
 
-        private async Task Cook()
+        private async UniTask Cook()
         {
             if(_cts.IsCancellationRequested)
                 return;

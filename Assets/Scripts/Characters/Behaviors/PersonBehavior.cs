@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Services.DataStorageService;
 using Services.OrderStorageService;
@@ -57,7 +58,7 @@ namespace Characters.PersonStateMachine
 
             _currentState?.Exit();
 
-            await Task.Yield();
+            await UniTask.Yield();
 
             state?.Enter();
             _currentState = state;

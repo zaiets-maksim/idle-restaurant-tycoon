@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.DataStorageService;
@@ -62,7 +63,7 @@ namespace Characters
             _navMeshAgent.enabled = false;
         }
         
-        public async Task MoveToSpawn()
+        public async UniTask MoveToSpawn()
         {
             await TaskExtension.WaitFor(callback =>
             {

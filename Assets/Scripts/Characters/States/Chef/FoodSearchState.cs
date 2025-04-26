@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using Extensions;
-using Infrastructure;
 using Interactable;
 using Services.DataStorageService;
 using Services.PurchasedItemRegistry;
@@ -23,7 +23,7 @@ namespace Characters.States.Chef
         private readonly Personal.Chef _chef;
 
         private List<Fridge> _fridgesWithFood;
-        TaskCompletionSource<bool> _tcs = new();
+        UniTaskCompletionSource<bool> _tcs = new();
         private readonly IPersistenceProgressService _progress;
 
         public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, 
@@ -41,14 +41,14 @@ namespace Characters.States.Chef
 
         public override async void Enter()
         {
-            _tcs = new TaskCompletionSource<bool>();
+            _tcs = new UniTaskCompletionSource<bool>();
             
             await GetSomeFood();
             _personAnimator.Idle();
             _chefBehavior.ChangeState<CookingState>();
         }
 
-        private async Task GetSomeFood()
+        private async UniTask GetSomeFood()
         {
             if (GetFridges(out Fridge fridge))
             {
@@ -66,7 +66,7 @@ namespace Characters.States.Chef
             }
         }
 
-        private async Task GetFoodFromFridge(Fridge fridge)
+        private async UniTask GetFoodFromFridge(Fridge fridge)
         {
             fridge.Occupy();
             
@@ -87,7 +87,7 @@ namespace Characters.States.Chef
             });
         }
 
-        private async Task GetFoodFromStorage()
+        private async UniTask GetFoodFromStorage()
         {
             if (GetRandomCrateInteractionPoint(out Transform point))
             {

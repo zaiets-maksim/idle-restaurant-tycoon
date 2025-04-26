@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.States;
 using Characters.States.Waiter;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
@@ -42,7 +43,7 @@ namespace Characters
                 _waiterBehavior.ChangeState<DishHandlingState>();
         }
 
-        public new async Task MoveToSpawn()
+        public new async UniTask MoveToSpawn()
         {
             await TaskExtension.WaitFor(callback =>
             {

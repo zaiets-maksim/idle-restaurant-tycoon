@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Interactable;
 using Services.CurrencyService;
@@ -63,7 +64,7 @@ namespace Characters.Customers
             _orderStorageService.NewOrder(new Order(_dishTypeId, this));
         }
         
-        public async Task Eat()
+        public async UniTask Eat()
         {
             await TaskExtension.WaitFor(callback =>
             {

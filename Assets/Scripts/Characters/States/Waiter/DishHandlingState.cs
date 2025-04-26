@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
+using Cysharp.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Interactable;
@@ -57,7 +58,7 @@ namespace Characters.States.Waiter
                 _waiterBehavior.ChangeState<OrderDeliveryState>();
         }
 
-        private async Task HandleOrder()
+        private async UniTask HandleOrder()
         {
             _servingTables = _purchasedItemRegistry.KitchenItems
                 .OfType<ServingTable>()
@@ -89,7 +90,7 @@ namespace Characters.States.Waiter
                 _personAnimator.PutTheItem();
 
                 var time = _personAnimator.GetCurrentClipLength();
-                await Task.Delay(time.ToMiliseconds());
+                await UniTask.Delay(time.ToMiliseconds());
             }
             else
             {
