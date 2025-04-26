@@ -13,10 +13,8 @@ namespace Characters.Behaviors
         [SerializeField] private Waiter _waiter;
         [SerializeField] private DishHolder _dishHolder;
     
-        private IEnumerator Start()
+        private void OnEnable()
         {
-            yield return null;
-
             _states = CreateStates(
                 new IdleState(_personAnimator),
                 new DishHandlingState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder, _orderStorageService, _purchasedItemRegistry),

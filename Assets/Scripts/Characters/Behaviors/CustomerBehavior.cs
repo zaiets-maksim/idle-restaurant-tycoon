@@ -3,7 +3,6 @@ using Characters;
 using Characters.Customers;
 using Characters.PersonStateMachine;
 using Characters.States;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CustomerBehavior : PersonBehavior
@@ -12,10 +11,8 @@ public class CustomerBehavior : PersonBehavior
     [SerializeField] private PersonAnimator _personAnimator;
     [SerializeField] private Customer _customer;
 
-    private IEnumerator Start()
+    private void OnEnable()
     {
-        yield return null;
-        
         _states = CreateStates(
             new IdleState(_personAnimator),
             new SeatAndOrderState(_personMover, _personAnimator, _customer, _purchasedItemRegistry),

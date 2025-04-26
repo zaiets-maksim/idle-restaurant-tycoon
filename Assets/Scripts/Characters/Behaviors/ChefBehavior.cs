@@ -14,10 +14,8 @@ namespace Characters.Behaviors
         [SerializeField] private Chef _chef;
         [SerializeField] private DishHolder _dishHolder;
 
-        private IEnumerator Start()
+        private void OnEnable()
         {
-            yield return null;
-            
             _states = CreateStates(
                 new IdleState(_personAnimator),
                 new FoodSearchState(this, _chef, _personMover, _personAnimator, _purchasedItemRegistry, _progress),
