@@ -15,7 +15,7 @@ public class CustomerBehavior : PersonBehavior
     private IEnumerator Start()
     {
         yield return null;
-        yield break;
+        
         _states = CreateStates(
             new IdleState(_personAnimator),
             new SeatAndOrderState(_personMover, _personAnimator, _customer, _purchasedItemRegistry),

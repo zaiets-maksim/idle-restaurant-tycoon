@@ -22,11 +22,9 @@ namespace Services.Factories.CharacterFactory
         public T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 eulerAngles, Transform parent) where T : Person
         {
             var config = _staticData.ForCharacter(typeId);
-            var customer = InstantiateOnActiveScene<T>(config.Prefab, position, eulerAngles, parent);
-            Debug.Log(customer.name);
-            Debug.Log(customer.transform.position);
-            customer.Initialize(config);
-            return customer;
+            var person = InstantiateOnActiveScene<T>(config.Prefab, position, eulerAngles, parent);
+            person.Initialize(config);
+            return person;
         }
 
         public CustomerAppearance GetRandomCustomerAppearance()

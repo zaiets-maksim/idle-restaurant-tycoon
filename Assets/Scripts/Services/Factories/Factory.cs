@@ -33,7 +33,7 @@ namespace Connect4.Scripts.Services.Factories
 
         protected T InstantiateOnActiveScene<T>(GameObject prefab, Vector3 position, Vector3 eulerAngles, Transform parent)
         {
-            var transform = InstantiatePrefabOnActiveScene(prefab).transform;
+            var transform = _instantiator.InstantiatePrefab(prefab, position, Quaternion.Euler(eulerAngles), parent).transform;
             transform.position = position;
             transform.eulerAngles = eulerAngles;
             // transform.SetPositionAndRotation(position, Quaternion.Euler(eulerAngles));
