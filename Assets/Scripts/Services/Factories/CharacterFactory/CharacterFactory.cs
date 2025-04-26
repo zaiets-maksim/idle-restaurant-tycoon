@@ -1,9 +1,11 @@
 using Characters;
 using Characters.Customers;
+using Connect4.Scripts.Services.Factories;
 using Services.StaticDataService;
 using StaticData.Configs;
 using StaticData.TypeId;
 using UnityEngine;
+using Zenject;
 
 namespace Services.Factories.CharacterFactory
 {
@@ -11,15 +13,18 @@ namespace Services.Factories.CharacterFactory
     {
         private readonly IStaticDataService _staticData;
 
-        public CharacterFactory(IStaticDataService staticData)
+        public CharacterFactory(IInstantiator instantiator, IStaticDataService staticDataService) : base(instantiator)
         {
-            _staticData = staticData;
+            _instantiator = instantiator;
+            _staticData = staticDataService;
         }
 
-        public T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent) where T : Person
+        public T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 eulerAngles, Transform parent) where T : Person
         {
             var config = _staticData.ForCharacter(typeId);
-            var customer = InstantiateOnActiveScene<T>(config.Prefab, position, rotation, parent);
+            var customer = InstantiateOnActiveScene<T>(config.Prefab, position, eulerAngles, parent);
+            Debug.Log(customer.name);
+            Debug.Log(customer.transform.position);
             customer.Initialize(config);
             return customer;
         }
@@ -35,7 +40,7 @@ namespace Services.Factories.CharacterFactory
 
     public interface ICharacterFactory
     {
-        T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 rotation, Transform parent = null) where T : Person;
+        T Create<T>(CharacterTypeId typeId, Vector3 position, Vector3 eulerAngles, Transform parent = null) where T : Person;
         CustomerAppearance GetRandomCustomerAppearance();
     }
 }

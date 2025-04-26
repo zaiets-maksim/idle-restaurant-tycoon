@@ -31,12 +31,12 @@ namespace Characters.States.Chef
         
 
         public CookingState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
-            DishHolder dishHolder)
+            DishHolder dishHolder, IPurchasedItemRegistry purchasedItemRegistry, IPersistenceProgressService progress)
         {
             _chef = chef;
             _dishHolder = dishHolder;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _progress = ProjectContext.Instance?.Progress;
+            _purchasedItemRegistry = purchasedItemRegistry;
+            _progress = progress;
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;

@@ -792,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 5809888923702049695}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: -0.00000023841858, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 85, y: 85, z: 85}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -977,7 +977,7 @@ Transform:
   m_GameObject: {fileID: 7029970993553439832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 0, z: -12.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1017,7 +1017,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.4
-  m_Speed: 33.5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   _progressIndicator: {fileID: 2087925321352976061}
   _personAnimator: {fileID: 1293852968252556180}
   _personMover: {fileID: 1446292536141125478}
+  _characterTypeId: 0
   _chefBehavior: {fileID: 2283261003506355929}
   _itemCollector: {fileID: 8074499422512747425}
 --- !u!114 &2283261003506355929

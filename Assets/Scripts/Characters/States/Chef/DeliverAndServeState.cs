@@ -29,13 +29,13 @@ namespace Characters.States.Chef
         private readonly Personal.Chef _chef;
 
         public DeliverAndServeState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover,
-            PersonAnimator personAnimator, DishHolder dishHolder)
+            PersonAnimator personAnimator, DishHolder dishHolder, IPurchasedItemRegistry purchasedItemRegistry, IOrderStorageService orderStorageService)
         {
             _chef = chef;
             _dishHolder = dishHolder;
             _chefBehavior = chefBehavior;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+            _purchasedItemRegistry = purchasedItemRegistry;
+            _orderStorageService = orderStorageService;
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;

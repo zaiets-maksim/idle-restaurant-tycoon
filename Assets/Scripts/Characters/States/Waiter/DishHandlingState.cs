@@ -33,7 +33,7 @@ namespace Characters.States.Waiter
 
 
         public DishHandlingState(WaiterBehavior waiterBehavior, Characters.Waiter waiter, Transform transform, PersonMover personMover,
-            PersonAnimator personAnimator, DishHolder dishHolder)
+            PersonAnimator personAnimator, DishHolder dishHolder, IOrderStorageService orderStorageService, IPurchasedItemRegistry purchasedItemRegistry)
         {
             _waiter = waiter;
             _dishHolder = dishHolder;
@@ -42,8 +42,8 @@ namespace Characters.States.Waiter
             _transform = transform;
             _waiterBehavior = waiterBehavior;
 
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+            _orderStorageService = orderStorageService;
+            _purchasedItemRegistry = purchasedItemRegistry;
         }
 
         public override async void Enter()

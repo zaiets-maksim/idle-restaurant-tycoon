@@ -3,6 +3,7 @@ using Characters;
 using Characters.Customers;
 using Characters.PersonStateMachine;
 using Characters.States;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CustomerBehavior : PersonBehavior
@@ -14,10 +15,10 @@ public class CustomerBehavior : PersonBehavior
     private IEnumerator Start()
     {
         yield return null;
-            
+        yield break;
         _states = CreateStates(
             new IdleState(_personAnimator),
-            new SeatAndOrderState(_personMover, _personAnimator, _customer),
+            new SeatAndOrderState(_personMover, _personAnimator, _customer, _purchasedItemRegistry),
             new EatAndPayState(this, _customer),
             new LeaveState(_customer)
         );

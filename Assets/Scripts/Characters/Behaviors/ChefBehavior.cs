@@ -20,9 +20,9 @@ namespace Characters.Behaviors
             
             _states = CreateStates(
                 new IdleState(_personAnimator),
-                new FoodSearchState(this, _chef, _personMover, _personAnimator),
-                new CookingState(this, _chef, transform, _personMover, _personAnimator, _dishHolder),
-                new DeliverAndServeState(this, _chef, transform, _personMover, _personAnimator, _dishHolder),
+                new FoodSearchState(this, _chef, _personMover, _personAnimator, _purchasedItemRegistry, _progress),
+                new CookingState(this, _chef, transform, _personMover, _personAnimator, _dishHolder, _purchasedItemRegistry, _progress),
+                new DeliverAndServeState(this, _chef, transform, _personMover, _personAnimator, _dishHolder, _purchasedItemRegistry, _orderStorageService),
                 new ReturnToSpawnState(this, _chef)
             );
 

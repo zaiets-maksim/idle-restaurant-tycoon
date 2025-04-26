@@ -1,7 +1,10 @@
 using Infrastructure;
 using Infrastructure.StateMachine;
+using Infrastructure.StateMachine.Game.States;
+using Services.DataStorageService;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.Buttons
 {
@@ -9,15 +12,16 @@ namespace UI.Buttons
     {
         [SerializeField] private Button _button;
         
-        private readonly IStateMachine _stateMachine;
-        
-        public MenuButton()
+        private IStateMachine<IGameState> _stateMachine;
+
+        [Inject]
+        public void Constructor(IStateMachine<IGameState> stateMachine)
         {
-            _stateMachine = ProjectContext.Instance?.StateMachine;
+            _stateMachine = stateMachine;
         }
         
         private void Start() => _button.onClick.AddListener(ToMenu);
         
-        private void ToMenu() => _stateMachine.Enter<LoadMenuState>();
+        private void ToMenu() => _stateMachine.Enter<MenuLevelState, string>("MainMenu");
     }
 }

@@ -279,8 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 2608825347058523281}
-  Image: {fileID: 0}
-  MoveUpSpeed: 20
+  _delay: 1
+  Image: {fileID: 5573650994682248547}
+  MoveUpSpeed: 50
   TimeStep: 0.03
 --- !u!1 &3484854971714372907
 GameObject:

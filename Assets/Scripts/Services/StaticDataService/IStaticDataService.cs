@@ -1,3 +1,4 @@
+using Connect4.Scripts.StaticData;
 using StaticData;
 using StaticData.Configs;
 using StaticData.Levels;
@@ -20,5 +21,6 @@ namespace Services.StaticDataService
         CustomerAppearance ForCharacterAppearance(CustomerTypeId typeId);
         CustomerTypeId[] GetCustomerTypeIdsInAppearance();
         DishTypeId[] GetDishTypeIds();
+        GameStaticData GameConfig();
     }
 }

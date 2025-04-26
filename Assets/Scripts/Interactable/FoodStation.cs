@@ -2,6 +2,7 @@ using Infrastructure;
 using Services.Factories.ItemFactory;
 using Services.StaticDataService;
 using UnityEngine;
+using Zenject;
 
 namespace Interactable
 {
@@ -11,15 +12,14 @@ namespace Interactable
         [SerializeField] private Transform _placeForDish;
         [SerializeField] private DishTypeId[] _dishTypeId;
         
-        private readonly IItemFactory _itemFactory;
-        private readonly IStaticDataService _staticData;
-        
+        private IItemFactory _itemFactory;
+
         public DishTypeId[] DishTypeId => _dishTypeId;
 
-        public FoodStation()
+        [Inject]
+        public void Constructor(IItemFactory itemFactory)
         {
-            _itemFactory = ProjectContext.Instance?.ItemFactory;
-            _staticData = ProjectContext.Instance?.StaticData;
+            _itemFactory = itemFactory;
         }
         
         public override void Interact()

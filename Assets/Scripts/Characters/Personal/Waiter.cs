@@ -12,7 +12,6 @@ namespace Characters
     public class Waiter : Employee, IServiceWorker
     {
         [SerializeField] private WaiterBehavior _waiterBehavior;
-        private IOrderStorageService _orderStorageService;
 
         public WaiterBehavior WaiterBehavior => _waiterBehavior;
         public bool IsIdle => _waiterBehavior.CurrentState is IdleState or ReturnToSpawnState;
@@ -21,18 +20,17 @@ namespace Characters
         public override void Start()
         {
             base.Start();
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _orderStorageService!.OnOrderCooked += TryChangeToDishHandlingState;
-
-            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
+            _orderStorageService.OnOrderCooked += TryChangeToDishHandlingState;
+            _progress.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
+            
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Waiter.Speed);
             _spawnPosition = transform.position;
         }
 
         private void OnDestroy()
         {
-            _orderStorageService!.OnOrderCooked -= TryChangeToDishHandlingState;
-            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
+            _orderStorageService.OnOrderCooked -= TryChangeToDishHandlingState;
+            _progress.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToDishHandlingState(Order order)

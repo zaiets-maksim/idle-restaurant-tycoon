@@ -26,6 +26,7 @@ namespace Editor
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         private static void DrawPersonsState(PersonBehavior personBehavior, GizmoType gizmoType)
         {
+            return;
             if (personBehavior.IsTransitioning)
                 _text = "IsTransitioning" + $"\n{personBehavior.gameObject.GetInstanceID()}";
             else

@@ -19,8 +19,8 @@ namespace Characters.Behaviors
 
             _states = CreateStates(
                 new IdleState(_personAnimator),
-                new DishHandlingState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
-                new OrderDeliveryState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder),
+                new DishHandlingState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder, _orderStorageService, _purchasedItemRegistry),
+                new OrderDeliveryState(this, _waiter, transform, _personMover, _personAnimator, _dishHolder, _orderStorageService),
                 new ReturnToSpawnState(this, _waiter)
             );
 

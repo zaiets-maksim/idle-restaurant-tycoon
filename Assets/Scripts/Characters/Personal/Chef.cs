@@ -9,6 +9,7 @@ using Interactable;
 using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
 using UnityEngine;
+using Zenject;
 
 namespace Characters.Personal
 {
@@ -17,7 +18,6 @@ namespace Characters.Personal
         [SerializeField] private ChefBehavior _chefBehavior;
         [SerializeField] private PersonItemCollector _itemCollector;
 
-        private IOrderStorageService _orderStorageService;
         private IPurchasedItemRegistry _purchasedItemRegistry;
 
         public ChefBehavior ChefBehavior => _chefBehavior;
@@ -26,20 +26,23 @@ namespace Characters.Personal
         public bool HasFood => _itemCollector.Food > 0;
         public Order Order { get; private set; }
 
-
+        [Inject]
+        public void Constructor(IPurchasedItemRegistry purchasedItemRegistry)
+        {
+            _purchasedItemRegistry = purchasedItemRegistry;
+        }
+        
         public override void Start()
         {
             base.Start();
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _orderStorageService!.OnNewOrderReceived += TryChangeToCookingState;
-            _progress!.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
+            _orderStorageService.OnNewOrderReceived += TryChangeToCookingState;
+            _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
 
             foreach (var kitchenItem in _purchasedItemRegistry!.KitchenItems)
                 if (kitchenItem is FoodStation) 
                     kitchenItem.OnRelease += TryChangeToCookingState;
             
-            _purchasedItemRegistry!.OnNewItemKitchenPurchased += kitchenItem =>
+            _purchasedItemRegistry.OnNewItemKitchenPurchased += kitchenItem =>
             {
                 if(kitchenItem is FoodStation)
                     kitchenItem.OnRelease += TryChangeToCookingState;
@@ -47,6 +50,12 @@ namespace Characters.Personal
             
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Chef.Speed);
             _spawnPosition = transform.position;
+        }
+
+        private void OnDestroy()
+        {
+            _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
+            _progress.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToCookingState(KitchenItem kitchenItem)
@@ -61,12 +70,6 @@ namespace Characters.Personal
                 Debug.Log(Make.Colored($"-> FoodSearchState {gameObject.GetInstanceID()}", Color.yellow));
                 _chefBehavior.ChangeState<FoodSearchState>();
             }
-        }
-
-        private void OnDestroy()
-        {
-            _orderStorageService!.OnNewOrderReceived -= TryChangeToCookingState;
-            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToCookingState(Order order)

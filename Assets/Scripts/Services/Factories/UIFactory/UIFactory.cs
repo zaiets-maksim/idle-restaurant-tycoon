@@ -1,8 +1,9 @@
+using Connect4.Scripts.Services.Factories;
 using Services.StaticDataService;
 using StaticData.Configs;
-using UI;
 using UI.PopUpMarket;
 using UnityEngine;
+using Zenject;
 
 namespace Services.Factories.UIFactory
 {
@@ -17,6 +18,7 @@ namespace Services.Factories.UIFactory
         private const string StuffElementPath = "Prefabs/UI/PopUpMarket/StuffElement";
 
         private readonly IStaticDataService _staticData;
+        
         private Transform _uiRoot;
         
         public PopUpMarket PopUpMarket { get; private set; }
@@ -25,8 +27,9 @@ namespace Services.Factories.UIFactory
         public UpgradeElement UpgradeElement { get; private set; }
         public StuffElement StuffElement { get; private set; }
 
-        public UIFactory(IStaticDataService staticDataService)
+        public UIFactory(IInstantiator instantiator, IStaticDataService staticDataService) : base(instantiator)
         {
+            _instantiator = instantiator;
             _staticData = staticDataService;
         }
 
@@ -67,7 +70,7 @@ namespace Services.Factories.UIFactory
         public RectTransform CreateWindow(WindowTypeId windowTypeId)
         {
             WindowConfig config = _staticData.ForWindow(windowTypeId);
-            var window = Object.Instantiate(config.Prefab, _uiRoot).GetComponent<RectTransform>();
+            var window = InstantiatePrefab(config.Prefab, _uiRoot).GetComponent<RectTransform>();
             
             return window;
         }

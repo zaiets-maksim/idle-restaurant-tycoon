@@ -3,6 +3,7 @@ using Infrastructure;
 using Services.CurrencyService;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace View
 {
@@ -10,11 +11,12 @@ namespace View
     {
         [SerializeField] private Text _text;
     
-        private readonly ICurrencyService _currencyService;
-    
-        public StarsView()
+        private ICurrencyService _currencyService;
+
+        [Inject]
+        public void Constructor(ICurrencyService currencyService)
         {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
+            _currencyService = currencyService;
         }
         
         private void Start()

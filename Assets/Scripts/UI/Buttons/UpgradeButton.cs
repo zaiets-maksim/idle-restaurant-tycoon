@@ -5,6 +5,7 @@ using Services.DataStorageService;
 using Services.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.Buttons
 {
@@ -13,19 +14,20 @@ namespace UI.Buttons
         [SerializeField] private Button _button;
         [SerializeField] private Image _buttonImage;
 
-        private readonly ICurrencyService _currencyService;
-        private readonly IPersistenceProgressService _progress;
-        private readonly ISaveLoadService _saveLoad;
+        private ICurrencyService _currencyService;
+        private IPersistenceProgressService _progress;
+        private ISaveLoadService _saveLoad;
         
         private Upgrade _upgrade;
         private Material _grayScaleMaterial;
         private PopUpMarket.PopUpMarket _popUpMarket;
 
-        public UpgradeButton()
+        [Inject]
+        public void Constructor(ICurrencyService currencyService, IPersistenceProgressService progress, ISaveLoadService saveLoad)
         {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-            _progress = ProjectContext.Instance?.Progress;
-            _saveLoad = ProjectContext.Instance?.SaveLoad;
+            _saveLoad = saveLoad;
+            _progress = progress;
+            _currencyService = currencyService;
         }
         
         private void Start()

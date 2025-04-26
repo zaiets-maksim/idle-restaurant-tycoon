@@ -19,7 +19,9 @@ public class OrderDeliveryState : PersonBaseState
     private readonly Waiter _waiter;
     private readonly IOrderStorageService _orderStorageService;
 
-    public OrderDeliveryState(WaiterBehavior waiterBehavior, Waiter waiter, Transform transform, PersonMover personMover, PersonAnimator personAnimator, DishHolder dishHolder)
+    public OrderDeliveryState(WaiterBehavior waiterBehavior, Waiter waiter, Transform transform,
+        PersonMover personMover, PersonAnimator personAnimator, DishHolder dishHolder,
+        IOrderStorageService orderStorageService)
     {
         _waiter = waiter;
         _dishHolder = dishHolder;
@@ -27,7 +29,7 @@ public class OrderDeliveryState : PersonBaseState
         _personMover = personMover;
         _transform = transform;
         _waiterBehavior = waiterBehavior;
-        _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+        _orderStorageService = orderStorageService;
     }
     
     public override async void Enter()

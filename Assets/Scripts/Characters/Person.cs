@@ -2,11 +2,13 @@ using System.Threading.Tasks;
 using Extensions;
 using Infrastructure;
 using Services.DataStorageService;
+using Services.OrderStorageService;
 using StaticData.Configs;
 using StaticData.TypeId;
 using UI.ProgressIndicator;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Characters
 {
@@ -19,18 +21,25 @@ namespace Characters
         [SerializeField] private CharacterTypeId _characterTypeId;
         
         protected Vector3 _spawnPosition;
+        
         protected IPersistenceProgressService _progress;
+        protected IOrderStorageService _orderStorageService;
 
         public CharacterTypeId CharacterTypeId => _characterTypeId;
         public ProgressIndicator ProgressIndicator => _progressIndicator;
 
         public string Name { get; set; }
-        
+
+        [Inject]
+        public void Constructor(IPersistenceProgressService progress, IOrderStorageService orderStorageService)
+        {
+            _orderStorageService = orderStorageService;
+            _progress = progress;
+        }
 
         public virtual void Start()
         {
             _navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-            _progress = ProjectContext.Instance?.Progress;
         }
 
         public abstract void PerformDuties();

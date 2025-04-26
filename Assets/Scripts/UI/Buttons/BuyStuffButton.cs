@@ -6,6 +6,7 @@ using UI.PopUpMarket;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.Buttons
 {
@@ -18,15 +19,16 @@ namespace UI.Buttons
         [SerializeField] private Image _buttonImage;
         [SerializeField] private Material _grayScaleMaterial;
         
-        private readonly IItemBuyingService _itemBuyingService;
-        private readonly ICurrencyService _currencyService;
+        private IItemBuyingService _itemBuyingService;
+        private ICurrencyService _currencyService;
 
-        private BuyStuffButton()
+        [Inject]
+        public void Constructor(IItemBuyingService itemBuyingService, ICurrencyService currencyService)
         {
-            _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
-            _currencyService = ProjectContext.Instance?.CurrencyService;
+            _currencyService = currencyService;
+            _itemBuyingService = itemBuyingService;
         }
-
+        
         private void Start()
         {
             _button.onClick.AddListener(BuyStuff);

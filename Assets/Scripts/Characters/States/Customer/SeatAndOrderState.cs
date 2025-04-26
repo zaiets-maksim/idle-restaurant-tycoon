@@ -18,12 +18,12 @@ internal class SeatAndOrderState : PersonBaseState
     private readonly PersonAnimator _personAnimator;
     private readonly Customer _customer;
 
-    public SeatAndOrderState( PersonMover personMover, PersonAnimator personAnimator, Customer customer)
+    public SeatAndOrderState( PersonMover personMover, PersonAnimator personAnimator, Customer customer, IPurchasedItemRegistry purchasedItemRegistry)
     {
         _customer = customer;
         _personAnimator = personAnimator;
         _personMover = personMover;
-        _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+        _purchasedItemRegistry = purchasedItemRegistry;
     }
 
     public override async void Enter()

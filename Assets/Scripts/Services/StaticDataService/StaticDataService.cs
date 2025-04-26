@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Connect4.Scripts.StaticData;
 using StaticData;
 using StaticData.Configs;
 using StaticData.Levels;
@@ -20,7 +21,7 @@ namespace Services.StaticDataService
         private const string LevelStaticDataPath = "StaticData/LevelStaticData";
         private const string PopUpWindowsStaticDataPath = "StaticData/PopUpWindowsStaticData";
         
-        // private GameStaticData _gameStaticData;
+        private GameStaticData _gameStaticData;
         private BalanceStaticData _balanceStaticData;
         private LevelStaticData _levelStaticData;
         
@@ -35,8 +36,8 @@ namespace Services.StaticDataService
 
         public void LoadData()
         {
-            // _gameStaticData = Resources
-            //     .Load<GameStaticData>(GameConfigPath);
+            _gameStaticData = Resources
+                .Load<GameStaticData>(GameConfigPath);
 
             _balanceStaticData = Resources
                 .Load<BalanceStaticData>(BalanceConfigPath);
@@ -98,11 +99,10 @@ namespace Services.StaticDataService
         public DishTypeId[] GetDishTypeIds() => 
             _dishConfigs.Select(x => x.Key).ToArray();
 
+        public GameStaticData GameConfig() => _gameStaticData;
+
 
         // public PopUpWindowConfig ForPopUpWindow(PopUpWindowTypeId popUpWindowTypeId) => 
         //     _popUpWindowConfigs[popUpWindowTypeId];
-        
-        // public GameStaticData GameConfig() =>
-        //     _gameStaticData;
     }
 }

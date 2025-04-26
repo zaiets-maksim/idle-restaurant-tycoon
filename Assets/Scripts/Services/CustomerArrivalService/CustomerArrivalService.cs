@@ -64,7 +64,7 @@ namespace Services.CustomerArrivalService
                 if (_purchasedItemRegistry.HasFreeChair())
                 {
                     var point = _customersPointsForSpawn[Random.Range(0, _customersPointsForSpawn.Count)];
-                    var customer = _characterFactory.Create<Customer>(point.TypeId, point.Position, point.Rotation, null);
+                    var customer = _characterFactory.Create<Customer>(point.TypeId, point.Position, point.Rotation, point.Parent);
                     var randomAppearance = _characterFactory.GetRandomCustomerAppearance();
                     customer.SetAppearance(randomAppearance);
                     customer.SetObjectName(randomAppearance.TypeId.ToString());

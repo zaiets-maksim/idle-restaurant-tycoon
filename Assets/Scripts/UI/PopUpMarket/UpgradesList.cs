@@ -1,22 +1,24 @@
 using System.Collections.Generic;
-using Infrastructure;
 using Services.DataStorageService;
 using Services.Factories.UIFactory;
 using UI.PopUpMarket;
 using UnityEngine;
+using Zenject;
 
 public class UpgradesList : MonoBehaviour
 {
     [SerializeField] private PopUpMarket _popUpMarket;
     
-    private readonly IPersistenceProgressService _progress;
-    private readonly IUIFactory _uiFactory;
+    private IPersistenceProgressService _progress;
+    private IUIFactory _uiFactory;
     private List<Upgrade> _availableUpgrades;
 
-    public UpgradesList()
+
+    [Inject]
+    public void Constructor(IUIFactory uiFactory, IPersistenceProgressService progress)
     {
-        _uiFactory = ProjectContext.Instance?.UIFactory;
-        _progress = ProjectContext.Instance?.Progress;
+        _uiFactory = uiFactory;
+        _progress = progress;
     }
     
     public void Fill()

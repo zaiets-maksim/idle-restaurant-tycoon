@@ -2,6 +2,7 @@ using Infrastructure;
 using Services.CurrencyService;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.Cheats
 {
@@ -10,11 +11,12 @@ namespace UI.Cheats
         [SerializeField] private Button _button;
         [SerializeField] private int _amount;
         
-        private readonly ICurrencyService _currencyService;
+        private ICurrencyService _currencyService;
 
-        public AddMoneyButton()
+        [Inject]
+        public void Constructor(ICurrencyService currencyService)
         {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
+            _currencyService = currencyService;
         }
         
         private void Start()

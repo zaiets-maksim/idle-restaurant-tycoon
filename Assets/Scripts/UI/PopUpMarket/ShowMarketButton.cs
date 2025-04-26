@@ -1,7 +1,7 @@
-using Infrastructure;
 using Services.Factories.UIFactory;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.PopUpMarket
 {
@@ -9,14 +9,16 @@ namespace UI.PopUpMarket
     {
         [SerializeField] private Button _button;
         
-        private readonly IUIFactory _uiFactory;
+        private IUIFactory _uiFactory;
+        
         private PopUpMarket _popUpMarket;
 
-        public ShowMarketButton()
+        [Inject]
+        public void Constructor(IUIFactory uiFactory)
         {
-            _uiFactory = ProjectContext.Instance?.UIFactory;
+            _uiFactory = uiFactory;
         }
-
+        
         private void Start()
         {
             _popUpMarket = _uiFactory.PopUpMarket;

@@ -2,6 +2,7 @@ using Infrastructure;
 using Services.DataStorageService;
 using StaticData.Configs;
 using UnityEngine;
+using Zenject;
 
 namespace Interactable
 {
@@ -10,17 +11,19 @@ namespace Interactable
         [SerializeField] private DishTypeId _dishTypeId;
         [SerializeField] private int _price;
         
-        private readonly IPersistenceProgressService _progress;
+        private IPersistenceProgressService _progress;
 
         public DishTypeId DishTypeId => _dishTypeId;
 
         public int Price => _price;
 
-        public Dish()
+        [Inject]
+        public void Constructor(IPersistenceProgressService progress)
         {
-            _progress = ProjectContext.Instance?.Progress;
+            _progress = progress;
         }
 
+        
         public void Initialize(DishConfig config)
         {
             _dishTypeId = config.TypeId;

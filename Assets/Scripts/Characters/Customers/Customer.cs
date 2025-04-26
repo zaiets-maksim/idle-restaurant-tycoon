@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Extensions;
-using Infrastructure;
 using Interactable;
 using Services.CurrencyService;
 using Services.OrderStorageService;
@@ -8,6 +7,7 @@ using Services.StaticDataService;
 using StaticData;
 using StaticData.Configs;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Characters.Customers
@@ -19,34 +19,30 @@ namespace Characters.Customers
         [SerializeField] private CustomerBehavior _customerBehavior;
         [SerializeField] private Transform _dishPoint;
         
-        private readonly IStaticDataService _staticData;
-        private readonly BalanceStaticData _balance;
-        private readonly ICurrencyService _currencyService;
-        private readonly IOrderStorageService _orderStorageService;
+        private IStaticDataService _staticData;
+        private ICurrencyService _currencyService;
+
+        private BalanceStaticData _balance;
         private DishTypeId _dishTypeId;
         private float _mealDuration;
         private Dish _dish;
-        private readonly TaskCompletionSource<bool> _tcs;
         private Vector3 _lastPosition;
 
         public bool IsAwaiting => _customerBehavior.CurrentState is SeatAndOrderState && _dishTypeId != DishTypeId.Unknown;
         public Transform DishPoint => _dishPoint;
         public Chair Chair { get; private set; }
 
-        public Customer()
+        [Inject]
+        public void Constructor(IStaticDataService staticData, ICurrencyService currencyService)
         {
-            _tcs = new TaskCompletionSource<bool>();
-            
-            _staticData = ProjectContext.Instance?.StaticData;
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _balance = _staticData?.Balance();
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-            _progress = ProjectContext.Instance?.Progress;
+            _staticData = staticData;
+            _currencyService = currencyService;
+            _balance = _staticData.Balance();
         }
 
         public override void Start()
         {
-            base.Start();    
+            base.Start();
             _spawnPosition = transform.position;
         }
         

@@ -26,15 +26,17 @@ namespace Characters.States.Chef
         TaskCompletionSource<bool> _tcs = new();
         private readonly IPersistenceProgressService _progress;
 
-        public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, PersonAnimator personAnimator)
+        public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, 
+            PersonAnimator personAnimator, IPurchasedItemRegistry purchasedItemRegistry,
+            IPersistenceProgressService progress)
         {
             _personAnimator = personAnimator;
             _chefBehavior = chefBehavior;
             _personMover = personMover;
             _chef = chef;
             _transform = chef.transform;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _progress = ProjectContext.Instance?.Progress;
+            _purchasedItemRegistry = purchasedItemRegistry;
+            _progress = progress;
         }
 
         public override async void Enter()

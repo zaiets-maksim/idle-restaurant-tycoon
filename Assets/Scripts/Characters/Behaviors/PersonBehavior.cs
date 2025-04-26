@@ -2,7 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Extensions;
+using Services.DataStorageService;
+using Services.OrderStorageService;
+using Services.PurchasedItemRegistry;
 using UnityEngine;
+using Zenject;
 
 namespace Characters.PersonStateMachine
 {
@@ -14,14 +18,26 @@ namespace Characters.PersonStateMachine
         protected List<PersonBaseState> _states;
         protected PersonBaseState _currentState;
 
+        private bool _isTransitioning;
+        protected IOrderStorageService _orderStorageService;
+        protected IPurchasedItemRegistry _purchasedItemRegistry;
+        protected IPersistenceProgressService _progress;
+
+        public bool IsTransitioning => _isTransitioning;
         public PersonBaseState CurrentState => _currentState;
+
+        [Inject]
+        public void Constructor(IOrderStorageService orderStorageService, IPurchasedItemRegistry purchasedItemRegistry, 
+            IPersistenceProgressService progress)
+        {
+            _progress = progress;
+            _purchasedItemRegistry = purchasedItemRegistry;
+            _orderStorageService = orderStorageService;
+        }
+
 
         protected List<PersonBaseState> CreateStates(params PersonBaseState[] states) =>
             new(states);
-
-        private bool _isTransitioning;
-
-        public bool IsTransitioning => _isTransitioning;
 
         public async void ChangeState<T>() where T : PersonBaseState
         {

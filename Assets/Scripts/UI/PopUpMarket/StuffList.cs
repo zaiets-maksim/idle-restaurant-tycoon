@@ -7,6 +7,7 @@ using Services.StaticDataService;
 using StaticData.Levels;
 using StaticData.TypeId;
 using UnityEngine;
+using Zenject;
 
 namespace UI.PopUpMarket
 {
@@ -14,17 +15,18 @@ namespace UI.PopUpMarket
     {
         [SerializeField] private PopUpMarket _popUpMarket;
 
-        private readonly IUIFactory _uiFactory;
-        private readonly IItemBuyingService _itemBuyingService;
-        private readonly IStaticDataService _staticData;
-
+        private IUIFactory _uiFactory;
+        private IItemBuyingService _itemBuyingService;
+        private IStaticDataService _staticData;
+        
         private List<CharacterData> _availableStuffData;
 
-        public StuffList()
+        [Inject]
+        public void Constructor(IUIFactory uiFactory, IItemBuyingService itemBuyingService, IStaticDataService staticData)
         {
-            _uiFactory = ProjectContext.Instance?.UIFactory;
-            _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
-            _staticData = ProjectContext.Instance?.StaticData;
+            _staticData = staticData;
+            _itemBuyingService = itemBuyingService;
+            _uiFactory = uiFactory;
         }
 
         public void Fill()
