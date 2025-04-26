@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,42 +56,18 @@ namespace UI.PopUpMarket
 
         public void Show()
         {
-            _rectScrollView.AnimateOverTime(
-                rect => rect.sizeDelta.y,
-                (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
-                1250f,
-                0.15f);
-            
-            _rectScrollView.AnimateOverTime(
-                rect => rect.anchoredPosition.y,
-                (rect, value) => rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, value),
-                125f,
-                0.15f);
-            
-            _bottom.AnimateOverTime(
-                t => t.position.y, 
-                (t, value) => t.position = new Vector3(t.position.x, value, t.position.z), 
-                0f, 
-                0.15f);
+            _rectScrollView.DOSizeDelta(new Vector2(_rectScrollView.sizeDelta.x, 1250f), 0.15f);
+            _rectScrollView.DOAnchorPosY(125f, 0.15f);
+            _bottom.DOMoveY(0f, 0.15f);
 
             _showMarketButton.gameObject.SetActive(false);
         }
 
         public void Hide()
         {
-            _rectScrollView.AnimateOverTime(
-                rect => rect.sizeDelta.y,
-                (rect, value) => rect.sizeDelta = new Vector2(rect.sizeDelta.x, value),
-                -250f,
-                0.15f);
-
+            _rectScrollView.DOSizeDelta(new Vector2(_rectScrollView.sizeDelta.x, -250f), 0.15f);
             _rectScrollView.anchoredPosition = new Vector2(_rectScrollView.anchoredPosition.x, 0f);
-            
-            _bottom.AnimateOverTime(
-                t => t.position.y, 
-                (t, value) => t.position = new Vector3(t.position.x, value, t.position.z), 
-                -125f, 
-                0.15f);
+            _bottom.DOMoveY(-125f, 0.15f);
             
             _showMarketButton.gameObject.SetActive(true);
         }

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Extensions;
 using Infrastructure;
 using Services.CurrencyService;
@@ -37,11 +38,10 @@ namespace View
 
         private void UpdateText(int amount)
         {
-            transform.AnimatePingPong(t => t.localScale, 
-                (t, value) => t.localScale = value, 
-                Vector3.one * 1.1f, 
-                0.1f
-            );
+            transform.DOKill();
+            transform.localScale = Vector3.one;
+            transform.DOScale(Vector3.one * 1.1f, 0.1f)
+                .SetLoops(2, LoopType.Yoyo);
             
             _text.text = amount >= 1000
                 ? $"{(amount >= 10000 ? amount / 1000 : (amount / 1000f)):0.#}K"
