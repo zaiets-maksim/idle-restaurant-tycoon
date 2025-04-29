@@ -1,10 +1,8 @@
-# 🍽️ Idle Restaurant Tycoon  
+The main condition for the **_master_** branch was to avoid using **Zenject**, **UniTask**, or any **third-party** libraries.
 
-The main condition for the **master** branch was to avoid using **Zenject**, **UniTask**, or any **third-party** libraries.
-
-📌 main — Main Project
+📌 **_main_** — Main Project<br>
 This is the main branch with the production-ready version of the project.
-Architecture: Zenject (Dependency Injection)
+Architecture: Zenject (Dependency Injection)<br>
 Third-party libraries used:
 
 ✅ Zenject
