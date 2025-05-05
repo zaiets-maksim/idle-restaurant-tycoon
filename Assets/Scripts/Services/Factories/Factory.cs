@@ -38,6 +38,7 @@ namespace Connect4.Scripts.Services.Factories
             transform.eulerAngles = eulerAngles;
             // transform.SetPositionAndRotation(position, Quaternion.Euler(eulerAngles));
             transform.SetParent(parent);
+            MoveToCurrentScene(transform.gameObject);
             
             return transform.gameObject.GetComponent<T>();
         }

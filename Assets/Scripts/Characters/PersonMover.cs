@@ -78,6 +78,7 @@ namespace Characters
                 yield return null;
 
             StopMoving();
+            callback?.Invoke();
             
             yield return null;
         }
