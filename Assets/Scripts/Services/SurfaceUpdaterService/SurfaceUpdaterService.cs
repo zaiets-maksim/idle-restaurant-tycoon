@@ -18,16 +18,16 @@ namespace Services.SurfaceUpdaterService
             _navMeshCommon = Object.FindObjectOfType<NavMeshSurface>();
         }
 
-        public void UpdateKitchen() => _navMeshKitchen.BuildNavMesh();
-        public void UpdateHall() => _navMeshHall.BuildNavMesh();
-        public void UpdateCommon() => _navMeshCommon.BuildNavMesh();
+        public void BakeKitchen() => _navMeshKitchen.BuildNavMesh();
+        public void BakeHall() => _navMeshHall.BuildNavMesh();
+        public void Bake() => _navMeshCommon.BuildNavMesh();
     }
 
     public interface ISurfaceUpdaterService
     {
         void Init();
-        void UpdateKitchen();
-        void UpdateHall();
-        void UpdateCommon();
+        void BakeKitchen();
+        void BakeHall();
+        void Bake();
     }
 }

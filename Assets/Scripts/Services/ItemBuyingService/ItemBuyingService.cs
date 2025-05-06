@@ -8,6 +8,7 @@ using Services.Factories.ItemFactory;
 using Services.PurchasedItemRegistry;
 using Services.SaveLoad;
 using Services.StaticDataService;
+using Services.SurfaceUpdaterService;
 using StaticData;
 using StaticData.Levels;
 using StaticData.TypeId;
@@ -23,11 +24,14 @@ namespace Services.ItemBuyingService
         private readonly IPurchasedItemRegistry _purchasedItemRegistry;
         private readonly LevelStaticData _levelStaticData;
         private readonly ICharacterFactory _characterFactory;
+        private readonly ISurfaceUpdaterService _surfaceUpdaterService;
 
         public ItemBuyingService(IPersistenceProgressService progress, IStaticDataService staticData,
             ISaveLoadService saveLoad, IItemFactory itemFactory,
-            IPurchasedItemRegistry purchasedItemRegistry, ICharacterFactory characterFactory)
+            IPurchasedItemRegistry purchasedItemRegistry, ICharacterFactory characterFactory,
+            ISurfaceUpdaterService surfaceUpdaterService)
         {
+            _surfaceUpdaterService = surfaceUpdaterService;
             _characterFactory = characterFactory;
             _purchasedItemRegistry = purchasedItemRegistry;
             _itemFactory = itemFactory;
@@ -112,6 +116,7 @@ namespace Services.ItemBuyingService
             _purchasedItemRegistry.AddKitchenItem(kitchenItem);
             _progress.PlayerData.ProgressData.BuyKitchenItem(nextItem);
             _saveLoad.SaveProgress();
+            _surfaceUpdaterService.Bake();
         }
 
         public void BuyHallItem(HallItemTypeId typeId)
@@ -132,6 +137,7 @@ namespace Services.ItemBuyingService
             _saveLoad.SaveProgress();
 
             OnHallItemPurchased?.Invoke(typeId);
+            _surfaceUpdaterService.Bake();
         }
 
         public void BuyStuff(CharacterTypeId typeId)
