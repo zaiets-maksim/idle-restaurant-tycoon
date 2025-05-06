@@ -8,6 +8,7 @@ using Services.StaticDataService;
 using StaticData;
 using StaticData.Configs;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -19,7 +20,8 @@ namespace Characters.Customers
         [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
         [SerializeField] private CustomerBehavior _customerBehavior;
         [SerializeField] private Transform _dishPoint;
-        
+        [FormerlySerializedAs("_tipNotifier")] [SerializeField] private BillNotifier billNotifier;
+
         private IStaticDataService _staticData;
         private ICurrencyService _currencyService;
 
@@ -77,6 +79,7 @@ namespace Characters.Customers
         public void PayBill()
         {
             _currencyService.AddMoney(_dish.Price);
+            billNotifier.ShowFloatingBill(_dish.Price);
         }
         
         public void SetAppearance(CustomerAppearance appearance)
