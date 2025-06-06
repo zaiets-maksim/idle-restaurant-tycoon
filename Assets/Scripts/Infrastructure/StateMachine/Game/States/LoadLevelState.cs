@@ -91,14 +91,14 @@ namespace Friction_balance.Scripts.Infrastructure.StateMachine.Game.States
             {
                 _kitchenItem = _itemFactory.Create(item.TypeId, item.Position, item.Rotation, item.Parent);
                 _purchasedItemRegistry.AddKitchenItem(_kitchenItem);
-                _surfaceUpdaterService.UpdateCommon();
+                _surfaceUpdaterService.Bake();
             }
         
             foreach (var item in _purchasedHallItems)
             {
                 _hallItem = _itemFactory.Create(item.TypeId, item.Position, item.Rotation, item.Parent);
                 _purchasedItemRegistry.AddHallItem(_hallItem);
-                _surfaceUpdaterService.UpdateCommon();
+                _surfaceUpdaterService.Bake();
             }
         
             foreach (var person in _purchasedStuff)
