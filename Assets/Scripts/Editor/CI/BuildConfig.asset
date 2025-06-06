@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d0c2c2c6e045a40b10fad6a22a34be, type: 3}
+  m_Name: BuildConfig
+  m_EditorClassIdentifier: 
+  BuildType: 1
+  StackTraceRelease:
+    StackTraceType: 0
+    StackTraceLogType: 0
+    LogType: 03000000
+  StackTraceDev:
+    StackTraceType: 1
+    StackTraceLogType: 1
+    LogType: 010000000000000004000000
+  StackTraceDebug:
+    StackTraceType: 2
+    StackTraceLogType: 2
+    LogType: 0000000001000000020000000300000004000000
+  UseCustomKeystore: 0
+  KeystoreName: 
+  KeystorePass: 
+  KeyaliasName: 
+  KeyaliasPass: 
