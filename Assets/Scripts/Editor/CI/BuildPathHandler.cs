@@ -18,7 +18,7 @@ public static class BuildNameGenerator
         string product = PlayerSettings.productName;
         string version = PlayerSettings.bundleVersion;
         string buildType = config.BuildType.ToString();
-        string timestamp = DateTime.Now.ToString("yy-dd-MM HH-mm");
+        string timestamp = DateTime.Now.ToString("YYYY-MM-DD HH-MM");
 
         return $"{product} ({buildType} v{version}) ({timestamp}).{extension}";
     }
