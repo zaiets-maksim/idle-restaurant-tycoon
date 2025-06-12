@@ -20,6 +20,6 @@ public static class BuildNameGenerator
         string buildType = config.BuildType.ToString();
         string timestamp = DateTime.Now.ToString("dd_MM_HH_mm");
 
-        return $"{product}_{buildType}_v{version}_{timestamp}.{extension}";
+        return $"{product}_{buildType}_v{version}_d{timestamp}.{extension}";
     }
 }
