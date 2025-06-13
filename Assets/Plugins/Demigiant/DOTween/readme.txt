@@ -17,7 +17,7 @@ If you're upgrading your project from a version of DOTween older than 1.2.000 (o
 - You're ready to tween. Check out the links below for full documentation and license info.
 
 
-// LINKS /////////////////////////////////////////////////////// 
+// LINKS ///////////////////////////////////////////////////////
 
 DOTween website (documentation, examples, etc): http://dotween.demigiant.com
 DOTween license: http://dotween.demigiant.com/license.php
