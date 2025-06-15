@@ -8,7 +8,7 @@ public class BuildPathHandler : MonoBehaviour
     public static string BuildPath() => $"{GetProjectPath()}/Artifacts/";
     public static string GetProjectPath() => Application.dataPath.Replace("/Assets", "");
 }
-
+error line
 public static class BuildNameGenerator
 {
     public static string GetApkName(BuildConfig config) => GetName(config, "apk");
