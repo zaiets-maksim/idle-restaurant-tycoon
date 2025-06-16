@@ -21,14 +21,14 @@ public static class BuildNameGenerator
         string buildType = config.BuildType.ToString();
         string timestamp = DateTime.Now.ToString("yyyy-dd-MM HH-mm");
 
-        return $"{product} ({buildType} v{version}) ({timestamp} {GetBranchCommitsVersion()}).{extension}";
+        return $"{product} ({buildType} v{version}) ({timestamp}) ({GetBranchCommitsVersion()}).{extension}";
     }
     
     static string GetBranchCommitsVersion()
     {
 		string branchName = GetCurrentBranchName();
     	int commitCount = GetCommitCountToday();
-        return $"({branchName}-{commitCount})";
+        return $"{branchName}-{commitCount}";
     }
 
     static string GetCurrentBranchName()
