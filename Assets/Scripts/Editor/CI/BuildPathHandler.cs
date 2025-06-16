@@ -28,7 +28,7 @@ public static class BuildNameGenerator
     {
 		string branchName = GetCurrentBranchName();
     	int commitCount = GetCommitCountSinceMidnight();
-        return $"({branchName}-{pushCount})";
+        return $"({branchName}-{commitCount})";
     }
 
     static string GetCurrentBranchName()
