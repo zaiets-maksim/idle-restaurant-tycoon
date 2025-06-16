@@ -49,7 +49,7 @@ public static class BuildNameGenerator
         }
     }
 
-    static int GetPushCountSinceMidnight()
+    static int GetCommitCountSinceMidnight()
     {
        string since = DateTime.Now.Date.ToString("yyyy-MM-dd");
     	ProcessStartInfo psi = new ProcessStartInfo
