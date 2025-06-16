@@ -26,8 +26,8 @@ public static class BuildNameGenerator
     
     static string GetBranchPushVersion()
     {
-        string branchName = GetCurrentBranchName();
-        int pushCount = GetPushCountSinceMidnight();
+		string branchName = GetCurrentBranchName();
+    	int commitCount = GetCommitCountSinceMidnight();
         return $"({branchName}-{pushCount})";
     }
 
@@ -51,20 +51,21 @@ public static class BuildNameGenerator
 
     static int GetPushCountSinceMidnight()
     {
-        ProcessStartInfo psi = new ProcessStartInfo
-        {
-            FileName = "cmd.exe",
-            Arguments = "/c git reflog show origin/HEAD --since=\"midnight\" | find /c \"push\"",
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
+       string since = DateTime.Now.Date.ToString("yyyy-MM-dd");
+    	ProcessStartInfo psi = new ProcessStartInfo
+    	{
+        	FileName = "git",
+        	Arguments = $"log --since=\"{since}\" --oneline",
+        	RedirectStandardOutput = true,
+        	UseShellExecute = false,
+        	CreateNoWindow = true
+    	};
 
-        using (Process process = Process.Start(psi))
-        {
-            process.WaitForExit();
-            string output = process.StandardOutput.ReadToEnd().Trim();
-            return int.TryParse(output, out int count) ? count : 0;
-        }
+    	using (Process process = Process.Start(psi))
+    	{
+        	process.WaitForExit();
+        	string output = process.StandardOutput.ReadToEnd();
+        	return output.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    	}
     }
 }
