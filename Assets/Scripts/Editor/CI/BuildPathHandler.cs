@@ -21,13 +21,13 @@ public static class BuildNameGenerator
         string buildType = config.BuildType.ToString();
         string timestamp = DateTime.Now.ToString("yyyy-dd-MM HH-mm");
 
-        return $"{product} ({buildType} v{version}) ({timestamp} {GetBranchPushVersion()}).{extension}";
+        return $"{product} ({buildType} v{version}) ({timestamp} {GetBranchCommitsVersion()}).{extension}";
     }
     
-    static string GetBranchPushVersion()
+    static string GetBranchCommitsVersion()
     {
 		string branchName = GetCurrentBranchName();
-    	int commitCount = GetCommitCountSinceMidnight();
+    	int commitCount = GetCommitCountToday();
         return $"({branchName}-{commitCount})";
     }
 
@@ -49,23 +49,21 @@ public static class BuildNameGenerator
         }
     }
 
-    static int GetCommitCountSinceMidnight()
+    static int GetCommitCountToday()
     {
-       string since = DateTime.Now.Date.ToString("yyyy-MM-dd");
-    	ProcessStartInfo psi = new ProcessStartInfo
-    	{
-        	FileName = "git",
-        	Arguments = $"log --since=\"{since}\" --oneline",
-        	RedirectStandardOutput = true,
-        	UseShellExecute = false,
-        	CreateNoWindow = true
-    	};
+        string output = RunGitCommand("rev-list --count --since=midnight HEAD");
+        return int.TryParse(output.Trim(), out int count) ? count : 0;
+    }
 
-    	using (Process process = Process.Start(psi))
-    	{
-        	process.WaitForExit();
-        	string output = process.StandardOutput.ReadToEnd();
-        	return output.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).Length;
-    	}
+    static string RunGitCommand(string args)
+    {
+        ProcessStartInfo psi = new ProcessStartInfo("git", args)
+        {
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+        using Process process = Process.Start(psi);
+        return process.StandardOutput.ReadToEnd();
     }
 }
