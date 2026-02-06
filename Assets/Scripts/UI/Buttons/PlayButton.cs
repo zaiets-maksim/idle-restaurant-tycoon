@@ -11,14 +11,8 @@ namespace UI.Buttons
         [SerializeField] private Button _button;
         [SerializeField] private Text _text;
         
-        private readonly IStateMachine _stateMachine;
-        private readonly IPersistenceProgressService _progress;
-
-        public PlayButton()
-        {
-            _stateMachine = ProjectContext.Instance?.StateMachine;
-            _progress = ProjectContext.Instance?.Progress;
-        }
+        private IStateMachine _stateMachine => ProjectContext.Get<IStateMachine>();
+        private IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
         
         private void Start()
         {

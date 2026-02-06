@@ -9,13 +9,8 @@ namespace UI.PopUpMarket
     {
         [SerializeField] private Button _button;
         
-        private readonly IUIFactory _uiFactory;
+        private IUIFactory _uiFactory => ProjectContext.Get<IUIFactory>();
         private PopUpMarket _popUpMarket;
-
-        public ShowMarketButton()
-        {
-            _uiFactory = ProjectContext.Instance?.UIFactory;
-        }
 
         private void Start()
         {

@@ -23,7 +23,7 @@ internal class SeatAndOrderState : PersonBaseState
         _customer = customer;
         _personAnimator = personAnimator;
         _personMover = personMover;
-        _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+        _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
     }
 
     public override async void Enter()

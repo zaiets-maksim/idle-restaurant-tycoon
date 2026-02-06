@@ -42,8 +42,8 @@ namespace Characters.States.Waiter
             _transform = transform;
             _waiterBehavior = waiterBehavior;
 
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
+            _orderStorageService = ProjectContext.Get<IOrderStorageService>();
+            _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
         }
 
         public override async void Enter()

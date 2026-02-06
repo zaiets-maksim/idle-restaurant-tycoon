@@ -10,12 +10,7 @@ namespace UI.Cheats
         [SerializeField] private Button _button;
         [SerializeField] private int _amount;
         
-        private readonly ICurrencyService _currencyService;
-
-        public AddStarsButton()
-        {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-        }
+        private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
         
         private void Start()
         {

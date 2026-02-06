@@ -10,16 +10,11 @@ namespace Interactable
         [SerializeField] private DishTypeId _dishTypeId;
         [SerializeField] private int _price;
         
-        private readonly IPersistenceProgressService _progress;
+        private IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
 
         public DishTypeId DishTypeId => _dishTypeId;
 
         public int Price => _price;
-
-        public Dish()
-        {
-            _progress = ProjectContext.Instance?.Progress;
-        }
 
         public void Initialize(DishConfig config)
         {

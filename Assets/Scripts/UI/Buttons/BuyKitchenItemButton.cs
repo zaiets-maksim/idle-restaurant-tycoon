@@ -16,14 +16,8 @@ namespace UI.Buttons
         [SerializeField] private Image _buttonImage;
         [SerializeField] private Material _grayScaleMaterial;
         
-        private readonly IItemBuyingService _itemBuyingService;
-        private readonly ICurrencyService _currencyService;
-
-        private BuyKitchenItemButton()
-        {
-            _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-        }
+        private IItemBuyingService _itemBuyingService => ProjectContext.Get<IItemBuyingService>();
+        private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
 
         private void Start()
         {

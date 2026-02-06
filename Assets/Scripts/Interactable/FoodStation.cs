@@ -11,16 +11,10 @@ namespace Interactable
         [SerializeField] private Transform _placeForDish;
         [SerializeField] private DishTypeId[] _dishTypeId;
         
-        private readonly IItemFactory _itemFactory;
-        private readonly IStaticDataService _staticData;
+        private IItemFactory _itemFactory => ProjectContext.Get<IItemFactory>();
+        private IStaticDataService _staticData => ProjectContext.Get<IStaticDataService>();
         
         public DishTypeId[] DishTypeId => _dishTypeId;
-
-        public FoodStation()
-        {
-            _itemFactory = ProjectContext.Instance?.ItemFactory;
-            _staticData = ProjectContext.Instance?.StaticData;
-        }
         
         public override void Interact()
         {

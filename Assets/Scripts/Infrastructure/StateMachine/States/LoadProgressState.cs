@@ -14,10 +14,10 @@ namespace Infrastructure.StateMachine.States
 
         public LoadProgressState(ProjectContext projectContext)
         {
-            _stateMachine = projectContext.StateMachine;
-            _progress = projectContext.Progress;
-            _saveLoadService = projectContext.SaveLoad;
-            _currencyService = projectContext.CurrencyService;
+            _stateMachine = ProjectContext.Get<IStateMachine>();
+            _progress = ProjectContext.Get<IPersistenceProgressService>();
+            _saveLoadService = ProjectContext.Get<ISaveLoadService>();
+            _currencyService = ProjectContext.Get<ICurrencyService>();
         }
     
         public override void Enter()

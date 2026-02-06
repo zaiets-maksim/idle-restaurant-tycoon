@@ -17,8 +17,8 @@ namespace Characters.Personal
         [SerializeField] private ChefBehavior _chefBehavior;
         [SerializeField] private PersonItemCollector _itemCollector;
 
-        private IOrderStorageService _orderStorageService;
-        private IPurchasedItemRegistry _purchasedItemRegistry;
+        private IOrderStorageService _orderStorageService => ProjectContext.Get<IOrderStorageService>();
+        private IPurchasedItemRegistry _purchasedItemRegistry => ProjectContext.Get<IPurchasedItemRegistry>();
 
         public ChefBehavior ChefBehavior => _chefBehavior;
         public bool IsIdle => _chefBehavior.CurrentState is IdleState | _chefBehavior.CurrentState is ReturnToSpawnState;
@@ -26,13 +26,10 @@ namespace Characters.Personal
         public bool HasFood => _itemCollector.Food > 0;
         public Order Order { get; private set; }
 
-
         public override void Start()
         {
             base.Start();
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _orderStorageService!.OnNewOrderReceived += TryChangeToCookingState;
+            _orderStorageService.OnNewOrderReceived += TryChangeToCookingState;
             _progress!.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
 
             foreach (var kitchenItem in _purchasedItemRegistry!.KitchenItems)
@@ -65,8 +62,8 @@ namespace Characters.Personal
 
         private void OnDestroy()
         {
-            _orderStorageService!.OnNewOrderReceived -= TryChangeToCookingState;
-            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
+            _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
+            _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToCookingState(Order order)

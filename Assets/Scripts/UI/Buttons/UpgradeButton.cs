@@ -13,20 +13,13 @@ namespace UI.Buttons
         [SerializeField] private Button _button;
         [SerializeField] private Image _buttonImage;
 
-        private readonly ICurrencyService _currencyService;
-        private readonly IPersistenceProgressService _progress;
-        private readonly ISaveLoadService _saveLoad;
+        private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
+        private IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
+        private ISaveLoadService _saveLoad => ProjectContext.Get<ISaveLoadService>();
         
         private Upgrade _upgrade;
         private Material _grayScaleMaterial;
         private PopUpMarket.PopUpMarket _popUpMarket;
-
-        public UpgradeButton()
-        {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-            _progress = ProjectContext.Instance?.Progress;
-            _saveLoad = ProjectContext.Instance?.SaveLoad;
-        }
         
         private void Start()
         {

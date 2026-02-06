@@ -10,12 +10,7 @@ namespace View
     {
         [SerializeField] private Text _text;
     
-        private readonly ICurrencyService _currencyService;
-    
-        public StarsView()
-        {
-            _currencyService = ProjectContext.Instance?.CurrencyService;
-        }
+        private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
         
         private void Start()
         {

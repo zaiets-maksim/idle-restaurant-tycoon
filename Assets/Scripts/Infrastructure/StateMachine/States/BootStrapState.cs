@@ -11,8 +11,8 @@ public class BootStrapState : GameStateEntity
 
     public BootStrapState(ProjectContext projectContext)
     {
-        _sceneLoader = projectContext.SceneLoader;
-        _stateMachine = projectContext.StateMachine;
+        _sceneLoader = ProjectContext.Get<ISceneLoader>();
+        _stateMachine = ProjectContext.Get<IStateMachine>();
     }
     
     public override void Enter()

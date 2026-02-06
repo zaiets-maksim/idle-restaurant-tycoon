@@ -9,12 +9,7 @@ namespace UI.Buttons
     {
         [SerializeField] private Button _button;
         
-        private readonly IStateMachine _stateMachine;
-        
-        public MenuButton()
-        {
-            _stateMachine = ProjectContext.Instance?.StateMachine;
-        }
+        private IStateMachine _stateMachine => ProjectContext.Get<IStateMachine>();
         
         private void Start() => _button.onClick.AddListener(ToMenu);
         

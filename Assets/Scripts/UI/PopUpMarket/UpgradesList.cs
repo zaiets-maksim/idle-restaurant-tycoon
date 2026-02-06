@@ -9,15 +9,9 @@ public class UpgradesList : MonoBehaviour
 {
     [SerializeField] private PopUpMarket _popUpMarket;
     
-    private readonly IPersistenceProgressService _progress;
-    private readonly IUIFactory _uiFactory;
+    private IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
+    private IUIFactory _uiFactory => ProjectContext.Get<IUIFactory>();
     private List<Upgrade> _availableUpgrades;
-
-    public UpgradesList()
-    {
-        _uiFactory = ProjectContext.Instance?.UIFactory;
-        _progress = ProjectContext.Instance?.Progress;
-    }
     
     public void Fill()
     {

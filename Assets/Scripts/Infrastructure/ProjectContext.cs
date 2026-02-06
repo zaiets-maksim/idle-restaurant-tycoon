@@ -32,27 +32,8 @@ namespace Infrastructure
         private DiContainer _container;
         private GameStateFactory _gameStateFactory;
 
-        // Public accessors через Container
         public DiContainer Container => _container;
         
-        public IStaticDataService StaticData => _container.Resolve<IStaticDataService>();
-        public ISceneLoader SceneLoader => _container.Resolve<ISceneLoader>();
-        public ISaveLoadService SaveLoad => _container.Resolve<ISaveLoadService>();
-        public IPersistenceProgressService Progress => _container.Resolve<IPersistenceProgressService>();
-        public IUIFactory UIFactory => _container.Resolve<IUIFactory>();
-        public IWindowService WindowService => _container.Resolve<IWindowService>();
-        public GameStateFactory GameStateFactory => _gameStateFactory;
-        public IStateMachine StateMachine => _container.Resolve<IStateMachine>();
-        public IItemBuyingService ItemBuyingService => _container.Resolve<IItemBuyingService>();
-        public IItemFactory ItemFactory => _container.Resolve<IItemFactory>();
-        public IPurchasedItemRegistry PurchasedItemRegistry => _container.Resolve<IPurchasedItemRegistry>();
-        public ISurfaceUpdaterService SurfaceUpdaterService => _container.Resolve<ISurfaceUpdaterService>();
-        public ICurrencyService CurrencyService => _container.Resolve<ICurrencyService>();
-        public ICharacterFactory CharacterFactory => _container.Resolve<ICharacterFactory>();
-        public ICustomerArrivalService CustomerArrivalService => _container.Resolve<ICustomerArrivalService>();
-        public IOrderStorageService OrderStorageService => _container.Resolve<IOrderStorageService>();
-        public IActiveCustomersRegistry ActiveCustomersRegistry => _container.Resolve<IActiveCustomersRegistry>();
-
         public void Awake()
         {
             if (Instance == null)
@@ -155,6 +136,8 @@ namespace Infrastructure
         private void BindGameStateMachine()
         {
             _gameStateFactory = new GameStateFactory();
+            _container.Bind<GameStateFactory>().FromInstance(_gameStateFactory).AsSingle();
+            
             var stateMachine = new StateMachine.StateMachine(_gameStateFactory);
             _container.Bind<IStateMachine>().FromInstance(stateMachine).AsSingle();
         }

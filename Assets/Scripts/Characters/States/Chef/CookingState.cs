@@ -35,8 +35,8 @@ namespace Characters.States.Chef
         {
             _chef = chef;
             _dishHolder = dishHolder;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _progress = ProjectContext.Instance?.Progress;
+            _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+            _progress = ProjectContext.Get<IPersistenceProgressService>();
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;

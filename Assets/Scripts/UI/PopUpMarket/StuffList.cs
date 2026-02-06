@@ -14,18 +14,11 @@ namespace UI.PopUpMarket
     {
         [SerializeField] private PopUpMarket _popUpMarket;
 
-        private readonly IUIFactory _uiFactory;
-        private readonly IItemBuyingService _itemBuyingService;
-        private readonly IStaticDataService _staticData;
+        private IUIFactory _uiFactory => ProjectContext.Get<IUIFactory>();
+        private IItemBuyingService _itemBuyingService => ProjectContext.Get<IItemBuyingService>();
+        private IStaticDataService _staticData => ProjectContext.Get<IStaticDataService>();
 
         private List<CharacterData> _availableStuffData;
-
-        public StuffList()
-        {
-            _uiFactory = ProjectContext.Instance?.UIFactory;
-            _itemBuyingService = ProjectContext.Instance?.ItemBuyingService;
-            _staticData = ProjectContext.Instance?.StaticData;
-        }
 
         public void Fill()
         {

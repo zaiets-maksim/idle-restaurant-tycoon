@@ -27,7 +27,7 @@ public class OrderDeliveryState : PersonBaseState
         _personMover = personMover;
         _transform = transform;
         _waiterBehavior = waiterBehavior;
-        _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+        _orderStorageService = ProjectContext.Get<IOrderStorageService>();
     }
     
     public override async void Enter()

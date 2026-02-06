@@ -12,7 +12,7 @@ namespace Characters
     public class Waiter : Employee, IServiceWorker
     {
         [SerializeField] private WaiterBehavior _waiterBehavior;
-        private IOrderStorageService _orderStorageService;
+        private IOrderStorageService _orderStorageService => ProjectContext.Get<IOrderStorageService>();
 
         public WaiterBehavior WaiterBehavior => _waiterBehavior;
         public bool IsIdle => _waiterBehavior.CurrentState is IdleState or ReturnToSpawnState;
@@ -21,8 +21,7 @@ namespace Characters
         public override void Start()
         {
             base.Start();
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
-            _orderStorageService!.OnOrderCooked += TryChangeToDishHandlingState;
+            _orderStorageService.OnOrderCooked += TryChangeToDishHandlingState;
 
             _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Waiter.Speed);

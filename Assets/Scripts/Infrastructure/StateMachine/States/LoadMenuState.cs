@@ -12,9 +12,8 @@ public class LoadMenuState : GameStateEntity
 
     public LoadMenuState(ProjectContext projectContext)
     {
-        _sceneLoader = projectContext.SceneLoader;
-        _windowService = projectContext.WindowService;
-        // _gameFactory = gameFactory;
+        _sceneLoader = ProjectContext.Get<ISceneLoader>();
+        _windowService = ProjectContext.Get<IWindowService>();
     }
 
     public override void Enter()

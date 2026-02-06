@@ -33,8 +33,8 @@ namespace Characters.States.Chef
             _personMover = personMover;
             _chef = chef;
             _transform = chef.transform;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _progress = ProjectContext.Instance?.Progress;
+            _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+            _progress = ProjectContext.Get<IPersistenceProgressService>();
         }
 
         public override async void Enter()

@@ -19,7 +19,7 @@ namespace Characters
         [SerializeField] private CharacterTypeId _characterTypeId;
         
         protected Vector3 _spawnPosition;
-        protected IPersistenceProgressService _progress;
+        protected IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
 
         public CharacterTypeId CharacterTypeId => _characterTypeId;
         public ProgressIndicator ProgressIndicator => _progressIndicator;
@@ -30,7 +30,6 @@ namespace Characters
         public virtual void Start()
         {
             _navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-            _progress = ProjectContext.Instance?.Progress;
         }
 
         public abstract void PerformDuties();

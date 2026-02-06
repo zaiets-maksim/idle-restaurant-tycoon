@@ -33,14 +33,14 @@ public class LoadLevelState : GameStateEntity
 
     public LoadLevelState(ProjectContext projectContext)
     {
-        _sceneLoader = projectContext?.SceneLoader;
-        _uiFactory = projectContext?.UIFactory;
-        _characterFactory = projectContext?.CharacterFactory;
-        _itemFactory = projectContext?.ItemFactory;
-        _progress = projectContext?.Progress;
-        _purchasedItemRegistry = projectContext?.PurchasedItemRegistry;
-        _surfaceUpdaterService = projectContext?.SurfaceUpdaterService;
-        _customerArrivalService = projectContext?.CustomerArrivalService;
+        _sceneLoader = ProjectContext.Get<ISceneLoader>();
+        _uiFactory = ProjectContext.Get<IUIFactory>();
+        _characterFactory = ProjectContext.Get<ICharacterFactory>();
+        _itemFactory = ProjectContext.Get<IItemFactory>();
+        _progress = ProjectContext.Get<IPersistenceProgressService>();
+        _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+        _surfaceUpdaterService = ProjectContext.Get<ISurfaceUpdaterService>();
+        _customerArrivalService = ProjectContext.Get<ICustomerArrivalService>();
     }
 
     public override void Enter()

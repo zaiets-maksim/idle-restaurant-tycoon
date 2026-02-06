@@ -34,8 +34,8 @@ namespace Characters.States.Chef
             _chef = chef;
             _dishHolder = dishHolder;
             _chefBehavior = chefBehavior;
-            _purchasedItemRegistry = ProjectContext.Instance?.PurchasedItemRegistry;
-            _orderStorageService = ProjectContext.Instance?.OrderStorageService;
+            _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+            _orderStorageService = ProjectContext.Get<IOrderStorageService>();
             _personAnimator = personAnimator;
             _personMover = personMover;
             _transform = transform;
