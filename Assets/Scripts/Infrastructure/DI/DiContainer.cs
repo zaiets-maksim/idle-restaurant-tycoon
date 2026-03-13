@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace Infrastructure.DI
 {
+    public interface ICleanable
+    {
+        void Cleanup();
+    }
+
     public class DiContainer
     {
         private readonly Dictionary<Type, object> _services = new();
@@ -82,10 +87,25 @@ namespace Infrastructure.DI
             return false;
         }
 
-        public bool IsRegistered<TContract>()
+        public void ResetServices()
         {
-            var type = typeof(TContract);
-            return _services.ContainsKey(type) || _lazyFactories.ContainsKey(type);
+            foreach (var service in _services.Values)
+                if (service is ICleanable cleanable) 
+                    cleanable.Cleanup();
+        }
+
+        public void Cleanup()
+        {
+            foreach (var service in _services.Values)
+            {
+                if (service is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
+            }
+            
+            _services.Clear();
+            _lazyFactories.Clear();
         }
     }
 }

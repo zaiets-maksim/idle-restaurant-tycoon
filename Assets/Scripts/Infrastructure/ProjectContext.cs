@@ -50,7 +50,18 @@ namespace Infrastructure
             }
         }
 
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                _container?.Cleanup();
+                Instance = null;
+            }
+        }
+
         public static T Get<T>() => Instance.Container.Resolve<T>();
+
+        public void ResetServices() => _container?.ResetServices();
         
         private void InstallBindings()
         {
