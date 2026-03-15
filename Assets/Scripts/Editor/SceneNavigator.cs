@@ -13,15 +13,17 @@ internal class SceneNavigator : EditorWindow
     private const int MaxHistory = 10;
     private const string CurrentScenePointer = " \u25c0";
     private const string HistoryKey = "SceneNavigatorHistory";
-
+    private const string CloseAfterOpenSceneKey = "CloseAfterOpenSceneKey";
     private LinkedList<string> _sceneHistory = new();
     private static string _lastScene;
     private string _sceneName;
+    private bool _closeAfterOpenScene;
 
     private void OnEnable()
     {
         EditorSceneManager.sceneOpened += OnSceneOpened;
         _sceneHistory = LoadHistory();
+        _closeAfterOpenScene = EditorPrefs.GetBool(CloseAfterOpenSceneKey);
         _lastScene = SceneManager.GetActiveScene().path;
     }
 
@@ -66,6 +68,11 @@ internal class SceneNavigator : EditorWindow
         foreach (var scenePath in _sceneHistory)
             if (GUILayout.Button($"Open {scenePath}"))
                 OpenScene(scenePath);
+
+        GUILayout.FlexibleSpace();
+        Rect rect = EditorGUILayout.GetControlRect();
+        _closeAfterOpenScene = EditorGUI.ToggleLeft(rect, "Close after open scene", _closeAfterOpenScene);
+        EditorPrefs.SetBool(CloseAfterOpenSceneKey, _closeAfterOpenScene);
     }
 
     private void OpenScene(string scenePath)
@@ -73,6 +80,8 @@ internal class SceneNavigator : EditorWindow
         if (scenePath != _lastScene)
         {
             EditorSceneManager.OpenScene(scenePath);
+            if(_closeAfterOpenScene)
+                Close();
         }
     }
 
@@ -80,12 +89,12 @@ internal class SceneNavigator : EditorWindow
     {
         var list = _sceneHistory.ToList();
         var json = JsonUtility.ToJson(new SerializableList<string> { items = list });
-        PlayerPrefs.SetString(HistoryKey, json);
+        EditorPrefs.SetString(HistoryKey, json);
     }
 
     private LinkedList<string> LoadHistory()
     {
-        string json = PlayerPrefs.GetString(HistoryKey, null);
+        string json = EditorPrefs.GetString(HistoryKey, null);
         if (!string.IsNullOrEmpty(json))
         {
             var serializableList = JsonUtility.FromJson<SerializableList<string>>(json);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Balance
   m_EditorClassIdentifier: 
   Customers:
-    SpawnInterval: {x: 20, y: 60}
+    SpawnInterval: {x: 10, y: 17}
     Speed: {x: 2, y: 4.5}
     DefaultSpeed: 3.5
     MealDurationInterval: {x: 15, y: 45}
