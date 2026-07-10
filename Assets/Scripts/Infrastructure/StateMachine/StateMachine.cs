@@ -26,8 +26,8 @@ namespace Infrastructure.StateMachine
             _currentState?.Exit();
             state.Enter();
             
-            Debug.Log($"{state} Enter");
             Debug.Log($"{_currentState} Exit");
+            Debug.Log($"{state} Enter");
             
             _currentState = state;
         }

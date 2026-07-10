@@ -12,13 +12,13 @@ namespace UI.Buttons
     {
         [SerializeField] private Button _button;
         [SerializeField] private Image _buttonImage;
+        [SerializeField] private Material _grayScaleMaterial;
 
         private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
         private IPersistenceProgressService _progress => ProjectContext.Get<IPersistenceProgressService>();
         private ISaveLoadService _saveLoad => ProjectContext.Get<ISaveLoadService>();
         
         private Upgrade _upgrade;
-        private Material _grayScaleMaterial;
         private PopUpMarket.PopUpMarket _popUpMarket;
         
         private void Start()

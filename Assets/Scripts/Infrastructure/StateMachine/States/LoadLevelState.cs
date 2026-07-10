@@ -53,7 +53,6 @@ public class LoadLevelState : GameStateEntity
         _uiFactory.CreateHud();
         _uiFactory.CreatePopUpMarket();
         InitGameWorld();
-        var test = ProjectContext.Get<ITestService>();
     }
 
     private void InitGameWorld()
