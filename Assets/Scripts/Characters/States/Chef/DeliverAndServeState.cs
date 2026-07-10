@@ -44,6 +44,7 @@ namespace Characters.States.Chef
         public override async void Enter()
         {
             _tcs = new TaskCompletionSource<bool>();
+            _purchasedItemRegistry.CleanupDestroyed();
 
             await DeliverDish();
             await ServeDish();

@@ -46,6 +46,7 @@ namespace Characters.States.Chef
         public override async void Enter()
         {
             _cts = new CancellationTokenSource();
+            _purchasedItemRegistry.CleanupDestroyed();
 
             await Cook();
 

@@ -23,11 +23,13 @@ namespace Extensions
 
         public static T NearestTo<T>(Transform target, IEnumerable<T> objects) where T : Component =>
             objects
+                .Where(obj => obj != null)
                 .OrderBy(obj => Vector3.Distance(target.position, obj.transform.position))
                 .FirstOrDefault();
 
         public static List<T> SortedByDistance<T>(Transform target, List<T> objects) where T : Component =>
             objects
+                .Where(obj => obj != null)
                 .OrderBy(obj => Vector3.Distance(target.position, obj.transform.position))
                 .ToList();
 

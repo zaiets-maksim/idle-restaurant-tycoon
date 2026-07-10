@@ -49,6 +49,7 @@ namespace Characters.States.Waiter
         public override async void Enter()
         {
             _cts = new CancellationTokenSource();
+            _purchasedItemRegistry.CleanupDestroyed();
             await HandleOrder();
             
             if(_cts.IsCancellationRequested)

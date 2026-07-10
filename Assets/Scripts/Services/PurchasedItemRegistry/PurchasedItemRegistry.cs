@@ -5,6 +5,7 @@ using Characters;
 using Crates;
 using Interactable;
 using StaticData.TypeId;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Services.PurchasedItemRegistry
@@ -36,7 +37,15 @@ namespace Services.PurchasedItemRegistry
             StorageCrates.AddRange(Object.FindObjectsOfType<Crate>());
 
         public bool HasFreeChair() =>
-            HallItems.Any(x => x.TypeId == HallItemTypeId.Chair && !x.IsOccupied);
+            HallItems.Any(x => x != null && x.TypeId == HallItemTypeId.Chair && !x.IsOccupied);
+
+        public void CleanupDestroyed()
+        {
+            KitchenItems.RemoveAll(x => x == null);
+            HallItems.RemoveAll(x => x == null);
+            Stuff.RemoveAll(x => x == null);
+            StorageCrates.RemoveAll(x => x == null);
+        }
     }
     
 
@@ -55,6 +64,6 @@ namespace Services.PurchasedItemRegistry
         void AddKitchenItems(List<KitchenItem> kitchenItems);
         void AddStorageCrates();
         bool HasFreeChair();
- 
+        void CleanupDestroyed();
     }
 }

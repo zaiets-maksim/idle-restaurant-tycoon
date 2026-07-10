@@ -28,6 +28,7 @@ internal class SeatAndOrderState : PersonBaseState
 
     public override async void Enter()
     {
+        _purchasedItemRegistry.CleanupDestroyed();
         await TakeSeatAndOrder();
     }
 
