@@ -37,18 +37,28 @@ namespace Characters.PersonStateMachine
 
             _isTransitioning = true;
 
-            Debug.Log(Make.Colored($"To {state.GetType().Name} {gameObject.GetInstanceID()}", Color.yellow));
+            try
+            {
+                Debug.Log(Make.Colored($"To {state.GetType().Name} {gameObject.GetInstanceID()}", Color.yellow));
 
-            _currentState?.Exit();
+                _currentState?.Exit();
 
-            await Task.Yield();
+                await Task.Yield();
 
-            state?.Enter();
-            _currentState = state;
+                state?.Enter();
+                _currentState = state;
 
-            Debug.Log(Make.Colored($"-> {_currentState.GetType().Name} {gameObject.GetInstanceID()}", Color.green));
-
-            _isTransitioning = false;
+                Debug.Log(Make.Colored($"-> {_currentState.GetType().Name} {gameObject.GetInstanceID()}", Color.green));
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[PersonBehavior] State change to {typeof(T).Name} failed: {e}");
+                _currentState = null;
+            }
+            finally
+            {
+                _isTransitioning = false;
+            }
         }
     }
 }

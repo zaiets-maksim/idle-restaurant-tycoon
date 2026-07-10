@@ -21,7 +21,7 @@ namespace Characters.Personal
         private IPurchasedItemRegistry _purchasedItemRegistry => ProjectContext.Get<IPurchasedItemRegistry>();
 
         public ChefBehavior ChefBehavior => _chefBehavior;
-        public bool IsIdle => _chefBehavior.CurrentState is IdleState | _chefBehavior.CurrentState is ReturnToSpawnState;
+        public bool IsIdle => _chefBehavior.CurrentState is IdleState || _chefBehavior.CurrentState is ReturnToSpawnState;
         public int Food => _itemCollector.Food;
         public bool HasFood => _itemCollector.Food > 0;
         public Order Order { get; private set; }
@@ -36,14 +36,16 @@ namespace Characters.Personal
                 if (kitchenItem is FoodStation) 
                     kitchenItem.OnRelease += TryChangeToCookingState;
             
-            _purchasedItemRegistry!.OnNewItemKitchenPurchased += kitchenItem =>
-            {
-                if(kitchenItem is FoodStation)
-                    kitchenItem.OnRelease += TryChangeToCookingState;
-            };
+            _purchasedItemRegistry!.OnNewItemKitchenPurchased += OnNewItemKitchenPurchased;
             
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Chef.Speed);
             _spawnPosition = transform.position;
+        }
+
+        private void OnNewItemKitchenPurchased(KitchenItem kitchenItem)
+        {
+            if (kitchenItem is FoodStation)
+                kitchenItem.OnRelease += TryChangeToCookingState;
         }
 
         private void TryChangeToCookingState(KitchenItem kitchenItem)
@@ -64,6 +66,7 @@ namespace Characters.Personal
         {
             _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
             _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated -= UpdateAgentSpeed;
+            _purchasedItemRegistry!.OnNewItemKitchenPurchased -= OnNewItemKitchenPurchased;
         }
 
         private void TryChangeToCookingState(Order order)
