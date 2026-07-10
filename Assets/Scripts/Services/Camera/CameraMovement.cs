@@ -6,15 +6,16 @@ namespace Services.Camera
     public class CameraMovement : MonoBehaviour
     {
         [SerializeField] private UnityEngine.Camera _camera;
-        [SerializeField] private float moveSpeed = 0.1f;
-        [SerializeField] private float dragSpeed = 0.01f;
 
+        [Header("Drag")]
+        [SerializeField] private float dragSmoothing = 8f;
+        [SerializeField] private float dragSensitivity = 1f;
+
+        [Header("Zoom")]
         [SerializeField] private float minZoom = 5f;
         [SerializeField] private float maxZoom = 15f;
-        [SerializeField] private float zoomSpeed = 0.5f;
+        [SerializeField] private float zoomSmoothing = 10f;
         [SerializeField] private float mouseScrollSensitivity = 1.0f;
-        
-        [SerializeField] private float _sensitivity = 0.5f;
 
         [Header("Boundaries")] 
         [SerializeField] private float minX = -10f;
@@ -22,19 +23,31 @@ namespace Services.Camera
         [SerializeField] private float minZ = -10f;
         [SerializeField] private float maxZ = 10f;
 
-        private Vector3 dragOrigin;
         private float targetZoom;
         private Vector3 _lastMousePosition;
         private Vector2 _clippingPlanes;
         private bool _canMove = true;
+        private Vector3 _targetPosition;
 
         private void Awake()
         {
             targetZoom = _camera.orthographicSize;
             _clippingPlanes = new Vector2(_camera.nearClipPlane, _camera.farClipPlane);
+            _targetPosition = transform.position;
         }
 
-        private void CheckMovementInput()
+        private void Update()
+        {
+            CheckDragInput();
+            HandleZoom();
+
+            transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * dragSmoothing);
+            _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, targetZoom, Time.deltaTime * zoomSmoothing);
+
+            RefreshClippingPlanes(transform.position.y);
+        }
+
+        private void CheckDragInput()
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -45,28 +58,19 @@ namespace Services.Camera
             if (!Input.GetMouseButton(0) || !_canMove)
                 return;
 
-            Vector3 mouseWorldPoint = _camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 lastWorldPoint = _camera.ScreenToWorldPoint(_lastMousePosition);
-            Vector3 delta = mouseWorldPoint - lastWorldPoint;
+            Vector3 screenDelta = Input.mousePosition - _lastMousePosition;
             _lastMousePosition = Input.mousePosition;
-            _camera.transform.position -= delta;
-        }
 
-        private void Update()
-        {
-            CheckMovementInput();
-            HandleZoom();
+            screenDelta.y = -screenDelta.y;
 
-            _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, targetZoom, Time.deltaTime * 10f);
-            float x = Mathf.Clamp(transform.position.x, minX, maxX);
-            float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
-            float y = transform.position.y;
+            Vector3 worldDelta = _camera.cameraToWorldMatrix.MultiplyVector(screenDelta) * dragSensitivity;
 
-            transform.position = new Vector3(x, y, z);
+            Vector3 newPosition = _targetPosition + worldDelta;
+            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
+            newPosition.y = _targetPosition.y;
 
-            RefreshClippingPlanes(y);
-            // HandleTouch();
-            // HandleMouse();
+            _targetPosition = newPosition;
         }
 
         private void HandleZoom()
@@ -86,43 +90,6 @@ namespace Services.Camera
         {
             _camera.nearClipPlane = _clippingPlanes.x + y;
             _camera.farClipPlane = _clippingPlanes.y + y;
-        }
-
-        private void HandleTouch()
-        {
-            // Mobile touch input handling
-            if (Input.touchCount == 1)
-            {
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    dragOrigin = touch.position;
-                }
-                else if (touch.phase == TouchPhase.Moved)
-                {
-                    Vector3 touchDelta = new Vector3(touch.position.x, touch.position.y, 0) - dragOrigin;
-                    Vector3 move = new Vector3(touchDelta.x, touchDelta.y, 0) * dragSpeed;
-                    transform.Translate(-move, Space.World);
-                    dragOrigin = touch.position;
-                }
-            }
-        }
-
-        private void HandleMouse()
-        {
-            // Editor handling (mouse input as a fallback for the editor)
-            if (Input.GetMouseButtonDown(0))
-            {
-                dragOrigin = Input.mousePosition;
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                Vector3 mouseDelta = Input.mousePosition - dragOrigin;
-                Vector3 move = new Vector3(mouseDelta.x, 0, mouseDelta.y) * dragSpeed;
-                transform.Translate(-move, Space.World);
-                dragOrigin = Input.mousePosition;
-            }
         }
     }
 }

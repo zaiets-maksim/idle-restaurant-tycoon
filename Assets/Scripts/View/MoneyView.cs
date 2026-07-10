@@ -11,7 +11,12 @@ namespace View
     {
         [SerializeField] private Text _text;
     
-        private ICurrencyService _currencyService => ProjectContext.Get<ICurrencyService>();
+        private ICurrencyService _currencyService;
+
+        private void Awake()
+        {
+            _currencyService = ProjectContext.Get<ICurrencyService>();
+        }
 
         private void Start()
         {

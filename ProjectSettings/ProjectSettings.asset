@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: bd539083b6d1cd34d8f01443b8034073
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  AndroidEnableSustainedPerformanceMode: 0
+  AndroidEnableSustainedPerformanceMode: 1
   defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
@@ -175,7 +175,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 23
+  AndroidMinSdkVersion: 26
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -265,7 +265,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 3
+  AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 

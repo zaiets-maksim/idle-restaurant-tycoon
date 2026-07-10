@@ -17,8 +17,8 @@ namespace Characters.Personal
         [SerializeField] private ChefBehavior _chefBehavior;
         [SerializeField] private PersonItemCollector _itemCollector;
 
-        private IOrderStorageService _orderStorageService => ProjectContext.Get<IOrderStorageService>();
-        private IPurchasedItemRegistry _purchasedItemRegistry => ProjectContext.Get<IPurchasedItemRegistry>();
+        private IOrderStorageService _orderStorageService;
+        private IPurchasedItemRegistry _purchasedItemRegistry;
 
         public ChefBehavior ChefBehavior => _chefBehavior;
         public bool IsIdle => _chefBehavior.CurrentState is IdleState || _chefBehavior.CurrentState is ReturnToSpawnState;
@@ -29,6 +29,9 @@ namespace Characters.Personal
         public override void Start()
         {
             base.Start();
+            _orderStorageService = ProjectContext.Get<IOrderStorageService>();
+            _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+
             _orderStorageService.OnNewOrderReceived += TryChangeToCookingState;
             _progress!.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
 
@@ -62,11 +65,14 @@ namespace Characters.Personal
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
-            _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated -= UpdateAgentSpeed;
-            _purchasedItemRegistry!.OnNewItemKitchenPurchased -= OnNewItemKitchenPurchased;
+            if (_orderStorageService != null)
+                _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
+            if (_progress != null)
+                _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated -= UpdateAgentSpeed;
+            if (_purchasedItemRegistry != null)
+                _purchasedItemRegistry.OnNewItemKitchenPurchased -= OnNewItemKitchenPurchased;
         }
 
         private void TryChangeToCookingState(Order order)

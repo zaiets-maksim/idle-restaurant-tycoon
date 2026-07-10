@@ -39,9 +39,10 @@ namespace UI.PopUpMarket
                 MakeLock();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            _itemBuyingService.OnHallItemPurchased -= TryUpdateElement;
+            if (_itemBuyingService != null)
+                _itemBuyingService.OnHallItemPurchased -= TryUpdateElement;
         }
 
         private void TryUpdateElement(HallItemTypeId purchasedItemTypeId)
