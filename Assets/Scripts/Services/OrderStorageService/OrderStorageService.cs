@@ -19,9 +19,21 @@ namespace Services.OrderStorageService
         
         public bool HasOrdersForServe() => _ordersForServing.Count > 0;
         
-        public Order GetOrder() => _orders.Dequeue();
+        public Order GetOrder()
+        {
+            if (_orders.Count == 0)
+                return null;
 
-        public Order GetOrderForServe() => _ordersForServing.Dequeue();
+            return _orders.Dequeue();
+        }
+
+        public Order GetOrderForServe()
+        {
+            if (_ordersForServing.Count == 0)
+                return null;
+
+            return _ordersForServing.Dequeue();
+        }
         
         public void NewOrder(Order order)
         {

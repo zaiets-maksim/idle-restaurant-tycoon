@@ -45,8 +45,7 @@ namespace Services.SceneLoader
             if (sceneTypeId == SceneTypeId.Unknown)
                 yield break;
 
-            // string scene = _staticDataService.ForLevel(sceneTypeId).Configs.Name;
-            string scene = String.Empty;
+            string scene = sceneTypeId.ToString();
             Scene currentScene = SceneManager.GetActiveScene();
 
             AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
