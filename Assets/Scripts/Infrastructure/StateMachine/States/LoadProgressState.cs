@@ -33,10 +33,16 @@ namespace Infrastructure.StateMachine.States
             
         }
         
-        private PlayerData LoadOrCreatePlayerData() =>
+        private PlayerData LoadOrCreatePlayerData()
+        {
             _progress.PlayerData =
                 _saveLoadService.LoadProgress()
                 ?? CreateNew();
+            
+            _progress.PlayerData.ProgressData.InitActions();
+            
+            return _progress.PlayerData;
+        }
 
         private PlayerData CreateNew()
         {

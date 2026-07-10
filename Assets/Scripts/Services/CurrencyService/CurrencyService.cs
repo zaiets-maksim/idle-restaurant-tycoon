@@ -45,6 +45,18 @@ namespace Services.CurrencyService
 
         public void RemoveMoney(int amount)
         {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"[CurrencyService] Attempted to remove negative money: {amount}");
+                return;
+            }
+
+            if (Money - amount < 0)
+            {
+                Debug.LogWarning($"[CurrencyService] Not enough money: have {Money}, need {amount}");
+                return;
+            }
+
             Money -= amount;
         
             UpdateMoney(Money);
@@ -52,6 +64,18 @@ namespace Services.CurrencyService
 
         public void RemoveStars(int amount)
         {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"[CurrencyService] Attempted to remove negative stars: {amount}");
+                return;
+            }
+
+            if (Stars - amount < 0)
+            {
+                Debug.LogWarning($"[CurrencyService] Not enough stars: have {Stars}, need {amount}");
+                return;
+            }
+
             Stars -= amount;
             UpdateStars(Stars);
         }

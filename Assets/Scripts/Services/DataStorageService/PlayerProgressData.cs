@@ -65,6 +65,50 @@ namespace Services.DataStorageService
             };
         }
 
+        public void InitActions()
+        {
+            foreach (var upgrade in Upgrades)
+            {
+                if (upgrade.Action != null)
+                    continue;
+
+                upgrade.Action = upgrade.UpgradeType switch
+                {
+                    "Meal" => () =>
+                    {
+                        RaisePrices();
+                        Meals.UpdatePriceMultiplier();
+                    },
+                    "Customers" when upgrade.Description.Contains("Reduce eating time") => () =>
+                    {
+                        ReduceTime(ref Customers.EatingTimeDelay, 2f);
+                        Customers.UpdateEatingTimeDelay();
+                    },
+                    "Chef" when upgrade.Description.Contains("Reduce food searching time") => () =>
+                    {
+                        ReduceTime(ref Staff.Chef.FoodSearchingTimeDelay, 2f);
+                        Staff.Chef.UpdateFoodSearchingTime();
+                    },
+                    "Chef" when upgrade.Description.Contains("Reduce cooking time") => () =>
+                    {
+                        ReduceTime(ref Staff.Chef.CookingTimeDelay, 2f);
+                        Staff.Chef.UpdateCookingTime();
+                    },
+                    "Chef" when upgrade.Description.Contains("Increase speed") => () =>
+                    {
+                        IncreaseSpeed(ref Staff.Chef.Speed);
+                        Staff.Chef.UpdateSpeed();
+                    },
+                    "Waiter" => () =>
+                    {
+                        IncreaseSpeed(ref Staff.Waiter.Speed);
+                        Staff.Waiter.UpdateSpeed();
+                    },
+                    _ => null
+                };
+            }
+        }
+
         
         public void ReduceTime(ref float time, float delay) => time += delay;
         
@@ -103,14 +147,16 @@ namespace Services.DataStorageService
         public string UpgradeType;
         public string Description;
         public List<int> Prices;
+
+        [NonSerialized]
         public Action Action;
 
-        public Upgrade(string upgradeType, string description, List<int> prices, Action action)
+        public Upgrade(string upgradeType, string description, List<int> prices, Action action = null)
         {
-            Action = action;
-            Prices = prices;
-            Description = description;
             UpgradeType = upgradeType;
+            Description = description;
+            Prices = prices;
+            Action = action;
         }
     }
     
