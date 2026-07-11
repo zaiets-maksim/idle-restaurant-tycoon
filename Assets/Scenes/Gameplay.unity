@@ -4685,8 +4685,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -27
-  far clip plane: 54
+  near clip plane: -50
+  far clip plane: 50
   field of view: 60
   orthographic: 1
   orthographic size: 8
@@ -4740,10 +4740,10 @@ MonoBehaviour:
   zoomSmoothing: 10
   mouseScrollSensitivity: 1
   pinchZoomSensitivity: 0.02
-  minX: -100
-  maxX: 100
-  minZ: -100
-  maxZ: 100
+  minX: -50
+  maxX: 50
+  minZ: -50
+  maxZ: 50
   groundY: 0
 --- !u!1 &967661403
 GameObject:
