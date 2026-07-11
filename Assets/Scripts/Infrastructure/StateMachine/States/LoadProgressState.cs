@@ -25,7 +25,7 @@ namespace Infrastructure.StateMachine.States
             LoadOrCreatePlayerData();
             _saveLoadService.SaveProgress();
             _currencyService.Init();
-            _stateMachine.Enter<LoadMenuState>();
+            _stateMachine.Enter<LoadLevelState>();
         }
         
         public override void Exit()

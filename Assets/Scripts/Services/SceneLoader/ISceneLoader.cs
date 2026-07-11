@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Infrastructure;
-using StudentHistory.Scripts;
 using UnityEngine;
 
 namespace Services.SceneLoader
@@ -19,6 +18,5 @@ namespace Services.SceneLoader
         IEnumerator LoadScene(SceneTypeId sceneTypeId);
         void Load(SceneTypeId sceneTypeId, GameObject stateMachine);
         void Load(SceneTypeId sceneTypeId, Action OnLevelLoad);
-        void LoadFirstScene();
     }
 }

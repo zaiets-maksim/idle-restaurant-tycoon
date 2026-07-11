@@ -2,7 +2,6 @@ using Infrastructure;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.States;
 using Services.SceneLoader;
-using StudentHistory.Scripts;
 
 public class BootStrapState : GameStateEntity
 {

@@ -4,7 +4,6 @@ namespace Infrastructure
 	{
 		Unknown,
 		Initial,
-		MainMenu,
 		Gameplay
 	}
 }

@@ -160,7 +160,6 @@ namespace Infrastructure
             Dictionary<Type, GameStateEntity> BuildStatesRegister() =>
                 new()
                 {
-                    { typeof(LoadMenuState), new LoadMenuState(this) },
                     { typeof(LoadLevelState), new LoadLevelState(this) },
                     { typeof(BootStrapState), new BootStrapState(this) },
                     { typeof(LoadProgressState), new LoadProgressState(this) }

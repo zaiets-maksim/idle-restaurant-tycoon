@@ -7,7 +7,6 @@ namespace Infrastructure
     public class GameStateFactory
     {
         private readonly LoadProgressState _loadProgressState;
-        private readonly LoadMenuState _loadMenuFactory;
         private readonly LoadLevelState _loadLevelState;
         public Dictionary<Type, GameStateEntity> States { get; private set; }
 

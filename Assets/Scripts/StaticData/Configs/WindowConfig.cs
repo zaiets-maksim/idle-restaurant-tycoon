@@ -12,7 +12,6 @@ namespace StaticData.Configs
 
     public enum WindowTypeId
     {
-        Default,
-        Menu
+        Default
     }
 }
