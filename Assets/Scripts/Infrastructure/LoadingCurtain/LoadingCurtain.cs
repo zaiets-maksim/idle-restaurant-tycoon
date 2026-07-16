@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,17 +9,20 @@ namespace Connect4.Scripts.Infrastructure
     public class LoadingCurtain : MonoBehaviour, ILoadingCurtain
     {
         [SerializeField] private Animation _animation;
-        private const float Delay = 0.5f;
-        public event Action OnComplete;
-        
-        public Image Image;
-        public float MoveUpSpeed = 20f;
-        public float TimeStep = 0.03f;
+        [SerializeField] private bool _isCustomDelay;
+        [SerializeField] private float _delay = 0.5f;
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
+        [Header("Move Up Settings")]
+        [SerializeField] private float _moveUpDuration = 0.6f;
+        [SerializeField] private Ease _moveUpEase = Ease.InOutQuad;
+        [SerializeField] private Image Image;
+
+        public event Action OnComplete;
+
+
+        private Tween _moveTween;
+
+        private void Awake() => DontDestroyOnLoad(this);
 
         public void Show()
         {
@@ -27,33 +31,28 @@ namespace Connect4.Scripts.Infrastructure
             _animation.Play();
         }
 
-        public void Hide() =>
-            StartCoroutine(GoUp());
+        public void Hide() => StartCoroutine(GoUp());
 
         private IEnumerator GoUp()
         {
-            yield return new WaitForSeconds(Delay);
-            
-            while (Image.rectTransform.anchoredPosition.y < Image.rectTransform.rect.height)
-            {
-                MoveImageUp();
-                yield return new WaitForSeconds(TimeStep);
-            }
+            float delay = _isCustomDelay ? _delay : _animation.clip.length;
+            yield return new WaitForSeconds(delay);
+            if (!_isCustomDelay) _animation.Stop();
+
+            float targetY = Image.rectTransform.rect.height;
+
+            _moveTween?.Kill();
+            _moveTween = Image.rectTransform
+                .DOAnchorPosY(targetY, _moveUpDuration)
+                .SetEase(_moveUpEase)
+                .SetLink(gameObject);
+
+            yield return _moveTween.WaitForCompletion();
 
             OnComplete?.Invoke();
             gameObject.SetActive(false);
             _animation.Stop();
             _animation.Rewind();
-        }
-
-        private void MoveImageUp()
-        {
-            RectTransform imageTransform = Image.rectTransform;
-            Vector2 anchoredPosition = imageTransform.anchoredPosition;
-
-            anchoredPosition = new Vector2(anchoredPosition.x, anchoredPosition.y + MoveUpSpeed);
-
-            imageTransform.anchoredPosition = anchoredPosition;
         }
     }
 }

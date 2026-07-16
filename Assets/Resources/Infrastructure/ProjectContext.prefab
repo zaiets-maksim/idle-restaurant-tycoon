@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _testService: {fileID: 445965387382889819, guid: 1f06091ed50e87e4480b5405ce2fea05, type: 3}
+  _loadingCurtain: {fileID: 1337036410281864938, guid: e66f205abb0164c4eb03678e57e240c5, type: 3}

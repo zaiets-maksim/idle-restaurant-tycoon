@@ -3,7 +3,7 @@ namespace Infrastructure
 	public enum SceneTypeId
 	{
 		Unknown,
-		Initial,
+		Loader,
 		Gameplay
 	}
 }

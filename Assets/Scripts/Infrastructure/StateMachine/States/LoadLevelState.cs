@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Characters;
+using Connect4.Scripts.Infrastructure;
 using Infrastructure;
 using Interactable;
 using Services.CustomerArrivalService;
@@ -22,6 +23,7 @@ public class LoadLevelState : GameStateEntity
     private readonly IPurchasedItemRegistry _purchasedItemRegistry;
     private readonly ISurfaceUpdaterService _surfaceUpdaterService;
     private readonly ICustomerArrivalService _customerArrivalService;
+    private readonly ILoadingCurtain _curtain;
 
     private KitchenItem _kitchenItem;
     private HallItem _hallItem;
@@ -41,10 +43,12 @@ public class LoadLevelState : GameStateEntity
         _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
         _surfaceUpdaterService = ProjectContext.Get<ISurfaceUpdaterService>();
         _customerArrivalService = ProjectContext.Get<ICustomerArrivalService>();
+        _curtain = ProjectContext.Get<ILoadingCurtain>();
     }
 
     public override void Enter()
     {
+        _curtain.Show();
         _sceneLoader.Load(SceneTypeId.Gameplay, OnLevelLoad);
     }
 
@@ -53,6 +57,7 @@ public class LoadLevelState : GameStateEntity
         _uiFactory.CreateHud();
         _uiFactory.CreatePopUpMarket();
         InitGameWorld();
+        _curtain.Hide();
     }
 
     private void InitGameWorld()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Connect4.Scripts.Infrastructure;
 using Infrastructure.DI;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.States;
@@ -28,6 +29,7 @@ namespace Infrastructure
         public static ProjectContext Instance { get; private set; }
 
         [SerializeField] private TestService _testService;
+        [SerializeField] private LoadingCurtain _loadingCurtain;
         
         private DiContainer _container;
         private GameStateFactory _gameStateFactory;
@@ -80,6 +82,7 @@ namespace Infrastructure
         {
             _container.Bind<ITestService>().FromComponentInNewPrefab(_testService).AsLazy();
             // _container.Bind<ITestService>().FromNewComponentOnNewGameObject<TestService>().AsLazy();
+            _container.Bind<ILoadingCurtain>().FromComponentInNewPrefab(_loadingCurtain).AsSingle();
         }
 
         private void BindServices()
