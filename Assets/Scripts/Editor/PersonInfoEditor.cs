@@ -28,8 +28,10 @@ namespace Editor
         {
             if (personBehavior.IsTransitioning)
                 _text = "IsTransitioning" + $"\n{personBehavior.gameObject.GetInstanceID()}";
-            else
+            else if (personBehavior.CurrentState != null)
                 _text = personBehavior.CurrentState.GetType().Name + $"\n{personBehavior.gameObject.GetInstanceID()}";
+            else
+                _text = "NoState" + $"\n{personBehavior.gameObject.GetInstanceID()}";
                 
             Vector3 worldPos = personBehavior.transform.position + Vector3.up;
             string labelText = _text;
