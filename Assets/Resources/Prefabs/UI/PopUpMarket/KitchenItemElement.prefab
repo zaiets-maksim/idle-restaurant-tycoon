@@ -591,9 +591,9 @@ MonoBehaviour:
   _name: {fileID: 1683857277942205118}
   _description: {fileID: 1095429003624536537}
   _priceText: {fileID: 6153602549141781866}
-  _buyKitchenItemButton: {fileID: 8495677312708447763}
   _available: {fileID: 4177579046568041059}
   _grayScaleMaterial: {fileID: 2100000, guid: 06d5aa63c0712b94a9c949364e7308cc, type: 2}
+  _buyKitchenItemButton: {fileID: 8495677312708447763}
 --- !u!1 &7674720374131348976
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 3894040340602826620}
     - target: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_Pivot.y
@@ -771,7 +771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25
+      value: -137.5
       objectReference: {fileID: 0}
     - target: {fileID: 7427072575540698502, guid: 91ba9eb774cb3da45a429bfda257a490, type: 3}
       propertyPath: m_AnchoredPosition.y

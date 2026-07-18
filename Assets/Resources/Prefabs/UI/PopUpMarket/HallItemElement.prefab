@@ -762,9 +762,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 25}
+  m_AnchoredPosition: {x: -137.5, y: 25}
   m_SizeDelta: {x: 225, y: 125}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8706987733417621474
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -936,10 +936,10 @@ MonoBehaviour:
   _name: {fileID: 1683857277942205118}
   _description: {fileID: 1095429003624536537}
   _priceText: {fileID: 6153602549141781866}
-  _buyHallItemButton: {fileID: 5319064715789579884}
   _available: {fileID: 4177579046568041059}
-  _needable: {fileID: 4772682368510110713}
   _grayScaleMaterial: {fileID: 2100000, guid: 06d5aa63c0712b94a9c949364e7308cc, type: 2}
+  _buyHallItemButton: {fileID: 5319064715789579884}
+  _needable: {fileID: 4772682368510110713}
 --- !u!1 &7674720374131348976
 GameObject:
   m_ObjectHideFlags: 0
