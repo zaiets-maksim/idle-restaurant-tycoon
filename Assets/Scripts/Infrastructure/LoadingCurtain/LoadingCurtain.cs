@@ -8,6 +8,8 @@ namespace Connect4.Scripts.Infrastructure
 {
     public class LoadingCurtain : MonoBehaviour, ILoadingCurtain
     {
+        public event Action OnComplete;
+        
         [SerializeField] private Animation _animation;
         [SerializeField] private bool _isCustomDelay;
         [SerializeField] private float _delay = 0.5f;
@@ -16,9 +18,6 @@ namespace Connect4.Scripts.Infrastructure
         [SerializeField] private float _moveUpDuration = 0.6f;
         [SerializeField] private Ease _moveUpEase = Ease.InOutQuad;
         [SerializeField] private Image Image;
-
-        public event Action OnComplete;
-
 
         private Tween _moveTween;
 
@@ -35,7 +34,18 @@ namespace Connect4.Scripts.Infrastructure
 
         private IEnumerator GoUp()
         {
-            float delay = _isCustomDelay ? _delay : _animation.clip.length;
+            float delay;
+            if (_isCustomDelay)
+            {
+                _animation.wrapMode = WrapMode.Loop;
+                delay = _delay;
+            }
+            else
+            {
+                _animation.wrapMode = WrapMode.Once;
+                delay = _animation.clip.length - Time.deltaTime;
+            }
+
             yield return new WaitForSeconds(delay);
             if (!_isCustomDelay) _animation.Stop();
 
