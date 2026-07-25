@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace tetris.Scripts.Extensions
+namespace Extensions
 {
     public static class TimeExtensions
     {

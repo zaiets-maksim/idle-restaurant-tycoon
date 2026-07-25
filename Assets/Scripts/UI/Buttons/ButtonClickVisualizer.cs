@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace project01a.Scripts.UI
+namespace UI.Buttons
 {
     [RequireComponent(typeof(Button))]
     public class ButtonClickVisualizer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler

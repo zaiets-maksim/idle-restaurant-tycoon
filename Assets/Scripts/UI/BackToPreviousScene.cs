@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StudentHistory.Scripts.UI
+namespace UI
 {
     public class BackToPreviousScene : MonoBehaviour
     {

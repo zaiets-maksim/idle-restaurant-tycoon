@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StudentHistory.Scripts.UI.Puase
+namespace UI.Pause
 {
    public class Resume : MonoBehaviour
    {

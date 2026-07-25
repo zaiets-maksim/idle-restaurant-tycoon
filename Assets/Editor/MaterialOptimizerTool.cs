@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace StudentHistory.Scripts.Editor
+namespace Editor
 {
     public static class MaterialOptimizerTool
     {

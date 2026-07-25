@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Connect4.Scripts.Infrastructure
+namespace Infrastructure
 {
     public interface ILoadingCurtain
     {

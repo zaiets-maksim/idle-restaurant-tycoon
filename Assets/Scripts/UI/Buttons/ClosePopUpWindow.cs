@@ -1,8 +1,8 @@
-using project01a.Scripts.UI;
+using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StudentHistory.Scripts.UI.Buttons
+namespace UI.Buttons
 {
     // [RequireComponent(typeof(ButtonClickResponse))]
     [RequireComponent(typeof(ButtonClickVisualizer))]

@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Connect4.Scripts.Infrastructure
+namespace Infrastructure
 {
     public class LoadingCurtain : MonoBehaviour, ILoadingCurtain
     {

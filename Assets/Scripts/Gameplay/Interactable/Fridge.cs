@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using tetris.Scripts.Extensions;
+using Extensions;
 using UnityEngine;
 
 namespace Interactable

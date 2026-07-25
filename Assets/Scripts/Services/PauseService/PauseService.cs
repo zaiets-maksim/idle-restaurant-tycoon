@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace tetris.Scripts.Services.PauseService
+namespace Services.PauseService
 {
     public class PauseService : IPauseService
     {

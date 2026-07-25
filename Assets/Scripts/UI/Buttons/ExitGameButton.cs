@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StudentHistory.Scripts.UI.Buttons
+namespace UI.Buttons
 {
     public class ExitGameButton : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
-using tetris.Scripts.Extensions;
+using Extensions;
 using Unity.VisualScripting;
 using UnityEngine;
 
