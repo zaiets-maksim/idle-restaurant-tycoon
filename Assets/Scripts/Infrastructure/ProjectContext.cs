@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Connect4.Scripts.Infrastructure;
+using Infrastructure;
 using Infrastructure.DI;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.States;
@@ -18,6 +18,7 @@ using Services.SaveLoad;
 using Services.SceneLoader;
 using Services.StaticDataService;
 using Services.SurfaceUpdaterService;
+using Services.ProgressEventService;
 using Services.WindowService;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -61,6 +62,28 @@ namespace Infrastructure
             }
         }
 
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+                SaveProgress();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (!hasFocus)
+                SaveProgress();
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveProgress();
+        }
+
+        private void SaveProgress()
+        {
+            _container?.Resolve<ISaveLoadService>()?.SaveProgress();
+        }
+
         public static T Get<T>() => Instance.Container.Resolve<T>();
 
         public void ResetServices() => _container?.ResetServices();
@@ -96,6 +119,9 @@ namespace Infrastructure
             var progress = new PersistenceProgressService();
             _container.Bind<IPersistenceProgressService>().FromInstance(progress).AsSingle();
             _container.Bind<ISaveLoadService>().FromInstance(new SaveLoadService(progress)).AsSingle();
+            
+            // Progress Events
+            _container.Bind<IProgressEventService>().FromInstance(new ProgressEventService(progress)).AsSingle();
 
             // SceneLoader
             _container.Bind<ISceneLoader>()
@@ -119,6 +145,8 @@ namespace Infrastructure
                 .FromInstance(new WindowService(_container.Resolve<IUIFactory>()))
                 .AsSingle();
 
+            _container.Bind<ISurfaceUpdaterService>().To<SurfaceUpdaterService>().AsSingle();
+
             _container.Bind<IItemBuyingService>()
                 .FromInstance(new ItemBuyingService(
                     progress,
@@ -126,11 +154,10 @@ namespace Infrastructure
                     _container.Resolve<ISaveLoadService>(),
                     _container.Resolve<IItemFactory>(),
                     purchasedItemRegistry,
-                    _container.Resolve<ICharacterFactory>()))
+                    _container.Resolve<ICharacterFactory>(),
+                    _container.Resolve<ISurfaceUpdaterService>()))
                 .AsSingle();
 
-            _container.Bind<ISurfaceUpdaterService>().To<SurfaceUpdaterService>().AsSingle();
-            
             _container.Bind<ICurrencyService>()
                 .FromInstance(new CurrencyService(progress, _container.Resolve<ISaveLoadService>()))
                 .AsSingle();

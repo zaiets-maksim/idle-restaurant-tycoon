@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Characters;
-using Connect4.Scripts.Infrastructure;
+using Infrastructure;
 using Infrastructure;
 using Interactable;
 using Services.CustomerArrivalService;
