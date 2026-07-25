@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Extensions;
 using UnityEngine;
 
@@ -23,7 +22,7 @@ namespace Characters.PersonStateMachine
 
         public bool IsTransitioning => _isTransitioning;
 
-        public async void ChangeState<T>() where T : PersonBaseState
+        public void ChangeState<T>() where T : PersonBaseState
         {
             if (_isTransitioning)
             {
@@ -41,12 +40,11 @@ namespace Characters.PersonStateMachine
             {
                 Debug.Log(Make.Colored($"To {state.GetType().Name} {gameObject.GetInstanceID()}", Color.yellow));
 
+                _currentState?.Cancel();
                 _currentState?.Exit();
 
-                await Task.Yield();
-
-                state?.Enter();
                 _currentState = state;
+                _currentState.EnterSafe();
 
                 Debug.Log(Make.Colored($"-> {_currentState.GetType().Name} {gameObject.GetInstanceID()}", Color.green));
             }

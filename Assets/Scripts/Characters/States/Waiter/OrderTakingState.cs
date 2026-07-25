@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
-using Characters.Customers;
 using Characters.PersonStateMachine;
-using Interactable;
 using UnityEngine;
 
 namespace Characters.States.Waiter
@@ -23,15 +20,14 @@ namespace Characters.States.Waiter
             _transform = transform;
         }
 
-        public override void Enter()
+        protected override Task Enter(CancellationToken ct)
         {
+            return Task.CompletedTask;
         }
         
 
         public override void Exit()
         {
-            
         }
-    
     }
 }

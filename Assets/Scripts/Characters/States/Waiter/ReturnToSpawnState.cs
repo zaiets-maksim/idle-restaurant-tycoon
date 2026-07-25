@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Characters;
 using Characters.PersonStateMachine;
 using Characters.States;
@@ -13,15 +15,15 @@ public class ReturnToSpawnState : PersonBaseState
         _personBehavior = personBehavior;
     }
     
-    public override async void Enter()
+    protected override async Task Enter(CancellationToken ct)
     {
         await _person.MoveToSpawn();
+        ct.ThrowIfCancellationRequested();
         
         _personBehavior.ChangeState<IdleState>();
     }
 
     public override void Exit()
     {
-        
     }
 }

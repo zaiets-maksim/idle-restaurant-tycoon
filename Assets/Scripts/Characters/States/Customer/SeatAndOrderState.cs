@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters;
 using Characters.Customers;
@@ -8,7 +9,6 @@ using Extensions;
 using Infrastructure;
 using Interactable;
 using Services.PurchasedItemRegistry;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 internal class SeatAndOrderState : PersonBaseState
@@ -26,13 +26,13 @@ internal class SeatAndOrderState : PersonBaseState
         _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
     }
 
-    public override async void Enter()
+    protected override async Task Enter(CancellationToken ct)
     {
         _purchasedItemRegistry.CleanupDestroyed();
-        await TakeSeatAndOrder();
+        await TakeSeatAndOrder(ct);
     }
 
-    private async Task TakeSeatAndOrder()
+    private async Task TakeSeatAndOrder(CancellationToken ct)
     {
         if (HasFreeChair(out Chair chair))
         {
@@ -43,13 +43,14 @@ internal class SeatAndOrderState : PersonBaseState
                 _personMover.StartMovingTo(chair.InteractionPoint, callback);
             });
             
+            ct.ThrowIfCancellationRequested();
             _customer.DisableAgent();
             _personAnimator.SitDown();
             
             _customer.ProgressIndicator.AddPosition(_customer.transform.forward * -0.5f);
             _customer.SetPosition(chair.transform.position + chair.transform.forward * 0.5f);
             
-            await Task.Delay(chair.InteractionTime.ToMiliseconds());
+            await Task.Delay(chair.InteractionTime.ToMiliseconds(), ct);
             
             _customer.MakeOrder();
         }

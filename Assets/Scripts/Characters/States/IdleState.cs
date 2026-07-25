@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Characters.PersonStateMachine;
 
 namespace Characters.States
@@ -11,14 +13,14 @@ namespace Characters.States
             _personAnimator = personAnimator;
         }
         
-        public override async void Enter()
+        protected override Task Enter(CancellationToken ct)
         {
             _personAnimator.Idle();
+            return Task.CompletedTask;
         }
 
         public override void Exit()
         {
-            
         }
     }
 }

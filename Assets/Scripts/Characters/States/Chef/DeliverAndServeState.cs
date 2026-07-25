@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
@@ -7,7 +8,6 @@ using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 namespace Characters.States.Chef
@@ -22,7 +22,6 @@ namespace Characters.States.Chef
         private readonly Transform _transform;
         private readonly DishHolder _dishHolder;
 
-        private TaskCompletionSource<bool> _tcs = new();
         private List<ServingTable> _servingTables;
         private ServingTable _servingTable;
         private readonly IOrderStorageService _orderStorageService;
@@ -41,13 +40,12 @@ namespace Characters.States.Chef
             _transform = transform;
         }
 
-        public override async void Enter()
+        protected override async Task Enter(CancellationToken ct)
         {
-            _tcs = new TaskCompletionSource<bool>();
             _purchasedItemRegistry.CleanupDestroyed();
 
-            await DeliverDish();
-            await ServeDish();
+            await DeliverDish(ct);
+            await ServeDish(ct);
             
             if(_chef.TryGetNewOrder())
                 _chefBehavior.ChangeState<FoodSearchState>();
@@ -55,7 +53,7 @@ namespace Characters.States.Chef
                 _chefBehavior.ChangeState<ReturnToSpawnState>();
         }
 
-        private async Task DeliverDish()
+        private async Task DeliverDish(CancellationToken ct)
         {
             if (GetServingTable(out ServingTable servingTable))
             {
@@ -66,6 +64,8 @@ namespace Characters.States.Chef
                 {
                     _personMover.StartMovingTo(servingTable.InteractionPoint, callback);
                 });
+
+                ct.ThrowIfCancellationRequested();
             }
             else
             {
@@ -73,15 +73,14 @@ namespace Characters.States.Chef
             }
         }
         
-        private async Task ServeDish()
+        private async Task ServeDish(CancellationToken ct)
         {
-            Debug.Log(_dishHolder.Dish);
             _servingTable.PlaceDish(_transform, _dishHolder.Dish);
             _personAnimator.PutTheItem();
             _chef.Cooked(_chef.Order);
 
             var time = _personAnimator.GetCurrentClipLength();
-            await Task.Delay(time.ToMiliseconds());
+            await Task.Delay(time.ToMiliseconds(), ct);
             
             _servingTable.Release();
         }

@@ -9,7 +9,6 @@ using Infrastructure;
 using Interactable;
 using Services.DataStorageService;
 using Services.PurchasedItemRegistry;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 namespace Characters.States.Chef
@@ -26,9 +25,6 @@ namespace Characters.States.Chef
         private readonly PersonAnimator _personAnimator;
         private readonly Personal.Chef _chef;
         private readonly IPersistenceProgressService _progress;
-        
-        private CancellationTokenSource _cts = new();
-        
 
         public CookingState(ChefBehavior chefBehavior, Personal.Chef chef, Transform transform, PersonMover personMover, PersonAnimator personAnimator, 
             DishHolder dishHolder)
@@ -43,22 +39,14 @@ namespace Characters.States.Chef
             _chefBehavior = chefBehavior;
         }
     
-        public override async void Enter()
+        protected override async Task Enter(CancellationToken ct)
         {
-            _cts = new CancellationTokenSource();
             _purchasedItemRegistry.CleanupDestroyed();
 
-            await Cook();
+            await Cook(ct);
 
-            if (_cts.IsCancellationRequested)
+            if (ct.IsCancellationRequested)
             {
-                Debug.Log(Make.Colored($"All dish stations are occupy now {_chef.gameObject.GetInstanceID()}", Color.red));
-                Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
-                
-                while (_chefBehavior.IsTransitioning)
-                    await Task.Yield();
-                
-                Debug.Log(Make.Colored($"{_chefBehavior.IsTransitioning} {_chef.gameObject.GetInstanceID()}", Color.red));
                 _chefBehavior.ChangeState<IdleState>();
                 return;
             }
@@ -67,11 +55,8 @@ namespace Characters.States.Chef
             _chefBehavior.ChangeState<DeliverAndServeState>();
         }
 
-        private async Task Cook()
+        private async Task Cook(CancellationToken ct)
         {
-            if(_cts.IsCancellationRequested)
-                return;
-            
             if (GetFoodStation(out FoodStation foodStation))
             {
                 foodStation.Occupy();
@@ -81,6 +66,7 @@ namespace Characters.States.Chef
                     _personMover.StartMovingTo(foodStation.InteractionPoint, callback);
                 });
 
+                ct.ThrowIfCancellationRequested();
                 var dish = foodStation.MakeDish(_chef.Order.DishTypeId);
                 _personAnimator.Cook();
                 
@@ -92,13 +78,10 @@ namespace Characters.States.Chef
                     _chef.ProgressIndicator.StartProgress(time, callback);
                 });
 
+                ct.ThrowIfCancellationRequested();
                 _dishHolder.TakeDish(dish);
                 foodStation.Release();
                 _personAnimator.Idle();
-            }
-            else
-            {
-                _cts.Cancel();
             }
         }
 
@@ -129,7 +112,6 @@ namespace Characters.States.Chef
     
         public override void Exit()
         {
-            _cts.Cancel();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using Characters;
 using Characters.Behaviors;
@@ -6,7 +7,6 @@ using Characters.States.Waiter;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 public class OrderDeliveryState : PersonBaseState
@@ -30,9 +30,9 @@ public class OrderDeliveryState : PersonBaseState
         _orderStorageService = ProjectContext.Get<IOrderStorageService>();
     }
     
-    public override async void Enter()
+    protected override async Task Enter(CancellationToken ct)
     {
-        await DeliverOrder();
+        await DeliverOrder(ct);
         
         if(_waiter.Order != null || _waiter.TryGetNewOrder())
             _waiterBehavior.ChangeState<DishHandlingState>();
@@ -40,7 +40,7 @@ public class OrderDeliveryState : PersonBaseState
             _waiterBehavior.ChangeState<ReturnToSpawnState>();
     }
 
-    private async Task DeliverOrder()
+    private async Task DeliverOrder(CancellationToken ct)
     {
         var customer = _waiter.Order.Customer;
         var servingPoint = customer.Chair.ServingPoints[Random.Range(0, customer.Chair.ServingPoints.Length)];
@@ -50,17 +50,17 @@ public class OrderDeliveryState : PersonBaseState
             _personMover.StartMovingTo(servingPoint, callback, true);
         });
 
+        ct.ThrowIfCancellationRequested();
         _dishHolder.GiveDish(out var dish);
         customer.TakeDish(dish);
         _personAnimator.PutTheItem();
         _waiter.Delivered();
 
         var time = _personAnimator.GetCurrentClipLength();
-        await Task.Delay(time.ToMiliseconds());
+        await Task.Delay(time.ToMiliseconds(), ct);
     }
 
     public override void Exit()
     {
-        
     }
 }

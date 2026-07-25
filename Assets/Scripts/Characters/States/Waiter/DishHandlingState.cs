@@ -10,7 +10,6 @@ using Interactable;
 using Services.OrderStorageService;
 using Services.PurchasedItemRegistry;
 using StaticData;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 namespace Characters.States.Waiter
@@ -28,9 +27,6 @@ namespace Characters.States.Waiter
         private IEnumerable<ServingTable> _servingTables;
         private Dish _dish;
         private readonly Characters.Waiter _waiter;
-        
-        private CancellationTokenSource _cts = new();
-
 
         public DishHandlingState(WaiterBehavior waiterBehavior, Characters.Waiter waiter, Transform transform, PersonMover personMover,
             PersonAnimator personAnimator, DishHolder dishHolder)
@@ -46,19 +42,18 @@ namespace Characters.States.Waiter
             _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
         }
 
-        public override async void Enter()
+        protected override async Task Enter(CancellationToken ct)
         {
-            _cts = new CancellationTokenSource();
             _purchasedItemRegistry.CleanupDestroyed();
-            await HandleOrder();
+            await HandleOrder(ct);
             
-            if(_cts.IsCancellationRequested)
+            if (ct.IsCancellationRequested)
                 _waiterBehavior.ChangeState<ReturnToSpawnState>();
             else
                 _waiterBehavior.ChangeState<OrderDeliveryState>();
         }
 
-        private async Task HandleOrder()
+        private async Task HandleOrder(CancellationToken ct)
         {
             _servingTables = _purchasedItemRegistry.KitchenItems
                 .OfType<ServingTable>()
@@ -71,26 +66,19 @@ namespace Characters.States.Waiter
                     _personMover.StartMovingTo(nearestServingTable.OrderCollectionPoint, callback);
                 });
 
+                ct.ThrowIfCancellationRequested();
 
                 _dish = nearestServingTable.GetDish(_waiter.Order.DishTypeId);
                 if (_dish == null)
                 {
-                    Debug.Log("CANCEL!");
-                    _cts.Cancel();
                     return;
                 }
-                
-                
-                if(_cts.IsCancellationRequested)
-                    return;
-                
-                // Debug.Log(_waiter.Order.DishTypeId);
                 
                 _dishHolder.TakeDish(_dish);
                 _personAnimator.PutTheItem();
 
                 var time = _personAnimator.GetCurrentClipLength();
-                await Task.Delay(time.ToMiliseconds());
+                await Task.Delay(time.ToMiliseconds(), ct);
             }
             else
             {
@@ -101,7 +89,6 @@ namespace Characters.States.Waiter
         
         private bool HasServingTableWithDish(out ServingTable nearestServingTable)
         {
-            Debug.Log($"waiter looking for : {_waiter.Order.DishTypeId}");
             if(_purchasedItemRegistry.KitchenItems
                .OfType<ServingTable>().Any(x => x.HasDish(_waiter.Order.DishTypeId)))
                 
@@ -129,7 +116,6 @@ namespace Characters.States.Waiter
 
         public override void Exit()
         {
-            _cts.Cancel();
         }
     }
 }

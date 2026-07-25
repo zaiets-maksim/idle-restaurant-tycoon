@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.PersonStateMachine;
@@ -8,7 +9,6 @@ using Infrastructure;
 using Interactable;
 using Services.DataStorageService;
 using Services.PurchasedItemRegistry;
-using tetris.Scripts.Extensions;
 using UnityEngine;
 
 namespace Characters.States.Chef
@@ -23,7 +23,6 @@ namespace Characters.States.Chef
         private readonly Personal.Chef _chef;
 
         private List<Fridge> _fridgesWithFood;
-        TaskCompletionSource<bool> _tcs = new();
         private readonly IPersistenceProgressService _progress;
 
         public FoodSearchState(ChefBehavior chefBehavior, Personal.Chef chef, PersonMover personMover, PersonAnimator personAnimator)
@@ -37,35 +36,35 @@ namespace Characters.States.Chef
             _progress = ProjectContext.Get<IPersistenceProgressService>();
         }
 
-        public override async void Enter()
+        protected override async Task Enter(CancellationToken ct)
         {
-            _tcs = new TaskCompletionSource<bool>();
             _purchasedItemRegistry.CleanupDestroyed();
             
-            await GetSomeFood();
+            await GetSomeFood(ct);
+            ct.ThrowIfCancellationRequested();
             _personAnimator.Idle();
             _chefBehavior.ChangeState<CookingState>();
         }
 
-        private async Task GetSomeFood()
+        private async Task GetSomeFood(CancellationToken ct)
         {
             if (GetFridges(out Fridge fridge))
             {
                 if (Random.value > 0.5f)
                 {
-                    await GetFoodFromStorage();
+                    await GetFoodFromStorage(ct);
                     return;
                 }
 
-                await GetFoodFromFridge(fridge);
+                await GetFoodFromFridge(fridge, ct);
             }
             else
             {
-                await GetFoodFromStorage();
+                await GetFoodFromStorage(ct);
             }
         }
 
-        private async Task GetFoodFromFridge(Fridge fridge)
+        private async Task GetFoodFromFridge(Fridge fridge, CancellationToken ct)
         {
             fridge.Occupy();
             
@@ -74,6 +73,7 @@ namespace Characters.States.Chef
                 _personMover.StartMovingTo(fridge.InteractionPoint, callback);
             });
 
+            ct.ThrowIfCancellationRequested();
             fridge.Interact();
             _personAnimator.PutTheItem();
             
@@ -86,7 +86,7 @@ namespace Characters.States.Chef
             });
         }
 
-        private async Task GetFoodFromStorage()
+        private async Task GetFoodFromStorage(CancellationToken ct)
         {
             if (GetRandomCrateInteractionPoint(out Transform point))
             {
@@ -95,6 +95,7 @@ namespace Characters.States.Chef
                     _personMover.StartMovingTo(point, callback);
                 });
 
+                ct.ThrowIfCancellationRequested();
                 _personAnimator.PickUp();
 
                 var time = TimeExtensions.RandomTime(5, 15) - _progress.PlayerData.ProgressData.Staff.Chef.FoodSearchingTimeDelay;
