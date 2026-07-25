@@ -56,11 +56,12 @@ namespace Characters
             while (!HasArrived())
                 yield return null;
 
-            StopMoving();
+            _navMeshAgent.isStopped = true;
+            callback?.Invoke();
+            
             _personRotator.StartRotationTo(target, () =>
             {
                 _personRotator.Disable();
-                callback?.Invoke();
             });
             
             yield return null;
@@ -77,7 +78,13 @@ namespace Characters
             while (!HasArrived())
                 yield return null;
 
-            StopMoving();
+            _navMeshAgent.isStopped = true;
+            callback?.Invoke();
+            
+            _personRotator.StartRotationTo(position, () =>
+            {
+                _personRotator.Disable();
+            });
             
             yield return null;
         }

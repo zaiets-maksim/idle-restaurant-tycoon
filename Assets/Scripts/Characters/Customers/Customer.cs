@@ -85,7 +85,7 @@ namespace Characters.Customers
             float randomSpeed = Random.Range(_balance.Customers.Speed.x, _balance.Customers.Speed.y);
             _navMeshAgent.speed = randomSpeed;
             float coefficient = randomSpeed / _balance.Customers.DefaultSpeed;
-            _personAnimator.SetSpeed(coefficient);
+            _personAnimator.SetWalkSpeed(coefficient);
             _mealDuration = Random.Range(_balance.Customers.MealDurationInterval.x, _balance.Customers.MealDurationInterval.y) - 
                 _progress.PlayerData.ProgressData.Customers.EatingTimeDelay;
         }

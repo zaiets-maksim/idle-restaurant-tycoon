@@ -37,7 +37,7 @@ namespace Characters
         protected void UpdateAgentSpeed(float speed)
         {
             _navMeshAgent.speed = speed;
-            _personAnimator.SetSpeed(speed / 3.5f);
+            _personAnimator.SetWalkSpeed(speed / 3.5f);
         }
 
         public void EnableAgent()

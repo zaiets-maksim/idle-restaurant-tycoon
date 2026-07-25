@@ -9,7 +9,7 @@ namespace Characters
     public class PersonRotator : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private float _rotationSpeed = 7f;
+        [SerializeField] private float _rotationSpeed = 12f;
 
         private Quaternion _targetRotation;
         private Coroutine _lookAtCoroutine;
@@ -39,6 +39,18 @@ namespace Characters
             }
             
             _lookAtCoroutine = StartCoroutine(TransformExtensions.RotateTo(transform, target, _rotationSpeed, rollback));
+            IsRotating = true;
+        }
+
+        public void StartRotationTo(Vector3 targetPosition, Action rollback)
+        {
+            if (_lookAtCoroutine != null)
+            {
+                StopCoroutine(_lookAtCoroutine);
+                IsRotating = false;
+            }
+            
+            _lookAtCoroutine = StartCoroutine(TransformExtensions.RotateTo(transform, targetPosition, _rotationSpeed, rollback));
             IsRotating = true;
         }
 

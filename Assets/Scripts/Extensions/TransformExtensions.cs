@@ -35,13 +35,34 @@ namespace Extensions
 
         public static IEnumerator RotateTo(Transform obj, Transform target, float speed = 7f, Action rollback = null)
         {
-            while (Vector3.Distance(obj.eulerAngles, target.eulerAngles) > 0.01f)
+            while (Quaternion.Angle(obj.rotation, target.rotation) > 0.5f)
             {
                 obj.rotation = Quaternion.Lerp(obj.rotation, target.rotation, speed * Time.deltaTime);
                 yield return null;
             }
 
             obj.rotation = target.rotation;
+            rollback?.Invoke();
+        }
+
+        public static IEnumerator RotateTo(Transform obj, Vector3 targetPosition, float speed = 7f, Action rollback = null)
+        {
+            Vector3 direction = (targetPosition - obj.position).normalized;
+            if (direction == Vector3.zero)
+            {
+                rollback?.Invoke();
+                yield break;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            while (Quaternion.Angle(obj.rotation, targetRotation) > 0.5f)
+            {
+                obj.rotation = Quaternion.Lerp(obj.rotation, targetRotation, speed * Time.deltaTime);
+                yield return null;
+            }
+
+            obj.rotation = targetRotation;
             rollback?.Invoke();
         }
     }
