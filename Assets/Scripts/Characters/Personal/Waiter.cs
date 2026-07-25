@@ -5,6 +5,7 @@ using Characters.States.Waiter;
 using Extensions;
 using Infrastructure;
 using Services.OrderStorageService;
+using Services.ProgressEventService;
 using UnityEngine;
 
 namespace Characters
@@ -13,6 +14,7 @@ namespace Characters
     {
         [SerializeField] private WaiterBehavior _waiterBehavior;
         private IOrderStorageService _orderStorageService;
+        private IProgressEventService _progressEventService;
 
         public WaiterBehavior WaiterBehavior => _waiterBehavior;
         public bool IsIdle => _waiterBehavior.CurrentState is IdleState or ReturnToSpawnState;
@@ -22,9 +24,10 @@ namespace Characters
         {
             base.Start();
             _orderStorageService = ProjectContext.Get<IOrderStorageService>();
+            _progressEventService = ProjectContext.Get<IProgressEventService>();
             _orderStorageService.OnOrderCooked += TryChangeToDishHandlingState;
 
-            _progress!.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated += UpdateAgentSpeed;
+            _progressEventService.OnWaiterSpeedUpdated += UpdateAgentSpeed;
             UpdateAgentSpeed(_progress.PlayerData.ProgressData.Staff.Waiter.Speed);
             _spawnPosition = transform.position;
         }
@@ -33,8 +36,8 @@ namespace Characters
         {
             if (_orderStorageService != null)
                 _orderStorageService.OnOrderCooked -= TryChangeToDishHandlingState;
-            if (_progress != null)
-                _progress.PlayerData.ProgressData.Staff.Waiter.OnSpeedUpdated -= UpdateAgentSpeed;
+            if (_progressEventService != null)
+                _progressEventService.OnWaiterSpeedUpdated -= UpdateAgentSpeed;
         }
 
         private void TryChangeToDishHandlingState(Order order)
@@ -58,12 +61,9 @@ namespace Characters
 
         public bool TryGetNewOrder()
         {
-            Debug.Log($"{gameObject.name} ({gameObject.GetInstanceID()}) - {_orderStorageService.HasOrdersForServe()}");
             if(_orderStorageService.HasOrdersForServe())
             {
                 Order = _orderStorageService.GetOrderForServe();
-                Debug.Log($"{gameObject.name} ({gameObject.GetInstanceID()}) got order: {Order.DishTypeId}");
-                
                 return true;
             }
             
@@ -77,7 +77,6 @@ namespace Characters
 
         public override void PerformDuties()
         {
-            
         }
 
         public void ServeCustomer()

@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Threading.Tasks;
 using Characters.Behaviors;
 using Characters.States;
 using Characters.States.Chef;
@@ -7,6 +6,7 @@ using Extensions;
 using Infrastructure;
 using Interactable;
 using Services.OrderStorageService;
+using Services.ProgressEventService;
 using Services.PurchasedItemRegistry;
 using UnityEngine;
 
@@ -19,6 +19,7 @@ namespace Characters.Personal
 
         private IOrderStorageService _orderStorageService;
         private IPurchasedItemRegistry _purchasedItemRegistry;
+        private IProgressEventService _progressEventService;
 
         public ChefBehavior ChefBehavior => _chefBehavior;
         public bool IsIdle => _chefBehavior.CurrentState is IdleState || _chefBehavior.CurrentState is ReturnToSpawnState;
@@ -31,9 +32,10 @@ namespace Characters.Personal
             base.Start();
             _orderStorageService = ProjectContext.Get<IOrderStorageService>();
             _purchasedItemRegistry = ProjectContext.Get<IPurchasedItemRegistry>();
+            _progressEventService = ProjectContext.Get<IProgressEventService>();
 
             _orderStorageService.OnNewOrderReceived += TryChangeToCookingState;
-            _progress!.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated += UpdateAgentSpeed;
+            _progressEventService.OnChefSpeedUpdated += UpdateAgentSpeed;
 
             foreach (var kitchenItem in _purchasedItemRegistry!.KitchenItems)
                 if (kitchenItem is FoodStation) 
@@ -53,14 +55,8 @@ namespace Characters.Personal
 
         private void TryChangeToCookingState(KitchenItem kitchenItem)
         {
-            Debug.Log(Make.Colored($"TryChangeToCookingState {gameObject.GetInstanceID()}", Color.cyan));
-            Debug.Log($"{_chefBehavior.CurrentState}");
-            Debug.Log($"{Order}");
-            Debug.Log("\n");
-
             if (IsIdle && Order != null && ((FoodStation)kitchenItem).DishTypeId.Any(id => id == Order.DishTypeId))
             {
-                Debug.Log(Make.Colored($"-> FoodSearchState {gameObject.GetInstanceID()}", Color.yellow));
                 _chefBehavior.ChangeState<FoodSearchState>();
             }
         }
@@ -69,8 +65,8 @@ namespace Characters.Personal
         {
             if (_orderStorageService != null)
                 _orderStorageService.OnNewOrderReceived -= TryChangeToCookingState;
-            if (_progress != null)
-                _progress.PlayerData.ProgressData.Staff.Chef.OnSpeedUpdated -= UpdateAgentSpeed;
+            if (_progressEventService != null)
+                _progressEventService.OnChefSpeedUpdated -= UpdateAgentSpeed;
             if (_purchasedItemRegistry != null)
                 _purchasedItemRegistry.OnNewItemKitchenPurchased -= OnNewItemKitchenPurchased;
         }
@@ -82,19 +78,16 @@ namespace Characters.Personal
 
             if (TryGetNewOrder())
             {
-                Debug.Log(Make.Colored($"-> FoodSearchState {gameObject.GetInstanceID()}", Color.yellow));
                 _chefBehavior.ChangeState<FoodSearchState>();
             }
         }
 
         public override void PerformDuties()
         {
-            
         }
 
         public void Cook()
         {
-            
         }
         
         
@@ -103,12 +96,9 @@ namespace Characters.Personal
             if(Order != null)
                 return false;
             
-            // Debug.Log($"{gameObject.name} - {_orderStorageService.HasOrders()}");
             if (_orderStorageService.HasOrders())
             {
                 Order = _orderStorageService.GetOrder();
-                // Debug.Log($"{gameObject.name} want to take {Order.DishTypeId}");
-                
                 return true;
             }
             

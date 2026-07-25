@@ -1,5 +1,6 @@
 using Services.CurrencyService;
 using Services.DataStorageService;
+using Services.ProgressEventService;
 using Services.SaveLoad;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Infrastructure.StateMachine.States
         private readonly IPersistenceProgressService _progress;
         private readonly IStateMachine _stateMachine;
         private readonly ICurrencyService _currencyService;
+        private readonly IProgressEventService _progressEventService;
 
         public LoadProgressState(ProjectContext projectContext)
         {
@@ -18,11 +20,13 @@ namespace Infrastructure.StateMachine.States
             _progress = ProjectContext.Get<IPersistenceProgressService>();
             _saveLoadService = ProjectContext.Get<ISaveLoadService>();
             _currencyService = ProjectContext.Get<ICurrencyService>();
+            _progressEventService = ProjectContext.Get<IProgressEventService>();
         }
     
         public override void Enter()
         {
             LoadOrCreatePlayerData();
+            _progressEventService.Initialize();
             _saveLoadService.SaveProgress();
             _currencyService.Init();
             _stateMachine.Enter<LoadLevelState>();
@@ -30,7 +34,6 @@ namespace Infrastructure.StateMachine.States
         
         public override void Exit()
         {
-            
         }
         
         private PlayerData LoadOrCreatePlayerData()
@@ -48,7 +51,6 @@ namespace Infrastructure.StateMachine.States
         {
             PlayerData playerData = new PlayerData
             {
-                
             };
             return playerData;
         }
